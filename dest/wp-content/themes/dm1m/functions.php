@@ -57,8 +57,10 @@ function dm1m_remove_comment_author_class( $classes ){
 add_filter( 'comment_class' , 'dm1m_remove_comment_author_class' );
 
 // remove login errors
-add_filter( 'login_errors', create_function('$a', "return null;") );
-
+function no_wordpress_errors(){
+    return 'Something is wrong!';
+}
+add_filter( 'login_errors', 'no_wordpress_errors' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Admin
