@@ -5,3 +5,31 @@
     font-weight: 400;
     font-style: normal;
 }
+@font-face{
+    font-family: 'aromatica';
+    src: url('../fonts/aromatica.woff2') format('woff2'),
+         url('../fonts/aromatica.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'aromatica-semi-bold';
+    src: url('../fonts/aromatica-semi-bold.woff2') format('woff2'),
+         url('../fonts/aromatica-semi-bold.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'aromatica-script';
+    src: url('../fonts/aromatica-script.woff2') format('woff2'),
+         url('../fonts/aromatica-script.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'aquawax-bold';
+    src: url('../fonts/aquawax-bold.woff2') format('woff2'),
+         url('../fonts/aquawax-bold.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
