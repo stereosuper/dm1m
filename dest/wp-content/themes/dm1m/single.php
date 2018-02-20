@@ -8,9 +8,23 @@
 		<h1><?php the_title(); ?></h1>
         <h2><?php the_field('subtitle') ?></h2>
 
-        <?php next_post_link(); ?>
-        <?php previous_post_link(); ?>
-        <a href='<?php the_field('field_name', 'option'); ?>'>grid</a>
+        <?php $prev = get_permalink(get_adjacent_post(false,'',false)); if($prev != get_permalink()) {?>
+            <a href='<?php echo get_permalink(get_adjacent_post(false,'',false)); ?>' title='Précédent projet'>
+                <svg class='icon icon-arrow-left'><use xlink:href='#icon-arrow-left'></use></svg> 
+            </a>
+        <?php } ?>
+
+        <?php $next = get_permalink(get_adjacent_post(false,'',true)); if($next != get_permalink()) {?>
+            <a href='<?php echo get_permalink(get_adjacent_post(false,'',true)); ?>' title='Prochain projet'>
+                <svg class='icon icon-arrow-right'><use xlink:href='#icon-arrow-right'></use></svg> 
+            </a>
+        <?php } ?>
+            
+        
+
+        <a href='<?php the_field('field_name', 'option'); ?>'>
+            <svg class='icon icon-grid'><use xlink:href="#icon-grid"></use></svg>
+        </a>
 
 		<?php the_content(); ?>
 
