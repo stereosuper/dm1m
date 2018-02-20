@@ -1,1 +1,33 @@
 /* Header */
+.header{
+    border-top: 25px solid $black;
+    padding: 15px 0;
+    .container{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+.wrapper-logo, .social{
+    width: 120px;
+}
+.menu{
+    ul{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        > li{
+            margin: 0 15px;
+            padding: 0;
+        }
+    }
+    a{
+        font-family: $moon;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
