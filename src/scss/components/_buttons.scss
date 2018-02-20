@@ -1,1 +1,17 @@
 /* Buttons */
+.btn-social{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: $primary;
+    color: $white;
+    .icon{
+        &.icon-facebook{
+            width: 12px;
+            height: 25px;
+        }
+    }
+}
