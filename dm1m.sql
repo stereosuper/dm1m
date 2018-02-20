@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  mar. 20 fév. 2018 à 16:48
+-- Généré le :  mar. 20 fév. 2018 à 17:42
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.1.8
 
@@ -321,7 +321,9 @@ INSERT INTO `_options` (`option_id`, `option_name`, `option_value`, `autoload`) 
 (199, 'wp_ewwwio_media_optimize_batch_a', '', 'no'),
 (207, 'wp_ewwwio_media_optimize_batch_b', '', 'no'),
 (212, '_transient_timeout_ewww_image_optimizer_images_reoptimized', '1519145298', 'no'),
-(213, '_transient_ewww_image_optimizer_images_reoptimized', 'zero', 'no');
+(213, '_transient_ewww_image_optimizer_images_reoptimized', 'zero', 'no'),
+(215, 'options_projects_link', '8', 'no'),
+(216, '_options_projects_link', 'field_5a8c47599ab06', 'no');
 
 -- --------------------------------------------------------
 
@@ -451,7 +453,7 @@ INSERT INTO `_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (112, 1, '_wp_desired_post_slug', 'hello-world'),
 (113, 1, '_wp_trash_meta_comments_status', 'a:1:{i:1;s:1:\"1\";}'),
 (114, 22, '_edit_last', '1'),
-(115, 22, '_edit_lock', '1519141698:1'),
+(115, 22, '_edit_lock', '1519142190:1'),
 (118, 24, '_edit_last', '1'),
 (119, 24, '_edit_lock', '1519137534:1'),
 (122, 22, 'subtitle', 'Wolverine'),
@@ -473,7 +475,19 @@ INSERT INTO `_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (146, 32, 'subtitle', 'Wolverine'),
 (147, 32, '_subtitle', 'field_5a8c2d541333d'),
 (148, 32, 'galerie', 'a:2:{i:0;s:2:\"29\";i:1;s:2:\"30\";}'),
-(149, 32, '_galerie', 'field_5a8c307449d5c');
+(149, 32, '_galerie', 'field_5a8c307449d5c'),
+(150, 33, '_edit_last', '1'),
+(151, 33, '_edit_lock', '1519142233:1'),
+(154, 33, 'subtitle', 'uploads'),
+(155, 33, '_subtitle', 'field_5a8c2d541333d'),
+(156, 33, 'galerie', ''),
+(157, 33, '_galerie', 'field_5a8c307449d5c'),
+(158, 34, 'subtitle', 'uploads'),
+(159, 34, '_subtitle', 'field_5a8c2d541333d'),
+(160, 34, 'galerie', ''),
+(161, 34, '_galerie', 'field_5a8c307449d5c'),
+(162, 36, '_edit_last', '1'),
+(163, 36, '_edit_lock', '1519142633:1');
 
 -- --------------------------------------------------------
 
@@ -543,7 +557,12 @@ INSERT INTO `_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_c
 (29, 1, '2018-02-20 15:41:34', '2018-02-20 14:41:34', '', 'image1', '', 'inherit', 'open', 'closed', '', 'image1', '', '', '2018-02-20 15:41:42', '2018-02-20 14:41:42', '', 22, 'http://localhost/wp-content/uploads/2018/02/image1.png', 0, 'attachment', 'image/png', 0),
 (30, 1, '2018-02-20 15:42:11', '2018-02-20 14:42:11', '', 'image2', '', 'inherit', 'open', 'closed', '', 'image2', '', '', '2018-02-20 15:42:19', '2018-02-20 14:42:19', '', 22, 'http://localhost/wp-content/uploads/2018/02/image2.png', 0, 'attachment', 'image/png', 0),
 (31, 1, '2018-02-20 15:42:27', '2018-02-20 14:42:27', 'meozjhfomuze', 'Super projet', '', 'inherit', 'closed', 'closed', '', '22-revision-v1', '', '', '2018-02-20 15:42:27', '2018-02-20 14:42:27', '', 22, 'http://localhost/22-revision-v1/', 0, 'revision', '', 0),
-(32, 1, '2018-02-20 15:44:26', '2018-02-20 14:44:26', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', 'Super projet', '', 'inherit', 'closed', 'closed', '', '22-revision-v1', '', '', '2018-02-20 15:44:26', '2018-02-20 14:44:26', '', 22, 'http://localhost/22-revision-v1/', 0, 'revision', '', 0);
+(32, 1, '2018-02-20 15:44:26', '2018-02-20 14:44:26', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', 'Super projet', '', 'inherit', 'closed', 'closed', '', '22-revision-v1', '', '', '2018-02-20 15:44:26', '2018-02-20 14:44:26', '', 22, 'http://localhost/22-revision-v1/', 0, 'revision', '', 0),
+(33, 1, '2018-02-20 16:59:15', '2018-02-20 15:59:15', 'dazfazfazfazfuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploads', 'Encore un article cool', '', 'publish', 'open', 'open', '', 'encore-un-article-cool', '', '', '2018-02-20 16:59:15', '2018-02-20 15:59:15', '', 0, 'http://localhost/?p=33', 0, 'post', '', 0),
+(34, 1, '2018-02-20 16:59:15', '2018-02-20 15:59:15', 'dazfazfazfazfuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploadsuploads', 'Encore un article cool', '', 'inherit', 'closed', 'closed', '', '33-revision-v1', '', '', '2018-02-20 16:59:15', '2018-02-20 15:59:15', '', 33, 'http://localhost/33-revision-v1/', 0, 'revision', '', 0),
+(35, 1, '2018-02-20 16:59:40', '0000-00-00 00:00:00', '', 'Brouillon auto', '', 'auto-draft', 'closed', 'closed', '', '', '', '', '2018-02-20 16:59:40', '0000-00-00 00:00:00', '', 0, 'http://localhost/?post_type=acf-field-group&p=35', 0, 'acf-field-group', '', 0),
+(36, 1, '2018-02-20 17:06:14', '2018-02-20 16:06:14', 'a:7:{s:8:\"location\";a:1:{i:0;a:1:{i:0;a:3:{s:5:\"param\";s:12:\"options_page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:11:\"acf-options\";}}}s:8:\"position\";s:6:\"normal\";s:5:\"style\";s:7:\"default\";s:15:\"label_placement\";s:3:\"top\";s:21:\"instruction_placement\";s:5:\"label\";s:14:\"hide_on_screen\";s:0:\"\";s:11:\"description\";s:0:\"\";}', 'Liens', 'liens', 'publish', 'closed', 'closed', '', 'group_5a8c474951620', '', '', '2018-02-20 17:06:14', '2018-02-20 16:06:14', '', 0, 'http://localhost/?post_type=acf-field-group&#038;p=36', 0, 'acf-field-group', '', 0),
+(37, 1, '2018-02-20 17:06:14', '2018-02-20 16:06:14', 'a:10:{s:4:\"type\";s:9:\"page_link\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";i:0;s:17:\"conditional_logic\";i:0;s:7:\"wrapper\";a:3:{s:5:\"width\";s:0:\"\";s:5:\"class\";s:0:\"\";s:2:\"id\";s:0:\"\";}s:9:\"post_type\";a:1:{i:0;s:4:\"page\";}s:8:\"taxonomy\";a:0:{}s:10:\"allow_null\";i:0;s:14:\"allow_archives\";i:1;s:8:\"multiple\";i:0;}', 'Page nos projets', 'projects_link', 'publish', 'closed', 'closed', '', 'field_5a8c47599ab06', '', '', '2018-02-20 17:06:14', '2018-02-20 16:06:14', '', 36, 'http://localhost/?post_type=acf-field&p=37', 0, 'acf-field', '', 0);
 
 -- --------------------------------------------------------
 
@@ -604,7 +623,8 @@ INSERT INTO `_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`
 (18, 2, 0),
 (19, 2, 0),
 (20, 2, 0),
-(22, 3, 0);
+(22, 3, 0),
+(33, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -630,7 +650,7 @@ INSERT INTO `_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `descri
 (2, 2, 'nav_menu', '', 0, 4),
 (3, 3, 'category', '', 0, 1),
 (4, 4, 'category', '', 0, 0),
-(5, 5, 'category', '', 0, 0);
+(5, 5, 'category', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -843,17 +863,17 @@ ALTER TABLE `_links`
 -- AUTO_INCREMENT pour la table `_options`
 --
 ALTER TABLE `_options`
-  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
 --
 -- AUTO_INCREMENT pour la table `_postmeta`
 --
 ALTER TABLE `_postmeta`
-  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 --
 -- AUTO_INCREMENT pour la table `_posts`
 --
 ALTER TABLE `_posts`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT pour la table `_termmeta`
 --
