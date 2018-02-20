@@ -8,6 +8,10 @@
 		<h1><?php the_title(); ?></h1>
         <h2><?php the_field('subtitle') ?></h2>
 
+        <?php next_post_link(); ?>
+        <?php previous_post_link(); ?>
+        <a href='<?php the_field('field_name', 'option'); ?>'>grid</a>
+
 		<?php the_content(); ?>
 
         <?php 

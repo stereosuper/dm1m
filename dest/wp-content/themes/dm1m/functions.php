@@ -296,4 +296,16 @@ function dm1m_register_required_plugins(){
 }
 add_action( 'tgmpa_register', 'dm1m_register_required_plugins' );
 
+
+
+/*-----------------------------------------------------------------------------------*/
+/* ACF
+/*-----------------------------------------------------------------------------------*/
+
+if( function_exists('acf_add_options_page') ) {
+   
+   acf_add_options_page();
+   
+}
+
 ?>
