@@ -4,10 +4,22 @@
 
 	<?php if ( have_posts() ) : the_post(); ?>
 
+        <h2><?php the_category(); ?></h2>
 		<h1><?php the_title(); ?></h1>
-		<time><?php echo get_the_date(); ?></time>
+        <h2><?php the_field('subtitle') ?></h2>
 
 		<?php the_content(); ?>
+
+        <?php 
+
+        $images = get_field('galerie');
+        $size = 'full'; // (thumbnail, medium, large, full or custom size)
+
+        if( $images ): ?>
+            <?php foreach( $images as $image ): ?>
+                <?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
 
 	<?php else : ?>
 				
