@@ -1,2 +1,44 @@
 /* Footer */
-
+.footer{
+    .top{
+        padding: 60px 0 50px;
+        text-align: center;
+        background: linear-gradient(to bottom, #f2ece9 0%, $white 100%);
+    }
+    h4{
+        font-family: $moon;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        &:after{
+            content: '!';
+            color: $primary;
+        }
+    }
+    address{
+        font-family: $moon;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-style: normal;
+    }
+}
+.subfooter{
+    padding: 30px 0 80px;
+    background: $black;
+}
+.menu-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > li{
+        margin: 0 10px;
+    }
+    a{
+        font-family: $moon;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $white;
+    }
+}

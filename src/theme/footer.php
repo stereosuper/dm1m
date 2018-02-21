@@ -1,32 +1,37 @@
         </main>
 
-        <footer role='contentinfo'>
-            <div class='info'>
-                <h4><?php the_field('footer_title', 'option'); ?></h4>
-                <span><?php the_field('footer_address', 'option'); ?></span>
-                <span><?php the_field('footer_mail', 'option'); ?></span>
-                <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
-                
-                    <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>"><?php echo $contactLink['title']; ?></a> 
+        <footer class='footer' role='contentinfo'>
+            <div class='top'>
+                <div class='container'>
+                    <div class='info'>
+                        <h4><?php the_field('footer_title', 'option'); ?></h4>
+                        <address><?php the_field('footer_address', 'option'); ?></address>
+                        <span><?php the_field('footer_mail', 'option'); ?></span>
+                        <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
+                        
+                            <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>"><?php echo $contactLink['title']; ?></a> 
 
-                <?php } ?>
+                        <?php } ?>
 
 
-                <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
-                
-                    <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>">M</a> 
+                        <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
+                        
+                            <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>">M</a> 
 
-                <?php } ?>
+                        <?php } ?>
 
-                <?php if($fbLink = get_field('fb_link', 'option')){ ?>
-                
-                    <a href="<?php echo $fbLink['url']; ?>" target="<?php echo $fbLink['target']; ?>">F</a> 
+                        <?php if($fbLink = get_field('fb_link', 'option')){ ?>
+                        
+                            <a href="<?php echo $fbLink['url']; ?>" target="<?php echo $fbLink['target']; ?>">F</a> 
 
-                <?php } ?>
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
-
             <div class='subfooter'>
-                <?php wp_nav_menu( array( 'theme_location' => 'secondary', 'container' => false, 'menu_class' => 'menu-footer' ) ); ?>
+                <div class='container'>
+                    <?php wp_nav_menu( array( 'theme_location' => 'secondary', 'container' => false, 'menu_class' => 'menu-footer' ) ); ?>
+                </div>
             </div>
         </footer>
 
