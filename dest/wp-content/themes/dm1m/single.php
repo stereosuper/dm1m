@@ -4,13 +4,7 @@
 
 	<?php if ( have_posts() ) : the_post(); ?>
 
-        <h2><?php $cats = get_the_category();
-            
-            foreach($cats as $cat){
-                echo $cat->cat_name;
-            }
-        
-        ?></h2>
+        <h2><?php the_category(); ?></h2>
 		<h1><?php the_title(); ?></h1>
         <h2><?php the_field('subtitle') ?></h2>
 
