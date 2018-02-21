@@ -35,7 +35,7 @@
 
 		<?php while ( have_posts() ) : the_post(); ?>
 			
-			<article>
+			<article class="<?php the_field('grid_size'); ?>">
                 <a class='project-link' href='<?php the_permalink(); ?>'>
                     <?php if( has_post_thumbnail() ){ the_post_thumbnail(); } ?>
                     <span class='overlay'>
