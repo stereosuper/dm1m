@@ -9,13 +9,13 @@
         <h2><?php the_field('subtitle') ?></h2>
 
         <?php $prev = get_permalink(get_adjacent_post(false,'',false)); if($prev != get_permalink()) {?>
-            <a href='<?php echo get_permalink(get_adjacent_post(false,'',false)); ?>' title='Précédent projet'>
+            <a href='<?php echo $prev; ?>' title='Précédent projet'>
                 <svg class='icon icon-arrow-left'><use xlink:href='#icon-arrow-left'></use></svg> 
             </a>
         <?php } ?>
 
         <?php $next = get_permalink(get_adjacent_post(false,'',true)); if($next != get_permalink()) {?>
-            <a href='<?php echo get_permalink(get_adjacent_post(false,'',true)); ?>' title='Prochain projet'>
+            <a href='<?php echo $next; ?>' title='Prochain projet'>
                 <svg class='icon icon-arrow-right'><use xlink:href='#icon-arrow-right'></use></svg> 
             </a>
         <?php } ?>
