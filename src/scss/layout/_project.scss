@@ -1,0 +1,44 @@
+/* Project */
+.wrapper-title{
+    position: relative;
+    text-align: center;
+    margin-bottom: 5px;
+    .actions{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin: -15px 0 0;
+    }
+}
+.actions{
+    display: flex;
+    align-items: center;
+    > a{
+        margin-left: 25px;
+    }
+    .icon{
+        width: 100%;
+        height: 100%;
+        color: $secondary;
+    }
+    .prev-project, .next-project{
+        width: 25px;
+        height: 30px;
+    }
+    .grid-project{
+        width: 30px;
+        height: 30px;
+    }
+}
+.wrapper-content{
+    position: relative;
+}
+.content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: $white;
+    border-bottom: 4px solid $primary;
+}
