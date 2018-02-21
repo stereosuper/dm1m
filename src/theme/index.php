@@ -2,27 +2,35 @@
 
 <div class='container'>
 
-	<h1><?php single_post_title(); ?></h1>
     <?php 
         if( have_rows('services', get_option('page_for_posts')) ):
-            $count = 0;
-            while ( have_rows('services', get_option('page_for_posts')) ) : the_row();
+    ?>
+        <h3>
+            <?php
+                $count = 0;
+                while ( have_rows('services', get_option('page_for_posts')) ) : the_row();
 
-                if($count > 0): 
-                    echo '<span class="separator">-</span>';
-                endif; ?>
-                
-                <span><?php the_sub_field('service'); ?></span>
+                    if($count > 0): 
+                        echo '<span class="separator">-</span>';
+                    endif; ?>
 
-                <?php $count++;
+                    <span><?php the_sub_field('service'); ?></span>
 
-            endwhile;
+                    <?php $count++;
 
+                endwhile;
+            ?>
+        </h3>
+        <?php
         endif;
+     ?>
 
+	<h1><?php single_post_title(); ?></h1>
 
-    the_field('projects_text', get_option('page_for_posts')); ?>
-
+    <div class='align-center'>
+        <?php the_field('projects_text', get_option('page_for_posts')); ?>
+    </div>
+    
 	<?php if ( have_posts() ) : ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
