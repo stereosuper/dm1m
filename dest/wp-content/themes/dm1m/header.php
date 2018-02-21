@@ -24,10 +24,14 @@
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'menu-main' ) ); ?>
 				</nav>
 				<div class='social'>
-					<a class='btn-social' href='#'>
-						<svg class='icon icon-facebook'><use xlink:href='#icon-facebook'></use></svg>
-					</a>
-				</div>
+                    <?php if($fbLink = get_field('fb_link', 'option')){ ?>
+                    
+                        <a class='btn-social' href="<?php echo $fbLink['url']; ?>" target="<?php echo $fbLink['target']; ?>">
+                            <svg class='icon icon-facebook'><use xlink:href='#icon-facebook'></use></svg>
+                        </a> 
+
+                    <?php } ?>
+                </div>
 			</div>
 		</header>
 
