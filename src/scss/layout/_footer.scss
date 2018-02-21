@@ -1,9 +1,16 @@
 /* Footer */
 .footer{
     .top{
-        padding: 60px 0 50px;
+        padding: 40px 0 50px;
         text-align: center;
-        background: linear-gradient(to bottom, #f2ece9 0%, $white 100%);
+        .border-top{
+            height: 20px;
+            background: linear-gradient(to bottom, #f2ece9 0%, $white 100%);
+            mask: url('../layoutImg/mask.svg');
+        }
+        .content-top{
+            
+        }
     }
     h4{
         font-family: $moon;

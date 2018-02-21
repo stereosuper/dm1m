@@ -2,6 +2,7 @@
 
         <footer class='footer' role='contentinfo'>
             <div class='top'>
+                <div class='border-top'></div>
                 <div class='container'>
                     <div class='info'>
                         <h4><?php the_field('footer_title', 'option'); ?></h4>
