@@ -26,7 +26,7 @@
                         <svg class='icon icon-arrow-right'><use xlink:href='#icon-arrow-right'></use></svg> 
                     </a>
                 <?php } ?>
-                <a class='grid-project' href='<?php the_field('field_name', 'option'); ?>'>
+                <a class='grid-project' href='<?php the_field('projects_link', 'option'); ?>'>
                     <svg class='icon icon-grid'><use xlink:href="#icon-grid"></use></svg>
                 </a>
             </div>
