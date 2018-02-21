@@ -162,6 +162,7 @@ add_filter( 'menu_order', 'dm1m_menu_order' );
 /* Menus
 /*-----------------------------------------------------------------------------------*/
 register_nav_menus( array('primary' => 'Primary Menu') );
+register_nav_menus( array('secondary' => 'Secondary Menu') );
 
 // Cleanup WP Menu html
 function dm1m_css_attributes_filter($var){
