@@ -3,32 +3,34 @@
         <footer class='footer' role='contentinfo'>
             <div class='top'>
                 <div class='border-top'></div>
-                <div class='container'>
-                    <div class='info'>
-                        <h4><?php the_field('footer_title', 'option'); ?></h4>
-                        <?php $address = get_field('footer_address', 'option'); ?>
+                <div class='content-top'>
+                    <div class='container'>
+                        <div class='info'>
+                            <h4><?php the_field('footer_title', 'option'); ?></h4>
+                            <?php $address = get_field('footer_address', 'option'); ?>
 
-                        <address><?php echo $address['footer_street']; ?> - <?php echo $address['footer_cp']; ?> <?php echo $address['footer_city']; ?></address>
-                        <span><?php the_field('footer_phone', 'option'); ?></span>
-                        <span><?php the_field('footer_mail', 'option'); ?></span>
-                        <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
-                        
-                            <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>"><?php echo $contactLink['title']; ?></a> 
+                            <address><?php echo $address['footer_street']; ?> - <?php echo $address['footer_cp']; ?> <?php echo $address['footer_city']; ?></address>
+                            <span><?php the_field('footer_phone', 'option'); ?></span>
+                            <span><?php the_field('footer_mail', 'option'); ?></span>
+                            <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
+                            
+                                <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>"><?php echo $contactLink['title']; ?></a> 
 
-                        <?php } ?>
+                            <?php } ?>
 
 
-                        <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
-                        
-                            <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>">M</a> 
+                            <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
+                            
+                                <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>">M</a> 
 
-                        <?php } ?>
+                            <?php } ?>
 
-                        <?php if($fbLink = get_field('fb_link', 'option')){ ?>
-                        
-                            <a href="<?php echo $fbLink['url']; ?>" target="<?php echo $fbLink['target']; ?>">F</a> 
+                            <?php if($fbLink = get_field('fb_link', 'option')){ ?>
+                            
+                                <a href="<?php echo $fbLink['url']; ?>" target="<?php echo $fbLink['target']; ?>">F</a> 
 
-                        <?php } ?>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>
