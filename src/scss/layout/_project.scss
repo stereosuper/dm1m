@@ -42,3 +42,47 @@
     background: $white;
     border-bottom: 4px solid $primary;
 }
+.project-link{
+    display: block;
+    position: relative;
+    &:hover, &:focus{
+        .overlay{
+            opacity: 1;
+        }
+    }
+    .overlay{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        text-align: center;
+        background: rgba($primary, 0.85);
+        opacity: 0;
+        transition: $transition;
+    }
+    .categories{
+        font-family: $aquawax-bold;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    h2{
+        font-family: $aquawax-bold;
+        font-size: 4.5rem;
+        text-transform: uppercase;
+        letter-spacing: 6px;
+        margin: 0.45em 0;
+        color: $black;
+    }
+    .subtitle{
+        font-family: $aromatica-script;
+        font-size: 3.6rem;
+        color: $white;
+    }
+}

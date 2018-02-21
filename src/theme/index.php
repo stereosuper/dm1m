@@ -36,20 +36,22 @@
 		<?php while ( have_posts() ) : the_post(); ?>
 			
 			<article>
-                <a href='<?php the_permalink(); ?>'>
+                <a class='project-link' href='<?php the_permalink(); ?>'>
                     <?php if( has_post_thumbnail() ){ the_post_thumbnail(); } ?>
-                    <span>
-                    <?php $cats = get_the_category(); for ($i=0; $i < count($cats); $i++) {
+                    <span class='overlay'>
+                        <span class='categories'>
+                            <?php $cats = get_the_category(); for ($i=0; $i < count($cats); $i++) {
 
-                        if($i > 0): 
-                            echo '<span class="separator">-</span>';
-                        endif;
-                        echo '<span>'.$cats[$i]->name.'</span>';
+                                if($i > 0): 
+                                    echo '<span class="separator">-</span>';
+                                endif;
+                                echo '<span>'.$cats[$i]->name.'</span>';
 
-                    } ?>
+                            } ?>
+                        </span>
+                        <h2><?php the_title(); ?></h2>                
+                        <span class='subtitle'><?php the_field('subtitle'); ?></span>
                     </span>
-                    <h2><?php the_title(); ?></h2>                
-                    <?php the_field('subtitle'); ?>
 				</a>
 			</article>
 		
