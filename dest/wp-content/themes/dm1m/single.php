@@ -31,19 +31,22 @@
                 </a>
             </div>
         </div>
+        <div class='wrapper-content'>
+            <div class='content container-small'>
+                <?php the_content(); ?>
+            </div>
 
-		<?php the_content(); ?>
+            <?php 
 
-        <?php 
+            $images = get_field('galerie');
+            $size = 'full'; // (thumbnail, medium, large, full or custom size)
 
-        $images = get_field('galerie');
-        $size = 'full'; // (thumbnail, medium, large, full or custom size)
-
-        if( $images ): ?>
-            <?php foreach( $images as $image ): ?>
-                <?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
+            if( $images ): ?>
+                <?php foreach( $images as $image ): ?>
+                    <?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
 
 	<?php else : ?>
 				
