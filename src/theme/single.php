@@ -4,13 +4,14 @@
 
 	<?php if ( have_posts() ) : the_post(); ?>
 
-        <h2><?php $cats = get_the_category();
+        <h3><?php $cats = get_the_category(); for ($i=0; $i < count($cats); $i++) {
+
+                if($i > 0): 
+                    echo '<span class="separator">-</span>';
+                endif;
+                echo '<span>'.$cats[$i]->name.'</span>';
             
-            foreach($cats as $cat){
-                echo $cat->cat_name;
-            }
-        
-        ?></h2>
+            } ?></h3>
 		<h1><?php the_title(); ?></h1>
         <h2><?php the_field('subtitle') ?></h2>
 
