@@ -45,6 +45,11 @@
 .project-link{
     display: block;
     position: relative;
+    &:hover, &:focus{
+        .overlay{
+            opacity: 1;
+        }
+    }
     .overlay{
         display: flex;
         align-items: center;
@@ -58,6 +63,8 @@
         padding: 20px;
         text-align: center;
         background: rgba($primary, 0.85);
+        opacity: 0;
+        transition: $transition;
     }
     .categories{
         font-family: $aquawax-bold;
