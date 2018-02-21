@@ -1,7 +1,12 @@
 /* Header */
 .header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;;
     border-top: 25px solid $black;
     padding: 15px 0;
+    background: $white;
     .container{
         display: flex;
         align-items: flex-start;
