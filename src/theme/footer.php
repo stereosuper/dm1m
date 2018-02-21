@@ -5,7 +5,10 @@
                 <div class='container'>
                     <div class='info'>
                         <h4><?php the_field('footer_title', 'option'); ?></h4>
-                        <address><?php the_field('footer_address', 'option'); ?></address>
+                        <?php $address = get_field('footer_address', 'option'); ?>
+
+                        <address><?php echo $address['footer_street']; ?> - <?php echo $address['footer_cp']; ?> <?php echo $address['footer_city']; ?></address>
+                        <span><?php the_field('footer_phone', 'option'); ?></span>
                         <span><?php the_field('footer_mail', 'option'); ?></span>
                         <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
                         
