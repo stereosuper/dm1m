@@ -8,10 +8,13 @@
                         <div class='info' itemscope itemtype='http://schema.org/Organization'>
                             <h4 itemprop='name'><?php the_field('footer_title', 'option'); ?></h4>
                             <?php $address = get_field('footer_address', 'option'); ?>
-
-                            <address itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'><span itemprop='streetAddress'><?php echo $address['footer_street']; ?></span> - <span itemprop='postalCode'><?php echo $address['footer_cp']; ?></span> <span itemprop='addressLocality'><?php echo $address['footer_city']; ?></span></address>
-                            <span itemprop='telephone'><?php the_field('footer_phone', 'option'); ?></span>
-                            <span itemprop='email'><?php the_field('footer_mail', 'option'); ?></span>
+                            <div class='wrapper-contact'>
+                                <address itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>
+                                    <span itemprop='streetAddress'><?php echo $address['footer_street']; ?></span> -&nbsp;<span itemprop='postalCode'><?php echo $address['footer_cp']; ?></span>&nbsp;<span itemprop='addressLocality'><?php echo $address['footer_city']; ?></span>
+                                </address>
+                                <span>&nbsp;-&nbsp;<span itemprop='telephone'><?php the_field('footer_phone', 'option'); ?></span></span>
+                            </div>
+                            <div class='email' itemprop='email'><?php the_field('footer_mail', 'option'); ?></div>
                             <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
                             
                                 <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>"><?php echo $contactLink['title']; ?></a> 

@@ -23,12 +23,23 @@
         }
     }
     address{
-        font-family: $moon;
-        font-size: 1.8rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
         font-style: normal;
     }
+}
+.wrapper-contact, .email{
+    font-family: $moon;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.wrapper-contact{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.email{
+    margin-top: 5px;
 }
 .subfooter{
     padding: 30px 0 80px;
