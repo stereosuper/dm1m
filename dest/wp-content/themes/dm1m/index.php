@@ -33,12 +33,12 @@
     
 	<?php if ( have_posts() ) : ?>
         
-        <div class="wrapper-grid">
+        <div id='grid' class="wrapper-grid">
 
             <?php $counting = 1;
                 while ( have_posts() ) : the_post(); ?>
                 
-                <article class="<?php the_field('grid_size'); ?>">
+                <article>
                     <a class='project-link' href='<?php the_permalink(); ?>'>
                         <?php if( $img = get_field('grid_img') ){ 
                             if($counting === 1 || $counting === 3 || $counting === 4 || $counting === 8 || $counting === 9 || $counting === 11 || $counting === 12){
