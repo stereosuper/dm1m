@@ -35,19 +35,22 @@
         
         <div class="wrapper-grid">
 
-        <!-- <?php for ($i=0; $i < 24; $i++) { ?>
-            
-            <article>
-                <h2><?php echo $i+1; ?></h2>
-            </article>
-
-        <?php } ?>-->
-
-            <?php while ( have_posts() ) : the_post(); ?>
+            <?php $counting = 1;
+                while ( have_posts() ) : the_post(); ?>
                 
                 <article class="<?php the_field('grid_size'); ?>">
                     <a class='project-link' href='<?php the_permalink(); ?>'>
-                        <?php if( has_post_thumbnail() ){ the_post_thumbnail(); } ?>
+                        <?php if( $img = get_field('grid_img') ){ 
+                            if($counting === 1 || $counting === 3 || $counting === 4 || $counting === 8 || $counting === 9 || $counting === 11 || $counting === 12){
+                                echo wp_get_attachment_image( $img['square'], 'full' );
+                            }
+                            if($counting === 2 || $counting === 6 || $counting === 7){
+                                echo wp_get_attachment_image( $img['v-rect'], 'full' );
+                            }
+                            if($counting === 5 || $counting === 10){
+                                echo wp_get_attachment_image( $img['h-rect'], 'full' );
+                            }
+                         } ?>
                         <span class='overlay'>
                             <span class='categories'>
                                 <?php $cats = get_the_category(); for ($i=0; $i < count($cats); $i++) {
@@ -65,7 +68,15 @@
                     </a>
                 </article>
             
-            <?php endwhile; ?>
+            <?php 
+                if($counting < 12){
+                    $counting++;
+                }else{
+                    $counting = 1;
+                }
+
+                endwhile; 
+            ?>
             
         </div>
         
