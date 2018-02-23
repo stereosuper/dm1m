@@ -32,30 +32,43 @@
     </div>
     
 	<?php if ( have_posts() ) : ?>
+        
+        <div class="wrapper-grid">
 
-		<?php while ( have_posts() ) : the_post(); ?>
-			
-			<article class="<?php the_field('grid_size'); ?>">
-                <a class='project-link' href='<?php the_permalink(); ?>'>
-                    <?php if( has_post_thumbnail() ){ the_post_thumbnail(); } ?>
-                    <span class='overlay'>
-                        <span class='categories'>
-                            <?php $cats = get_the_category(); for ($i=0; $i < count($cats); $i++) {
+        <?php for ($i=0; $i < 24; $i++) { ?>
+            
+            <article>
+                <h2><?php echo $i+1; ?></h2>
+            </article>
 
-                                if($i > 0): 
-                                    echo '<span class="separator">-</span>';
-                                endif;
-                                echo '<span>'.$cats[$i]->name.'</span>';
+        <?php } ?>
 
-                            } ?>
+            <!-- <?php while ( have_posts() ) : the_post(); ?>
+                
+                <article class="<?php the_field('grid_size'); ?>">
+                    <a class='project-link' href='<?php the_permalink(); ?>'>
+                        <?php if( has_post_thumbnail() ){ the_post_thumbnail(); } ?>
+                        <span class='overlay'>
+                            <span class='categories'>
+                                <?php $cats = get_the_category(); for ($i=0; $i < count($cats); $i++) {
+
+                                    if($i > 0): 
+                                        echo '<span class="separator">-</span>';
+                                    endif;
+                                    echo '<span>'.$cats[$i]->name.'</span>';
+
+                                } ?>
+                            </span>
+                            <h2><?php the_title(); ?></h2>                
+                            <span class='subtitle'><?php the_field('subtitle'); ?></span>
                         </span>
-                        <h2><?php the_title(); ?></h2>                
-                        <span class='subtitle'><?php the_field('subtitle'); ?></span>
-                    </span>
-				</a>
-			</article>
-		
-		<?php endwhile; ?>
+                    </a>
+                </article>
+            
+            <?php endwhile; ?> -->
+            
+        </div>
+        
 	
 	<?php else : ?>
 				
