@@ -35,15 +35,15 @@
         
         <div class="wrapper-grid">
 
-        <?php for ($i=0; $i < 24; $i++) { ?>
+        <!-- <?php for ($i=0; $i < 24; $i++) { ?>
             
             <article>
                 <h2><?php echo $i+1; ?></h2>
             </article>
 
-        <?php } ?>
+        <?php } ?>-->
 
-            <!-- <?php while ( have_posts() ) : the_post(); ?>
+            <?php while ( have_posts() ) : the_post(); ?>
                 
                 <article class="<?php the_field('grid_size'); ?>">
                     <a class='project-link' href='<?php the_permalink(); ?>'>
@@ -65,7 +65,7 @@
                     </a>
                 </article>
             
-            <?php endwhile; ?> -->
+            <?php endwhile; ?>
             
         </div>
         

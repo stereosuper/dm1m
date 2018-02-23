@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     > article{
-        border: 1px solid red;
         position: relative;
         &:before{
             content: '';
@@ -13,6 +12,8 @@
         > *{
             position: absolute;
             top: 0;
+            bottom: 0;
+            right: 0;
             left: 0;
         }
         &:nth-child(12n+1){
