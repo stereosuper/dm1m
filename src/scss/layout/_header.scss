@@ -15,6 +15,15 @@
         width: 100%;
     }
 }
+
+.social{
+    display: flex;
+    justify-content: flex-end;
+    > *:nth-child(2){
+        margin-left: 15px;
+    }
+}
+
 .wrapper-logo, .social{
     width: 120px;
 }

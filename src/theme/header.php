@@ -24,6 +24,13 @@
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'menu-main' ) ); ?>
 				</nav>
 				<div class='social'>
+                    <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
+                            
+                        <a class='btn-social' href="<?php echo $fbLink['url']; ?>" target="<?php echo $fbLink['target']; ?>">
+                            <svg class='icon icon-mail'><use xlink:href='#icon-mail'></use></svg>
+                        </a> 
+
+                    <?php } ?>
                     <?php if($fbLink = get_field('fb_link', 'option')){ ?>
                     
                         <a class='btn-social' href="<?php echo $fbLink['url']; ?>" target="<?php echo $fbLink['target']; ?>">
@@ -31,6 +38,7 @@
                         </a> 
 
                     <?php } ?>
+                    
                 </div>
 			</div>
 		</header>
