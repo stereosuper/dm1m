@@ -1,17 +1,41 @@
 /* Buttons */
 .btn-social{
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
     width: 38px;
     height: 38px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
     border-radius: 50%;
-    background: $primary;
+    background: $secondary;
     color: $white;
-    .icon{
-        &.icon-facebook{
-            width: 12px;
-            height: 25px;
+    &:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 50%;
+        background: $primary;
+        transform-origin: 70% 100%;
+        transform: rotate(-180deg) scale(0.5);
+        transition: $transition;
+    }
+    &:hover, &:focus{
+        &:after{
+            transform: rotate(0deg) scale(1);
         }
+    }
+    > .icon{
+        width: 1.5em;
+        height: 1.5em;
+        // &.icon-facebook{
+        //     width: 12px;
+        //     height: 25px;
+        // }
     }
 }

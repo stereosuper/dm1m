@@ -20,23 +20,22 @@
 				<div class='wrapper-logo'>
 					<a href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a>
 				</div>
+
 				<nav class='menu' role='navigation'>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'menu-main' ) ); ?>
 				</nav>
+
 				<div class='social'>
-                    <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
-                            
-                        <a class='btn-social' href="<?php echo $fbLink['url']; ?>" target="<?php echo $fbLink['target']; ?>">
-                            <svg class='icon icon-mail'><use xlink:href='#icon-mail'></use></svg>
-                        </a> 
-
+                    <?php if( $contactLink = get_field('footer_contact', 'option') ){ ?>
+                        <a class='btn-social' href='<?php echo $contactLink['url']; ?>' target='<?php echo $contactLink['target']; ?>'>
+                            <svg class='icon'><use xlink:href='#icon-mail'></use></svg>
+                        </a>
                     <?php } ?>
-                    <?php if($fbLink = get_field('fb_link', 'option')){ ?>
-                    
-                        <a class='btn-social' href="<?php echo $fbLink['url']; ?>" target="<?php echo $fbLink['target']; ?>">
-                            <svg class='icon icon-facebook'><use xlink:href='#icon-facebook'></use></svg>
-                        </a> 
 
+                    <?php if( $fbLink = get_field('fb_link', 'option') ){ ?>
+                        <a class='btn-social' href='<?php echo $fbLink['url']; ?>' target='<?php echo $fbLink['target']; ?>'>
+                            <svg class='icon'><use xlink:href='#icon-facebook'></use></svg>
+                        </a>
                     <?php } ?>
                     
                 </div>
