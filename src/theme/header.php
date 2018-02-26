@@ -21,8 +21,14 @@
 					<a href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a>
 				</div>
 
-				<nav class='menu' role='navigation'>
+				<nav class='menu' role='navigation' id='nav'>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'menu-main' ) ); ?>
+					<div class='menu-indicator top js-indic'>
+						<div class='bubble'></div><div class='bubble'></div><div class='bubble'></div>
+					</div>
+					<div class='menu-indicator bottom js-indic'>
+						<div class='bubble'></div><div class='bubble'></div><div class='bubble'></div>
+					</div>
 				</nav>
 
 				<div class='social'>

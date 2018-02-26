@@ -11,6 +11,7 @@ $(function(){
     const throttle = require('./throttle.js');
     const noTransition = require('./noTransition.js');
     const gridHover = require('./gridHover.js');
+    const menuHover = require('./rolloverMenu.js');
 
     const body = $('body');
     let windowWidth = window.outerWidth, windowHeight = $(window).height();
@@ -22,7 +23,7 @@ $(function(){
     }
 
     function loadHandler(){
-
+        menuHover( $('#nav') );
     }
 
     gridHover($('#grid'));
