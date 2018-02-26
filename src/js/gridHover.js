@@ -1,4 +1,7 @@
+import { TweenMax } from 'gsap';
+
 var $ = require('jquery-slim');
+require('gsap');
 
 window.requestAnimFrame = require('./requestAnimFrame.js');
 
@@ -25,17 +28,23 @@ module.exports = function(grid){
             return (className.match (/(((^|\s)out-\S+)|((^|\s)in-\S+))/g) || []).join(' ');
         });
 
-        switch ( direction ) {
-            case 0 : suffixe = '-top';    break;
-            case 1 : suffixe = '-right';  break;
-            case 2 : suffixe = '-bottom'; break;
-            case 3 : suffixe = '-left';   break;
-        }
+        // switch ( direction ) {
+        //     case 0 : 
+        //         suffixe = '-top'; 
+        //         if(state === 'in'){
+        //             TweenMax.fromTo(el.find('.c-1'), 0.3, {})
+        //         }else{
 
-        el.addClass(state + suffixe);
+        //         }
+        //     break;
+        //     case 1 : suffixe = '-right';  break;
+        //     case 2 : suffixe = '-bottom'; break;
+        //     case 3 : suffixe = '-left';   break;
+        // }
+
+        //el.addClass(state + suffixe);
         console.log(state + suffixe);
-        
-
+    
     };
 
 

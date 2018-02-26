@@ -39,15 +39,27 @@
                 while ( have_posts() ) : the_post(); ?>
                 
                 <article>
-                    <a class='project-link' href='<?php the_permalink(); ?>'>
+                    <?php
+                        if($counting === 1 || $counting === 3 || $counting === 4 || $counting === 8 || $counting === 9 || $counting === 11 || $counting === 12){
+                            $type = 'square';
+                        }
+                        if($counting === 2 || $counting === 6 || $counting === 7){
+                            $type = 'v-rect';
+                        }
+                        if($counting === 5 || $counting === 10){
+                            $type = 'h-rect';
+                        }
+                    ?>
+
+                    <a class='project-link <?php echo $type ?>' href='<?php the_permalink(); ?>'>
                         <?php if( $img = get_field('grid_img') ){ 
-                            if($counting === 1 || $counting === 3 || $counting === 4 || $counting === 8 || $counting === 9 || $counting === 11 || $counting === 12){
+                            if($type === 'square'){
                                 echo wp_get_attachment_image( $img['square'], 'full' );
                             }
-                            if($counting === 2 || $counting === 6 || $counting === 7){
+                            if($type === 'v-rect'){
                                 echo wp_get_attachment_image( $img['v-rect'], 'full' );
                             }
-                            if($counting === 5 || $counting === 10){
+                            if($type === 'h-rect'){
                                 echo wp_get_attachment_image( $img['h-rect'], 'full' );
                             }
                          } ?>
@@ -65,6 +77,9 @@
                             <h2><?php the_title(); ?></h2>                
                             <span class='subtitle'><?php the_field('subtitle'); ?></span>
                         </span>
+                        <div class='clouds c-1'></div>
+                        <div class='clouds c-2'></div>
+                        <div class='clouds c-3'></div>
                     </a>
                 </article>
             

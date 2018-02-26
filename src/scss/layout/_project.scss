@@ -44,12 +44,11 @@
 }
 .project-link{
     display: block;
-    position: relative;
-    &:hover, &:focus{
-        .overlay{
-            opacity: 1;
-        }
-    }
+    // &:hover, &:focus{
+    //     .overlay{
+    //         opacity: 1;
+    //     }
+    // }
     .overlay{
         display: flex;
         align-items: center;
@@ -62,9 +61,36 @@
         left: 0;
         padding: 20px;
         text-align: center;
-        background: rgba($primary, 0.85);
         opacity: 0;
         transition: $transition;
+    }
+    .clouds{
+        position: absolute;
+        top: -4%;
+        left: -23%;
+        display: block;
+        border-radius: 50%;
+        background-color: rgba($primary, 0.85);
+        height: 100%;
+        width: 100%;
+        transform-origin: 50% 50%;
+        transform: scale(0.05);
+        &.c-2{
+            top: -19%;
+            left: 5%;
+        }
+        &.c-3{
+            top: 11%;
+            left: 6%;
+        }
+    }
+    &.h-rect .clouds{
+        width: 50%;
+        top: -4%;
+        left: -23%;
+    }
+    &.v-rect .clouds{
+       height: 50%; 
     }
     .categories{
         font-family: $aquawax-bold;
