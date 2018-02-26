@@ -21,8 +21,6 @@ module.exports = function( nav ){
     }
 
     function moveIndic( newX, timing ){
-        TweenLite.to(indicator, timing, {x: newX + 'px', opacity: 1});
-
         if( indicator.data('x') < newX ){
             // to the right
             moveBubble( bubbles.eq(1), '-8px', 0.9, timing/2 );
@@ -37,16 +35,20 @@ module.exports = function( nav ){
             moveBubble( bubbles.eq(3), '-8px', 1.15, timing/2+0.1 );
         }
 
-        indicator.data('x', newX);
+        TweenLite.to(indicator, timing, {x: newX + 'px', opacity: 1, onComplete: function(){
+            indicator.data('x', newX);
+        }});
     }
 
 
     if( current.length ){
         current.data({'x': (current.position().left + current.width()/2) - indicatorSemiWidth});
         TweenLite.set(indicator, {x: current.data('x') + 'px'});
+        indicator.data('x', current.data('x'));
         TweenLite.to(bubbles, 0.3, {scale: 1});
     }else{
-        TweenLite.set(indicator, {x: (nav.width()/2 - indicatorSemiWidth) + 'px'});
+        indicator.data('x', (nav.width()/2 - indicatorSemiWidth));
+        TweenLite.set(indicator, {x: indicator.data('x') + 'px'});
     }
 
     nav.on('mouseenter', 'a', function(e){
