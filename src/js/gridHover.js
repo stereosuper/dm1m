@@ -69,17 +69,15 @@ module.exports = function(grid){
             break;
         }
 
-        if(state === 'out'){
-            TweenMax.killTweensOf(clouds);
-            TweenMax.to(clouds, 0.6, {scale: 0.05, delay: 0.05});
-            TweenMax.staggerTo(clouds, 0.6, where, 0.1);
-            console.log('out');
-        }else{
+        if(state === 'in'){
             TweenMax.killTweensOf(clouds);
             TweenMax.set(clouds, {opacity: 1});
             TweenMax.staggerFromTo(clouds, 0.6, where, {y: 0, x: 0, delay: 0.05}, 0.1);
             TweenMax.to(clouds, 0.6, {scale: 1.8, delay: 0.2});
-            console.log('in');
+        }else{
+            TweenMax.killTweensOf(clouds);
+            TweenMax.to(clouds, 0.6, {scale: 0.05, delay: 0.05});
+            TweenMax.staggerTo(clouds, 0.6, where, 0.1);
         }    
     };
 
