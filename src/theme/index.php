@@ -77,9 +77,11 @@
                             <h2><?php the_title(); ?></h2>                
                             <span class='subtitle'><?php the_field('subtitle'); ?></span>
                         </span>
-                        <div class='clouds c-1'></div>
-                        <div class='clouds c-2'></div>
-                        <div class='clouds c-3'></div>
+                        <div class='clouds-wrapper'>
+                            <div class='clouds c-1'></div>
+                            <div class='clouds c-2'></div>
+                            <div class='clouds c-3'></div>
+                        </div>
                     </a>
                 </article>
             

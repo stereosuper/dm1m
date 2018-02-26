@@ -1,5 +1,3 @@
-import { TweenMax } from 'gsap';
-
 var $ = require('jquery-slim');
 require('gsap');
 
@@ -23,32 +21,55 @@ module.exports = function(grid){
     const addClass = (e, el, state) => {
         const direction = getDir(e, el);
         let suffixe;
-
+        const clouds = el.find('.clouds');
+        const w = el.width();
+        const h = el.height();
         el.removeClass(function (index, className) {
             return (className.match (/(((^|\s)out-\S+)|((^|\s)in-\S+))/g) || []).join(' ');
         });
 
-        // switch ( direction ) {
-        //     case 0 : 
-        //         suffixe = '-top'; 
-        //         if(state === 'in'){
-        //             TweenMax.fromTo(el.find('.c-1'), 0.3, {})
-        //         }else{
+        let where;
+        const tl = new TimelineMax();
 
-        //         }
-        //     break;
-        //     case 1 : suffixe = '-right';  break;
-        //     case 2 : suffixe = '-bottom'; break;
-        //     case 3 : suffixe = '-left';   break;
-        // }
+        switch ( direction ) {
+            case 0 : 
+                suffixe = '-top';
+                where = {y: -h, x:0};
+            break;
+            case 1 : 
+                suffixe = '-right';
+                where = {x: w, y:0};
+            break;
+            case 2 : 
+                suffixe = '-bottom';
+                where = {y: h, x:0};
+            break;
+            case 3 : 
+                suffixe = '-left';
+                where = {x: -w, y:0};
+            break;
+        }
 
-        //el.addClass(state + suffixe);
-        console.log(state + suffixe);
-    
+        if(state === 'out'){
+            where.delay = 0.1;
+            where.ease = Power2.easeOut;
+            tl.add([
+                TweenMax.to(clouds, 0.6, {scale: 0.05, ease: Power2.easeOut}),
+                TweenMax.staggerTo(clouds, 0.6, where, 0.05)
+            ]);
+            console.log('out');
+        }else{
+            
+
+            tl.set(clouds, {opacity: 1})
+            .staggerFromTo(clouds, 0.6, where, {y: 0, x: 0, ease: Power2.easeOut}, 0.05)
+            .to(clouds, 0.6, {scale: 1.8, delay: -0.6, ease: Power2.easeOut});
+            console.log('in');
+        }    
     };
 
 
-    tiles.each(function(i){
+    tiles.each(function(){
         $(this).on('mouseover', function(e){
             addClass(e, $(this), 'in');
         });
