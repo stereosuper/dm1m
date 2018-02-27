@@ -60,5 +60,14 @@ module.exports = function( nav ){
 
         current.length ? moveIndic( current.data('x'), 0.4 ) : TweenLite.to(bubbles, 0.3, {scale: 0});
 
+    }).on('focusin', 'a', function(e){
+
+        TweenLite.to(bubbles, 0.3, {scale: 1});
+        moveIndic( ($(this).parents('li').position().left + $(this).parents('li').width()/2) - indicatorSemiWidth, 0.6 );
+
+    }).on('focusout', 'a', function(e){
+
+        current.length ? moveIndic( current.data('x'), 0.4 ) : TweenLite.to(bubbles, 0.3, {scale: 0});
+
     });
 }
