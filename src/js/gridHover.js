@@ -1,8 +1,6 @@
 var $ = require('jquery-slim');
 require('gsap');
 
-window.requestAnimFrame = require('./requestAnimFrame.js');
-
 module.exports = function(grid){
     if(!grid.length) return;
     const tiles = grid.find('> article > a');
@@ -21,45 +19,44 @@ module.exports = function(grid){
     
     const addClass = (e, el, state) => {
         const direction = getDir(e, el);
-        let suffixe;
         const clouds = el.find('.clouds');
-        const w = el.width();
-        const h = el.height();
-        el.removeClass(function (index, className) {
-            return (className.match (/(((^|\s)out-\S+)|((^|\s)in-\S+))/g) || []).join(' ');
-        });
+        const overlay = el.find('.overlay');
+        const w = el.width(), h = el.height();
 
-        let where;
+        let cloudsFrom, overlayFrom;
         
 
         switch ( direction ) {
-            case 0 : 
-                suffixe = '-top';
-                where = {y: -h, x:0};
+            case 0 :
+                cloudsFrom = {y: -h, x: 0};
+                overlayFrom = {y: -10, x: 0, opacity: 0};
             break;
-            case 1 : 
-                suffixe = '-right';
-                where = {x: w, y:0};
+            case 1 :
+                cloudsFrom = {x: w, y: 0};
+                overlayFrom = {x: 10, y: 0, opacity: 0};
             break;
-            case 2 : 
-                suffixe = '-bottom';
-                where = {y: h, x:0};
+            case 2 :
+                cloudsFrom = {y: h, x: 0};
+                overlayFrom = {y: 10, x: 0, opacity: 0};
             break;
-            case 3 : 
-                suffixe = '-left';
-                where = {x: -w, y:0};
+            case 3 :
+                cloudsFrom = {x: -w, y: 0};
+                overlayFrom = {x: -10, y: 0, opacity: 0};
             break;
         }
 
+        TweenMax.killTweensOf([clouds, overlay]);
+
         if(state === 'in'){
-            TweenMax.killTweensOf(clouds);
             TweenMax.set(clouds, {opacity: 1});
-            TweenMax.staggerFromTo(clouds, 0.6, where, {y: 0, x: 0, delay: 0.05}, 0.1);
+            TweenMax.staggerFromTo(clouds, 0.6, cloudsFrom, {y: 0, x: 0, delay: 0.05}, 0.1);
             TweenMax.to(clouds, 0.6, {scale: 1.8, delay: 0.2});
+            TweenMax.fromTo(overlay, 0.5, overlayFrom, {y: 0, x: 0, opacity: 1, delay: 0.3});
         }else{
             TweenMax.killTweensOf(clouds);
-            TweenMax.to(clouds, 0.6, {scale: 0.05, delay: 0.05});
-            TweenMax.staggerTo(clouds, 0.6, where, 0.1);
+            TweenMax.to(overlay, 0.5, overlayFrom);            
+            TweenMax.to(clouds, 0.6, {scale: 0.05, delay: 0.25});
+            TweenMax.staggerTo(clouds, 0.6, cloudsFrom, 0.1);
         }    
     };
 

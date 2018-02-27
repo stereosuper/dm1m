@@ -44,11 +44,14 @@
 }
 .project-link{
     display: block;
-    // &:hover, &:focus{
-    //     .overlay{
-    //         opacity: 1;
-    //     }
-    // }
+    .no-js &{
+        &:hover, &:focus{
+            .overlay{
+                opacity: 1;
+            }
+        }
+    }
+    
     overflow: hidden;
     .overlay{
         display: flex;
@@ -63,7 +66,11 @@
         padding: 20px;
         text-align: center;
         opacity: 0;
-        transition: $transition;
+        z-index: 2;
+        .no-js &{
+            transition: $transition;
+            background-color: rgba($primary, 0.85);
+        }
     }
     .clouds-wrapper{
         opacity: 0.85;
