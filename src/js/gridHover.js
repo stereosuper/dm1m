@@ -7,30 +7,14 @@ module.exports = function(grid){
     if(!grid.length) return;
     const tiles = grid.find('> article > a');
 
-    const getPos = (el) => {
-        let xPos = 0;
-        let yPos = 0;
-  
-        while (el) {
-          xPos += el.offsetLeft + el.clientLeft;
-          yPos += el.offsetTop + el.clientTop;
-  
-          el = el.offsetParent;
-        }
-        return {
-          x: xPos,
-          y: yPos
-        };
-      };
-
     const getDir = (e, el) => {
-        const position = getPos(el[0]);
-        const w = el.width(),
-            h = el.height(),
-            x = (e.pageX - position.x - (w / 2) * (w > h ? (h / w) : 1)),
-            y = (e.pageY - position.y - (h / 2) * (h > w ? (w / h) : 1)),
-            d = Math.round( Math.atan2(y, x) / 1.57079633 + 5 ) % 4;
-
+        const w = el.width();
+        const h = el.height();
+        const offset = el.offset();
+        const x = (e.pageX - offset.left - (w / 2)) * (w > h ? (h / w) : 1);
+        const y = (e.pageY - offset.top - (h / 2)) * (h > w ? (w / h) : 1);
+        const d = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180 ) / 90 ) + 3 )  % 4;
+        
         return d;
     };
 
@@ -46,8 +30,6 @@ module.exports = function(grid){
         });
 
         let where;
-        const tlIn = new TimelineMax();
-        const tlOut = new TimelineMax();
         
 
         switch ( direction ) {
@@ -83,11 +65,9 @@ module.exports = function(grid){
 
 
     tiles.each(function(){
-        $(this).on('mouseover', function(e){
+        $(this).hover(function(e){
             addClass(e, $(this), 'in');
-        });
-
-        $(this).on('mouseout', function(e){
+        }, function(e){
             addClass(e, $(this), 'out');
         });
     });
