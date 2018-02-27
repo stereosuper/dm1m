@@ -51,22 +51,11 @@ module.exports = function( nav ){
         TweenLite.set(indicator, {x: indicator.data('x') + 'px'});
     }
 
-    nav.on('mouseenter', 'a', function(e){
-
+    nav.on('mouseenter focusin', 'a', function(){
         TweenLite.to(bubbles, 0.3, {scale: 1});
         moveIndic( ($(this).parents('li').position().left + $(this).parents('li').width()/2) - indicatorSemiWidth, 0.6 );
 
-    }).on('mouseleave', 'a', function(e){
-
-        current.length ? moveIndic( current.data('x'), 0.4 ) : TweenLite.to(bubbles, 0.3, {scale: 0});
-
-    }).on('focusin', 'a', function(e){
-
-        TweenLite.to(bubbles, 0.3, {scale: 1});
-        moveIndic( ($(this).parents('li').position().left + $(this).parents('li').width()/2) - indicatorSemiWidth, 0.6 );
-
-    }).on('focusout', 'a', function(e){
-
+    }).on('mouseleave focusout', 'a', function(){
         current.length ? moveIndic( current.data('x'), 0.4 ) : TweenLite.to(bubbles, 0.3, {scale: 0});
 
     });
