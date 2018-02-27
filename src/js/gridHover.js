@@ -18,7 +18,7 @@ module.exports = function(grid){
 
     
     const addClass = (e, el, state) => {
-        const direction = getDir(e, el);
+        const direction = e === 'focus' ? 0 : getDir(e, el);
         const clouds = el.find('.clouds');
         const overlay = el.find('.overlay');
         const w = el.width(), h = el.height();
@@ -66,6 +66,12 @@ module.exports = function(grid){
             addClass(e, $(this), 'in');
         }, function(e){
             addClass(e, $(this), 'out');
+        });
+        $(this).on('focusin', function(){
+            addClass('focus', $(this), 'in');
+        });
+        $(this).on('focusout', function(){
+            addClass('focus', $(this), 'out');
         });
     });
 
