@@ -40,22 +40,16 @@ get_header(); ?>
         <div class='methodo'>
             <h3 class='underlined'><span><?php the_field('methodo_title'); ?></span></h3>
             <?php if( have_rows('methodo_steps') ): ?>
-
-                <div>
-
-                <?php while ( have_rows('methodo_steps') ) : the_row(); ?>
-                    <div>
-                        <h4><?php the_sub_field('step_title'); ?></h4>
-                        <div>
-                            <?php the_sub_field('step_txt'); ?>
-                        </div>
-
-                    </div>
-                    
-                <?php endwhile; ?>
-
-                </div>
-                
+                <ol class='steps'>
+                    <?php while ( have_rows('methodo_steps') ) : the_row(); ?>
+                        <li>
+                            <h4><?php the_sub_field('step_title'); ?></h4>
+                            <div>
+                                <?php the_sub_field('step_txt'); ?>
+                            </div>
+                        </li>
+                    <?php endwhile; ?>
+                </ol>
             <?php endif; ?>
         </div>
 
