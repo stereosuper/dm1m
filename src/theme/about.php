@@ -40,19 +40,25 @@ get_header(); ?>
         <div class='methodo'>
             <h3 class='underlined'><span><?php the_field('methodo_title'); ?></span></h3>
             <?php if( have_rows('methodo_steps') ): ?>
+                <?php $counting = 1; ?>
                 <ol class='steps'>
                     <?php while ( have_rows('methodo_steps') ) : the_row(); ?>
-                        <li>
+                        <li class='<?php if($counting == 1) echo 'active'; ?>'>
                             <div class='wrapper-img'>
-                                <?php echo wp_get_attachment_image(get_sub_field('step_img'), 'full'); ?>
+                                <a href='#'>
+                                    <?php echo wp_get_attachment_image(get_sub_field('step_img'), 'full'); ?>
+                                </a>
                             </div>
-                            <div class='zone-txt'>
-                                <h4><?php the_sub_field('step_title'); ?></h4>
-                                <div>
-                                    <?php the_sub_field('step_txt'); ?>
+                            <div class='wrapper-txt'>
+                                <div class='content-txt'>
+                                    <h4><?php the_sub_field('step_title'); ?></h4>
+                                    <div>
+                                        <?php the_sub_field('step_txt'); ?>
+                                    </div>
                                 </div>
                             </div>
                         </li>
+                        <?php $counting++; ?>
                     <?php endwhile; ?>
                 </ol>
             <?php endif; ?>

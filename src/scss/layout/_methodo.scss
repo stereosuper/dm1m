@@ -5,10 +5,14 @@
     > li{
         counter-increment: ol-counter;
         position: relative;
+        pointer-events: none;
         &:nth-child(1){
             z-index: 4;
             .wrapper-img{
                 margin-left: -20px;
+            }
+            .wrapper-txt{
+                right: calc(50% + 125px);
             }
         }
         &:nth-child(2){
@@ -17,12 +21,18 @@
                 margin-top: -90px;
                 margin-left: 100px;
             }
+            .wrapper-txt{
+                left: calc(50% + 205px);
+            }
         }
         &:nth-child(3){
             z-index: 3;
             .wrapper-img{
                 margin-top: -90px;
                 margin-left: -100px;
+            }
+            .wrapper-txt{
+                right: calc(50% + 205px);
             }
         }
         &:nth-child(4){
@@ -31,6 +41,9 @@
                 margin-top: -115px;
                 margin-left: 20px;
             }
+            .wrapper-txt{
+                left: calc(50% + 125px);
+            }
         }
         &:nth-child(5){
             z-index: 1;
@@ -38,12 +51,46 @@
                 margin-top: -90px;
                 margin-left: -20px;
             }
+            .wrapper-txt{
+                right: calc(50% + 125px);
+            }
+        }
+        &:nth-child(odd){
+            .wrapper-txt{
+                left: 0;
+                &:before{
+                    right: 0;
+                }
+            }
+            h4{
+                padding-right: 60px;
+            }
+        }
+        &:nth-child(even){
+            .wrapper-txt{
+                right: 0;
+                &:before{
+                    left: 0;
+                }
+            }
+            h4{
+                padding-left: 60px;
+            }
         }
         &.active{
-            h4{
-                &:before, &:after{
+            .wrapper-txt{
+                &:before{
                     background: $primary;
                 }
+            }
+            .content-txt{
+                opacity: 1;
+            }
+            .wrapper-img{
+                animation-name: floating;
+                animation-duration: 2s;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
             }
         }
         &:before{
@@ -51,31 +98,29 @@
         }
         .wrapper-img{
             width: 100%;
+            a{
+                display: block;
+                width: 159px;
+                height: 192px;
+                margin: 0 auto;
+                pointer-events: auto;
+            }
         }
         img{
             display: block;
-            width: 159px;
-            height: 192px;
-            margin: 0 auto;
+            width: 100%;
+            height: 100%;
         }
-        .zone-txt{
+        .wrapper-txt{
             position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-        }
-        h4{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-family: $aromatica-script;
-            font-size: 3.6rem;
-            margin: 0 0 0.3em;
-            &:before, &:after{
+            top: 20px;
+            &:before{
+                content: counter(ol-counter);
                 display: block;
                 width: 48px;
                 height: 48px;
-                margin-top: -5px;
+                position: absolute;
+                top: 0;
                 background: $grey;
                 border-radius: 50%;
                 font-family: $aromatica-script;
@@ -84,21 +129,28 @@
                 text-align: center;
             }
         }
-        &:nth-child(odd){
-            h4{
-                &:after{
-                    margin-left: 10px;
-                    content: counter(ol-counter);
-                }
-            }
+        .content-txt{
+            opacity: 0;
         }
-        &:nth-child(even){
-            h4{
-                &:before{
-                    margin-right: 10px;
-                    content: counter(ol-counter);
-                }
-            }
+        h4{
+            justify-content: space-between;
+            font-family: $aromatica-script;
+            font-size: 3.6rem;
+            line-height: 1;
+            margin: 0 0 0.3em;
+            padding: 8px 0 0 0;
         }
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(0, -15px, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
     }
 }
