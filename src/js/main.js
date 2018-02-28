@@ -27,6 +27,7 @@ $(function(){
     }
 
     gridHover($('#grid'));
+    gridHover($('#teamGrid'));
     // isMobile.any ? body.addClass('is-mobile') : body.addClass('is-desktop');
 
     // Since script is loaded asynchronously, load event isn't always fired !!!

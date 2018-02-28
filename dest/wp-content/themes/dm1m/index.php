@@ -51,7 +51,7 @@
                         }
                     ?>
 
-                    <a class='project-link <?php echo $type ?>' href='<?php the_permalink(); ?>'>
+                    <a class='js-hover project-link <?php echo $type ?>' href='<?php the_permalink(); ?>'>
                         <?php if( $img = get_field('grid_img') ){ 
                             if($type === 'square'){
                                 echo wp_get_attachment_image( $img['square'], 'full' );
@@ -63,7 +63,7 @@
                                 echo wp_get_attachment_image( $img['h-rect'], 'full' );
                             }
                          } ?>
-                        <span class='overlay'>
+                        <span class='overlay js-overlay'>
                             <span class='categories'>
                                 <?php $cats = get_the_category(); for ($i=0; $i < count($cats); $i++) {
 

@@ -63,14 +63,21 @@ get_header(); ?>
             <h3 class='align-center'><?php the_field('team_title'); ?></h3>
             <?php if( have_rows('team_members') ): ?>
 
-                <div>
+                <div id='teamGrid' class='team-grid'>
 
                 <?php while ( have_rows('team_members') ) : the_row(); ?>
-                    <div>
-                        <span><?php the_sub_field('prenom'); ?></span>
-                        <span><?php the_sub_field('nom'); ?></span>
-                        <span><?php the_sub_field('job'); ?></span>
+                    <div class='js-hover member'>
                         <?php echo wp_get_attachment_image( get_sub_field('img'), 'full' ); ?>
+                        <div class='member-overlay js-overlay'>
+                            <span class='surname'><?php the_sub_field('prenom'); ?></span>
+                            <span class='name'><?php the_sub_field('nom'); ?></span>
+                            <span class='job'><?php the_sub_field('job'); ?></span>
+                        </div>
+                        <div class='clouds-wrapper'>
+                            <div class='clouds c-1'></div>
+                            <div class='clouds c-2'></div>
+                            <div class='clouds c-3'></div>
+                        </div>
 
                     </div>
                     

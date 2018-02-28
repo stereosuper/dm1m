@@ -1,0 +1,52 @@
+.team-grid{
+    display: flex;
+}
+
+.member{
+    position: relative;
+    overflow: hidden;
+    .no-js &{
+        &:hover, &:focus{
+            .member-overlay{
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.member-overlay{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;    
+    .no-js &{
+        transition: $transition;
+        background-color: rgba($primary, 0.85);
+    }
+    .surname{
+        font-family: $aromatica-script;
+        color: $white;
+        font-size: 3.6rem;
+    }
+    .name{
+        margin: 5px 0;
+        font-family: $aquawax-bold;
+        text-transform: uppercase;
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+    .job{
+        font-family: $aquawax-bold;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+}

@@ -30,6 +30,30 @@
         height: 30px;
     }
 }
+.clouds-wrapper{
+    opacity: 0.85;
+}
+.clouds{
+    position: absolute;
+    top: -4%;
+    left: -23%;
+    display: block;
+    border-radius: 50%;
+    background-color: $primary;
+    height: 100%;
+    width: 100%;
+    transform-origin: 50% 50%;
+    transform: scale(0.05);
+    opacity: 0;
+    &.c-2{
+        top: -19%;
+        left: 5%;
+    }
+    &.c-3{
+        top: 11%;
+        left: 6%;
+    }
+}
 .wrapper-content{
     position: relative;
 }
@@ -70,30 +94,6 @@
         .no-js &{
             transition: $transition;
             background-color: rgba($primary, 0.85);
-        }
-    }
-    .clouds-wrapper{
-        opacity: 0.85;
-    }
-    .clouds{
-        position: absolute;
-        top: -4%;
-        left: -23%;
-        display: block;
-        border-radius: 50%;
-        background-color: $primary;
-        height: 100%;
-        width: 100%;
-        transform-origin: 50% 50%;
-        transform: scale(0.05);
-        opacity: 0;
-        &.c-2{
-            top: -19%;
-            left: 5%;
-        }
-        &.c-3{
-            top: 11%;
-            left: 6%;
         }
     }
     &.h-rect .clouds{

@@ -3,7 +3,7 @@ require('gsap');
 
 module.exports = function(grid){
     if(!grid.length) return;
-    const tiles = grid.find('> article > a');
+    const tiles = grid.find('.js-hover');
 
     const getDir = (e, el) => {
         const w = el.width();
@@ -20,7 +20,7 @@ module.exports = function(grid){
     const addClass = (e, el, state) => {
         const direction = e === 'focus' ? 0 : getDir(e, el);
         const clouds = el.find('.clouds');
-        const overlay = el.find('.overlay');
+        const overlay = el.find('.js-overlay');
         const w = el.width(), h = el.height();
 
         let cloudsFrom, overlayFrom;
