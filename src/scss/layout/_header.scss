@@ -35,6 +35,11 @@
 .menu{
     position: relative;
     z-index: 1;
+    li{
+        &:before{
+            content: none;
+        }
+    }
     ul{
         display: flex;
         align-items: center;

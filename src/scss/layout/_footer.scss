@@ -17,10 +17,6 @@
         font-size: 1.8rem;
         text-transform: uppercase;
         letter-spacing: 4px;
-        &:after{
-            content: '!';
-            color: $primary;
-        }
     }
     address{
         font-style: normal;
@@ -51,6 +47,9 @@
     justify-content: center;
     > li{
         margin: 0 10px;
+        &:before{
+            content: none;
+        }
     }
     a{
         font-family: $moon;
