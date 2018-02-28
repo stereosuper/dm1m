@@ -92,8 +92,9 @@ get_header(); ?>
 
 
 
-
-		<?php the_content(); ?>
+        <div class='wrapper-content'>
+		    <?php the_content(); ?>
+        </div>
 	
 	<?php else : ?>
 				

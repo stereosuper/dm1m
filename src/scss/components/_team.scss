@@ -1,10 +1,15 @@
 .team-grid{
     display: flex;
+    margin: 0 0 5px;
 }
 
 .member{
     position: relative;
     overflow: hidden;
+    margin: 0 5px 0 0;
+    &:last-child{
+        margin: 0;
+    }
     .no-js &{
         &:hover, &:focus{
             .member-overlay{

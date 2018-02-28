@@ -158,6 +158,9 @@ dd{
 img{
     max-width: 100%;
     height: auto;
+    .wrapper-content &{
+        width: 100%;
+    }
 }
 
 code, pre{
