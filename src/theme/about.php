@@ -16,7 +16,7 @@ get_header(); ?>
         </div>
 
         <div class='expertise'>
-            <h3 class='align-center'><?php the_field('expertise_title'); ?></h3>
+            <h3 class='underlined'><span><?php the_field('expertise_title'); ?></span></h3>
             <?php if( have_rows('expertise_clouds') ): ?>
 
                 <div class='expert-list'>
@@ -38,7 +38,7 @@ get_header(); ?>
         </div>
 
         <div class='methodo'>
-            <h3 class='align-center'><?php the_field('methodo_title'); ?></h3>
+            <h3 class='underlined'><span><?php the_field('methodo_title'); ?></span></h3>
             <?php if( have_rows('methodo_steps') ): ?>
 
                 <div>
@@ -60,7 +60,7 @@ get_header(); ?>
         </div>
 
         <div class='team'>
-            <h3 class='align-center'><?php the_field('team_title'); ?></h3>
+            <h3 class='underlined'><span><?php the_field('team_title'); ?></span></h3>
             <?php if( have_rows('team_members') ): ?>
 
                 <div id='teamGrid' class='team-grid'>

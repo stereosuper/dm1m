@@ -53,6 +53,25 @@ h3{
     font-size: 2rem;
     letter-spacing: 2px;
     margin: 0;
+    &.underlined{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 4rem;
+        > span{
+            position: relative;
+            padding-bottom: 10px;
+            &:after{
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 3px;
+                background-color: $primary;
+            }
+        }
+    }
 }
 
 h4{
