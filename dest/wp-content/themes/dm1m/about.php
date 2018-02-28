@@ -10,7 +10,7 @@ get_header(); ?>
 	<?php if ( have_posts() ) : the_post(); ?>
 
 		<h3><?php the_title(); ?></h3>
-        <h1><?php the_field('title'); ?></h1>
+        <h1 class='small'><?php the_field('title'); ?></h1>
         <div class='align-center'>
             <?php the_field('intro'); ?>
         </div>
