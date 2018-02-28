@@ -20,6 +20,13 @@
     font-style: normal;
 }
 @font-face{
+    font-family: 'aromatica-bold';
+    src: url('../fonts/aromatica-bold.woff2') format('woff2'),
+         url('../fonts/aromatica-bold.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
     font-family: 'aromatica-script';
     src: url('../fonts/aromatica-script.woff2') format('woff2'),
          url('../fonts/aromatica-script.woff') format('woff');

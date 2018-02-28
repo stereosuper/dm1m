@@ -31,7 +31,7 @@
                 </a>
             </div>
         </div>
-        <div class='wrapper-content'>
+        <div class='wrapper-content container-small'>
             <?php the_content(); ?>
         </div>
 
