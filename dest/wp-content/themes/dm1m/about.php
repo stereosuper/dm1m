@@ -43,10 +43,14 @@ get_header(); ?>
                 <ol class='steps'>
                     <?php while ( have_rows('methodo_steps') ) : the_row(); ?>
                         <li>
-                            <?php echo wp_get_attachment_image(get_sub_field('step_img'), 'full'); ?>
-                            <h4><?php the_sub_field('step_title'); ?></h4>
-                            <div>
-                                <?php the_sub_field('step_txt'); ?>
+                            <div class='wrapper-img'>
+                                <?php echo wp_get_attachment_image(get_sub_field('step_img'), 'full'); ?>
+                            </div>
+                            <div class='zone-txt'>
+                                <h4><?php the_sub_field('step_title'); ?></h4>
+                                <div>
+                                    <?php the_sub_field('step_txt'); ?>
+                                </div>
                             </div>
                         </li>
                     <?php endwhile; ?>
