@@ -1,5 +1,9 @@
 /* Methodo */
+.methodo{
+    //overflow: hidden;
+}
 .steps{
+    padding: 30px;
     list-style: none;
     counter-reset: ol-counter;
     &.step-1{
