@@ -37,7 +37,7 @@ get_header(); ?>
             <?php endif; ?>
         </div>
 
-        <div class='methodo'>
+        <div id='methodo' class='methodo'>
             <h3 class='underlined'><span><?php the_field('methodo_title'); ?></span></h3>
             <?php if( have_rows('methodo_steps') ): ?>
                 <?php $counting = 1; ?>

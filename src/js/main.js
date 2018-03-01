@@ -12,6 +12,7 @@ $(function(){
     const noTransition = require('./noTransition.js');
     const gridHover = require('./gridHover.js');
     const menuHover = require('./rolloverMenu.js');
+    const methodo = require('./methodo.js');
 
     const body = $('body');
     let windowWidth = window.outerWidth, windowHeight = $(window).height();
@@ -28,6 +29,7 @@ $(function(){
 
     gridHover($('#grid'));
     gridHover($('#teamGrid'));
+    methodo($('#methodo'));
     // isMobile.any ? body.addClass('is-mobile') : body.addClass('is-desktop');
 
     // Since script is loaded asynchronously, load event isn't always fired !!!
