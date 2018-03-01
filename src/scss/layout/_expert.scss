@@ -1,0 +1,133 @@
+.expert{
+    padding: 0 0 50px;
+    position: relative;
+    > .sheep{
+        display: block;
+        max-width: 325px;
+        margin: 0 auto;
+    }
+}
+
+.expert-cloud{
+    width: 320px;
+    height: 280px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;    
+    background: $grey;
+    transform: scale(0.6);
+    transform-origin: 50% 50%;
+    &:hover{
+        z-index: 2;
+        transform: scale(1);
+        > h4{
+            color: $primary;
+            transform: translate3d(0, 0, 0);
+        }
+        .expert-txt{
+            opacity: 1;
+        }
+    }
+    &:nth-of-type(1){
+        top: 10%;
+        left: 0;
+    }
+    &:nth-of-type(2){
+        top: -10%;
+        right: 0;
+    }
+    &:nth-of-type(3){
+        top: 50%;
+        right: 10%;
+    }
+    .bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 50%;
+        overflow: hidden;
+        &:after{
+            content: '';
+            display: block;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle closest-side, $white 50%, $grey 85%);
+            opacity: 0.7;
+            transform: scale(1.25);
+            transform-origin: 50% 50%;
+        }
+    }
+    > h4{
+        padding: 0.5em 0 0.3em;
+        margin: 0;
+        font-family: $aromatica-script;
+        font-size: 6rem;
+        line-height: 0.8;
+        text-align: center;
+        transform: translate3d(0, 45%, 0);
+    }
+    .expert-txt{
+        opacity: 0;
+    }
+    > .bubble{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -2;
+        &:before, &:after{
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: $grey;
+        }
+        &:first-of-type{
+            &:before, &:after{
+                width: 200px;
+                height: 200px;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+            &:before{
+                top: -70px;
+            }
+            &:after{
+                bottom: -70px;
+            }
+        }
+        &:nth-of-type(2){
+            &:before, &:after{
+                width: 180px;
+                height: 170px;
+            }
+            &:before{
+                right: -45px;
+                top: -10px;
+            }
+            &:after{
+                left: -60px;
+                bottom: 5px;
+            }
+        }
+        &:nth-of-type(3){
+            &:before, &:after{
+                width: 160px;
+                height: 160px;
+            }
+            &:before{
+                right: -30px;
+                bottom: -5px;
+            }
+            &:after{
+                left: -20px;
+                top: 20px;
+            }
+        }
+    }
+}
