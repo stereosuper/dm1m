@@ -41,7 +41,7 @@ get_header(); ?>
             <h3 class='underlined'><span><?php the_field('methodo_title'); ?></span></h3>
             <?php if( have_rows('methodo_steps') ): ?>
                 <?php $counting = 1; ?>
-                <ol class='steps'>
+                <ol class='steps step-1'>
                     <?php while ( have_rows('methodo_steps') ) : the_row(); ?>
                         <li class='<?php if($counting == 1) echo 'active'; ?>'>
                             <div class='wrapper-img'>
