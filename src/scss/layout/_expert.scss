@@ -51,7 +51,7 @@
         border-radius: 50%;
         overflow: hidden;
         background: $grey;
-        transform: scale(0.6);
+        transform: translate3d(0, 0, 0) scale(0.6);
         transform-origin: 50% 50%;
         transition: $transition 0.1s;
         &:after{
@@ -87,7 +87,7 @@
         right: 0;
         bottom: 0;
         z-index: -2;
-        transform: scale(0.6);
+        transform: translate3d(0, 0, 0) scale(0.6);
         transform-origin: 50% 50%;
         transition: $transition 0.1s;
         &:before, &:after{
