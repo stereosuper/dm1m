@@ -23,7 +23,7 @@ get_header(); ?>
 
                     <?php while ( have_rows('expertise_clouds') ) : the_row(); ?>
                         <div class='expert-cloud'>
-                            <h4><?php the_sub_field('cloud_title'); ?></h4>
+                            <h4 <?php if( get_sub_field('big') == true ) echo 'class="big"'; ?>><?php the_sub_field('cloud_title'); ?></h4>
                             <div class='expert-txt'>
                                 <?php the_sub_field('cloud_txt'); ?>
                             </div>
