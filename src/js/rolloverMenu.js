@@ -9,8 +9,9 @@ module.exports = function( nav ){
 
     if( !nav.length ) return;
 
-    
-    const current = nav.find('.current-menu-item'), bubbles = nav.find('.bubble');
+
+    let current = nav.find('.current-menu-item')
+    const bubbles = nav.find('.bubble');
     const indicator = nav.find('.js-indic'), indicatorSemiWidth = indicator.width()/2;
     const illus = $('.wrapper-logo .wrapper-illus');
     const leftEye = illus.find('.left-eye'), rightEye = illus.find('.right-eye'), mouth = illus.find('.mouth');
@@ -42,8 +43,8 @@ module.exports = function( nav ){
         }});
     }
 
-    function activateSheep(indexHovered){
-        switch (indexHovered) {
+    function activateSheep( indexHovered ){
+        switch( indexHovered ){
             case 0:
                 // new
                 break;
@@ -59,6 +60,7 @@ module.exports = function( nav ){
     }
 
 
+    current = current.length ? current : nav.find('.current_page_parent');
     if( current.length ){
         current.data({'x': (current.position().left + current.width()/2) - indicatorSemiWidth});
         TweenLite.set(indicator, {x: current.data('x') + 'px'});
@@ -68,6 +70,7 @@ module.exports = function( nav ){
         indicator.data('x', (nav.width()/2 - indicatorSemiWidth));
         TweenLite.set(indicator, {x: indicator.data('x') + 'px'});
     }
+
 
     nav.on('mouseenter focusin', 'a', function(){
         TweenLite.to(bubbles, 0.3, {scale: 1});
