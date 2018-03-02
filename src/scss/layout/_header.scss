@@ -29,7 +29,44 @@
 }
 
 .wrapper-logo{
+    position: relative;
     margin: 20px 0 0;
+    a{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+.wrapper-illus{
+    display: block;
+    width: 66px;
+    height: 76px;
+    position: relative;
+    background: url('../layoutImg/bg-logo.svg') no-repeat 0 0;
+}
+.eye{
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 35px;
+    background: url('../layoutImg/open-eye.svg') no-repeat 0 0;
+    &.left-eye{
+        left: 14px;
+    }
+    &.right-eye{
+        left: 42px;
+    }
+}
+.mouth{
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    margin-left: -5px;
+    background: url('../layoutImg/mouth.svg') no-repeat 0 0;
 }
 
 .menu{
