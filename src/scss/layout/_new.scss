@@ -1,0 +1,66 @@
+.company{
+    h2{
+        font-family: $aquawax-bold;
+        text-transform: uppercase;
+        color: $black;
+        letter-spacing: 4.8px;
+        font-size: 4.8rem;
+        margin: 20px 0 0;
+    }
+    p {
+        font-size: 3rem;
+        margin: 5px 0 0;
+    }
+}
+
+.wrapper-slider{
+    margin: 0 0 40px;
+}
+
+.slider-title{
+    text-align: center;    
+    > h2{
+        display: none;
+        &.active{
+            display: block;
+        }
+    }
+}
+
+.slider-subtitle{
+    text-align: center;
+    > h3{
+        display: none;
+        &.active{
+            display: block;
+        }
+    }
+}
+
+.slide{
+    height: 600px;
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 100%;
+    display: none;
+    &.active{
+        display: block;
+    }
+}
+
+.bullets{
+    text-align: right;
+}
+
+.bullet{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: $grey;
+    margin: 0 0 15px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    &.active{
+        background-color: $primary;
+    }
+}
