@@ -1,0 +1,88 @@
+{
+    "key": "group_5a99108fba17b",
+    "title": "Nouveau",
+    "fields": [
+        {
+            "key": "field_5a9910b02418c",
+            "label": "Slider",
+            "name": "news",
+            "type": "repeater",
+            "instructions": "Le slider des nouveautés",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5a9911a22418d",
+                    "label": "Nouveauté",
+                    "name": "new",
+                    "type": "post_object",
+                    "instructions": "Sélectionnez un article",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "post"
+                    ],
+                    "taxonomy": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "id",
+                    "ui": 1
+                }
+            ]
+        },
+        {
+            "key": "field_5a99135a53484",
+            "label": "Texte agence",
+            "name": "new_agency",
+            "type": "wysiwyg",
+            "instructions": "Renseignez ici le texte pour la partie agence",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1520008345
+}
