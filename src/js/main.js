@@ -11,6 +11,7 @@ $(function(){
     const throttle = require('./throttle.js');
     const noTransition = require('./noTransition.js');
     const gridHover = require('./gridHover.js');
+    const slider = require('./slider.js');
     const menuHover = require('./rolloverMenu.js');
     const methodo = require('./methodo.js');
 
@@ -27,6 +28,7 @@ $(function(){
         menuHover( $('#nav') );
     }
 
+    slider($('#newsSlider'));
     gridHover($('#grid'));
     gridHover($('#teamGrid'));
     methodo($('#methodo'));

@@ -32,6 +32,9 @@
 }
 .clouds-wrapper{
     opacity: 0.85;
+    &.news-clouds-wrapper{
+        opacity: 1;
+    }
 }
 .clouds{
     position: absolute;

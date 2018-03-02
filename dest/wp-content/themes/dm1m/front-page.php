@@ -8,7 +8,7 @@
         <?php if( have_rows('news') ):
             $news = [];
         ?>
-            <div class='wrapper-slider'>
+            <div id='newsSlider' class='wrapper-slider'>
 
                 <?php
                     while ( have_rows('news') ) : the_row();
@@ -41,12 +41,20 @@
                         <?php } ?>
                     </div>
                     <div class='slides'>
+                        <div class='clouds-wrapper news-clouds-wrapper'>
+                            <div class='clouds news-clouds c-1'></div>
+                            <div class='clouds news-clouds c-2'></div>
+                            <div class='clouds news-clouds c-3'></div>
+                        </div>
                         <?php for ($i=0, $loopMax = count($news); $i < $loopMax; $i++) {
                             $field = get_field('grid_img', $news[$i]);
                             $img = wp_get_attachment_image_src( $field['h-rect'], 'full' );
                         ?>
                             
-                            <div data-slide='<?php echo $i ?>' class='slide <?php if($i === 0) echo "active" ?>' style='background-image: url(<?php echo $img[0]; ?>);'></div>
+                            <div data-slide='<?php echo $i ?>' class='slide <?php if($i === 0) echo "active" ?>' style='background-image: url(<?php echo $img[0]; ?>);'>
+                                <a href="<?php echo get_permalink($news[$i]); ?>"></a>
+                            
+                            </div>
 
                         <?php } ?>
                     </div>
