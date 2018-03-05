@@ -1,5 +1,5 @@
 .expert{
-    padding: 0 0 50px;
+    padding: 0 0 100px;
     position: relative;
     > .sheep{
         display: block;
@@ -33,7 +33,7 @@
     }
     &:nth-of-type(1){
         top: 10%;
-        left: 0;
+        left: 5%;
         > .bubble{
             &:nth-of-type(2){
                 &:before, &:after{
@@ -67,7 +67,7 @@
     }
     &:nth-of-type(2){
         top: -10%;
-        right: 0;
+        right: 3%;
         > .bubble{
             &:nth-of-type(2){
                 &:before, &:after{
@@ -100,7 +100,7 @@
         }
     }
     &:nth-of-type(3){
-        top: 50%;
+        top: 40%;
         right: 10%;
     }
     .bg{
