@@ -20,7 +20,7 @@
 .slider-title{
     position: relative;
     text-align: center;
-    height: 72px;
+    height: 6rem;
     width: 100%;
     margin: 10px 0 5px;
     > h2{
@@ -32,6 +32,7 @@
         opacity: 0;
         transform: translateY(-10px);
         margin: 0;
+        letter-spacing: 0.1em;
         &.active{
             opacity: 1;
             transform: translateY(0);
@@ -42,7 +43,7 @@
 .slider-subtitle{
     position: relative;
     text-align: center;
-    height: 57px;
+    height: 4.8rem;
     width: 100%;
     > h3{
         position: absolute;
@@ -127,6 +128,21 @@
     &.active, &:hover, &:focus{
         &:before{
             transform: rotate(0deg) scale(1);
+        }
+    }
+}
+
+@media (max-width: $desktop){
+    .slider-title{
+        height: 5vw;
+        .h1{
+            font-size: 5vw;
+        }
+    }
+    .slider-subtitle{
+        height: 4vw;
+        .h2{
+            font-size: 4vw;
         }
     }
 }
