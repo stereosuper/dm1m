@@ -34,8 +34,16 @@
 	<?php if ( have_posts() ) : ?>
         
         <div id='grid' class="wrapper-grid">
+            
+            <?php for ($i=0; $i < 24; $i++) { ?>
+            
+                <article>
+                    <h2><?php echo $i+1; ?></h2>
+                </article>
 
-            <?php $counting = 1;
+            <?php } ?>
+
+            <!-- <?php $counting = 1;
                 while ( have_posts() ) : the_post(); ?>
                 
                 <article>
@@ -93,7 +101,7 @@
                 }
 
                 endwhile; 
-            ?>
+            ?> -->
             
         </div>
         
