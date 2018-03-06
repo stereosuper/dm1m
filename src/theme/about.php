@@ -59,36 +59,44 @@ get_header(); ?>
                         <line class="st4" x1="420.6" y1="66.5" x2="455.3" y2="101.2"/>
                         <polygon class="st5" points="403.5,38.1 166.2,38.1 208.4,1.3 361.2,1.3 "/>
                         
-                        <line class="st4" x1="337.3" y1="574.4" x2="378.3" y2="615.4"/>
-                        <line class="st4" x1="337.3" y1="529.2" x2="337.3" y2="574.4"/>
-                        <g>
-                            <path class="st5" d="M393.5,605.4c-7-7-18.3-7-25.2,0c-7,7-7,18.3,0,25.2"/>
-                            <polygon class="st2" points="393.5,655.9 393.5,605.4 368.3,630.6 	"/>
-                            <polygon class="st2" points="418.8,630.6 368.3,630.6 393.5,605.4 	"/>
+                        <g class='js-leg'>
+                            <line class="js-forearm st4" x1="114.1" y1="256.4" x2="114.1" y2="314.4"/>
+                            <line class="st4" x1="150.4" y1="224.4" x2="114.1" y2="256.4"/>
+                            <g class='js-foot'>
+                                <path class="st5" d="M132,322.2c0-9.9-8-17.9-17.9-17.9s-17.9,8-17.9,17.9"/>
+                                <polygon class="st2" points="96.3,357.9 132,322.2 96.3,322.2 	"/>
+                                <polygon class="st2" points="132,357.9 96.3,322.2 132,322.2 	"/>
+                            </g>
+                        </g>
+
+                        <g class='js-leg'>
+                            <line class="js-forearm st4" x1="456.9" y1="260.8" x2="456.9" y2="318.8"/>
+                            <line class="st4" x1="420.6" y1="228.9" x2="456.9" y2="260.8"/>
+                            <g class='js-foot'>
+                                <path class="st5" d="M439,326.8c0-9.9,8-17.9,17.9-17.9s17.9,8,17.9,17.9"/>
+                                <polygon class="st2" points="474.7,362.4 439,326.8 474.7,326.8 	"/>
+                                <polygon class="st2" points="439,362.4 474.7,326.8 439,326.8 	"/>
+                            </g>
+                        </g>
+
+                        <g class='js-leg'>
+                            <line class="js-forearm st4" x1="337.3" y1="574.4" x2="378.3" y2="615.4"/>
+                            <line class="st4" x1="337.3" y1="529.2" x2="337.3" y2="574.4"/>
+                            <g class='js-foot'>
+                                <path class="st5" d="M393.5,605.4c-7-7-18.3-7-25.2,0c-7,7-7,18.3,0,25.2"/>
+                                <polygon class="st2" points="393.5,655.9 393.5,605.4 368.3,630.6 	"/>
+                                <polygon class="st2" points="418.8,630.6 368.3,630.6 393.5,605.4 	"/>
+                            </g>
                         </g>
                         
-                        <line class="st4" x1="234.7" y1="574.4" x2="193.7" y2="615.4"/>
-                        <line class="st4" x1="234.7" y1="529.2" x2="234.7" y2="574.4"/>
-                        <g>
-                            <path class="st5" d="M178.5,605.4c7-7,18.3-7,25.2,0c7,7,7,18.3,0,25.2"/>
-                            <polygon class="st2" points="178.5,655.9 178.5,605.4 203.7,630.6 	"/>
-                            <polygon class="st2" points="153.2,630.6 203.7,630.6 178.5,605.4 	"/>
-                        </g>
-                        
-                        <line class="st4" x1="114.1" y1="256.4" x2="114.1" y2="314.4"/>
-                        <line class="st4" x1="150.4" y1="224.4" x2="114.1" y2="256.4"/>
-                        <g>
-                            <path class="st5" d="M132,322.2c0-9.9-8-17.9-17.9-17.9s-17.9,8-17.9,17.9"/>
-                            <polygon class="st2" points="96.3,357.9 132,322.2 96.3,322.2 	"/>
-                            <polygon class="st2" points="132,357.9 96.3,322.2 132,322.2 	"/>
-                        </g>
-                        
-                        <line class="st4" x1="456.9" y1="260.8" x2="456.9" y2="318.8"/>
-                        <line class="st4" x1="420.6" y1="228.9" x2="456.9" y2="260.8"/>
-                        <g>
-                            <path class="st5" d="M439,326.8c0-9.9,8-17.9,17.9-17.9s17.9,8,17.9,17.9"/>
-                            <polygon class="st2" points="474.7,362.4 439,326.8 474.7,326.8 	"/>
-                            <polygon class="st2" points="439,362.4 474.7,326.8 439,326.8 	"/>
+                        <g class='js-leg'>
+                            <line class="js-forearm st4" x1="234.7" y1="574.4" x2="193.7" y2="615.4"/>
+                            <line class="st4" x1="234.7" y1="529.2" x2="234.7" y2="574.4"/>
+                            <g class='js-foot'>
+                                <path class="st5" d="M178.5,605.4c7-7,18.3-7,25.2,0c7,7,7,18.3,0,25.2"/>
+                                <polygon class="st2" points="178.5,655.9 178.5,605.4 203.7,630.6 	"/>
+                                <polygon class="st2" points="153.2,630.6 203.7,630.6 178.5,605.4 	"/>
+                            </g>
                         </g>
 
                         <radialGradient id="SVGID_1_" cx="284.825" cy="367.0517" r="192.8734" gradientTransform="matrix(1 0 0 -1 0 673.75)" gradientUnits="userSpaceOnUse">

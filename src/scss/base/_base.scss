@@ -13,7 +13,7 @@
 
 html{
     font-size: 62.5%; /* sets the base font to 10px for easier math */
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
     background: $black;
 }
@@ -24,6 +24,8 @@ body{
     font-size: 1.6em;
     line-height: 1.2;
     background: $white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 main{
