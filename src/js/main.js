@@ -33,7 +33,7 @@ $(function(){
     gridHover($('#grid'));
     gridHover($('#teamGrid'));
     methodo($('#methodo'));
-    animSheep( $('#expert'), $('#sheep') );
+    animSheep( $('#expert'), $('#sheep'), windowWidth, windowHeight );
     // isMobile.any ? body.addClass('is-mobile') : body.addClass('is-desktop');
 
     // Since script is loaded asynchronously, load event isn't always fired !!!
