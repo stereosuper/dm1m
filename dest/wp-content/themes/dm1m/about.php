@@ -24,7 +24,7 @@ get_header(); ?>
                     <?php while ( have_rows('expertise_clouds') ) : the_row(); ?>
                         <div class='expert-cloud js-cloud'>
                             <h4 <?php if( get_sub_field('big') == true ) echo 'class="big"'; ?>><?php the_sub_field('cloud_title'); ?></h4>
-                            <div class='expert-txt'>
+                            <div class='expert-txt js-txt'>
                                 <?php the_sub_field('cloud_txt'); ?>
                             </div>
                             <div class='bg'></div>
@@ -104,25 +104,24 @@ get_header(); ?>
                         </g>
 
                         <radialGradient id="SVGID_1_" cx="284.825" cy="367.0517" r="192.8734" gradientTransform="matrix(1 0 0 -1 0 673.75)" gradientUnits="userSpaceOnUse">
-                            <stop  offset="0" style="stop-color:#FFFFFF"/>
-                            <stop  offset="0.5942" style="stop-color:#FEFEFD"/>
-                            <stop  offset="0.808" style="stop-color:#FAF8F6"/>
-                            <stop  offset="0.9601" style="stop-color:#F3EFEB"/>
-                            <stop  offset="1" style="stop-color:#F0ECE6"/>
+                            <stop offset="0" style="stop-color:#FFFFFF"/>
+                            <stop offset="0.5942" style="stop-color:#FEFEFD"/>
+                            <stop offset="0.808" style="stop-color:#FAF8F6"/>
+                            <stop offset="0.9601" style="stop-color:#F3EFEB"/>
+                            <stop offset="1" style="stop-color:#F0ECE6"/>
                         </radialGradient>
-                        <path class="st6" d="M403.5,304.9c0-16.4-13.3-29.6-29.7-29.6c-16.4,0-29.7,13.3-29.7,29.6c0-16.4-13.3-29.6-29.7-29.6
-                            c-16.4,0-29.7,13.3-29.7,29.6c0-16.4-13.3-29.6-29.7-29.6s-29.7,13.3-29.7,29.6c0-16.4-13.3-29.6-29.7-29.6s-29.4,13.3-29.4,29.6
-                            v207.7h237.3V304.9z"/>
+                        <path class="st6" d="M403.5,304.9c0-16.4-13.3-29.6-29.7-29.6c-16.4,0-29.7,13.3-29.7,29.6c0-16.4-13.3-29.6-29.7-29.6 c-16.4,0-29.7,13.3-29.7,29.6c0-16.4-13.3-29.6-29.7-29.6s-29.7,13.3-29.7,29.6c0-16.4-13.3-29.6-29.7-29.6s-29.4,13.3-29.4,29.6 v207.7h237.3V304.9z"/>
                         <radialGradient id="SVGID_2_" cx="284.675" cy="791.3766" r="117.5718" gradientTransform="matrix(1 0 0 -0.6207 0 603.7973)" gradientUnits="userSpaceOnUse">
-                            <stop  offset="0" style="stop-color:#FFFFFF"/>
-                            <stop  offset="0.5942" style="stop-color:#FEFEFD"/>
-                            <stop  offset="0.808" style="stop-color:#FAF8F6"/>
-                            <stop  offset="0.9601" style="stop-color:#F3EFEB"/>
-                            <stop  offset="1" style="stop-color:#F0ECE6"/>
+                            <stop offset="0" style="stop-color:#FFFFFF"/>
+                            <stop offset="0.5942" style="stop-color:#FEFEFD"/>
+                            <stop offset="0.808" style="stop-color:#FAF8F6"/>
+                            <stop offset="0.9601" style="stop-color:#F3EFEB"/>
+                            <stop offset="1" style="stop-color:#F0ECE6"/>
                         </radialGradient>
-                        <path class="st7" d="M403.5,38.1c0,21.8-17.7,39.6-39.6,39.6c0,21.8-17.7,39.6-39.6,39.6c-21.8,0-39.6-17.7-39.6-39.6
-                            c0,21.8-17.7,39.6-39.6,39.6c-21.8,0-39.6-17.7-39.6-39.6c-21.8,0-39.6-17.7-39.6-39.6H403.5z"/>
+                        <path class="st7" d="M403.5,38.1c0,21.8-17.7,39.6-39.6,39.6c0,21.8-17.7,39.6-39.6,39.6c-21.8,0-39.6-17.7-39.6-39.6 c0,21.8-17.7,39.6-39.6,39.6c-21.8,0-39.6-17.7-39.6-39.6c-21.8,0-39.6-17.7-39.6-39.6H403.5z"/>
                     </svg>
+
+                    <div id='sheepTxt' class='sheep-txt'></div>
 
                 </div>
             <?php endif; ?>

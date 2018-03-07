@@ -1,12 +1,12 @@
 /******* GÉNÉRAL *******/
 
 ::-moz-selection{
-    background: $black;
+    background: $primary;
     color: $white;
     text-shadow: none;
 }
 ::selection{
-    background: $black;
+    background: $primary;
     color: $white;
     text-shadow: none;
 }
@@ -30,6 +30,7 @@ body{
 
 main{
     padding: 100px 0 200px;
+    overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6{

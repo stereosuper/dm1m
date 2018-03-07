@@ -1,7 +1,7 @@
 var $ = require('jquery-slim');
 require('gsap');
 
-window.requestAnimFrame = require('./requestAnimFrame.js');
+const requestAnimFrame = require('./requestAnimFrame.js');
 const throttle = require('./throttle.js');
 
 module.exports = function( container, sheep, windowWidth, windowHeight ){
@@ -11,16 +11,30 @@ module.exports = function( container, sheep, windowWidth, windowHeight ){
 
     let x, y, mouseX, mouseY, distance, rad, pupil;
     const eyeLeft = container.find('#eyeLeft'), eyeRight = container.find('#eyeRight');
-    const legs = sheep.find('.js-leg'), feet = sheep.find('.js-foot'), forearms = sheep.find('.js-forearm');
+    
+    const legs = sheep.find('.js-leg'), feet = sheep.find('.js-foot'), forearms = sheep.find('.js-forearm'), earLeft = sheep.find('#earLeft'), earRight = sheep.find('#earRight');
 
 
     function clamp( number, min, max ){
         return Math.max( min, Math.min(number, max) );
     }
 
+    function setSheepLegs(){
+        TweenMax.set([legs.eq(0), forearms.eq(3)], {transformOrigin: '100% 0'});
+        TweenMax.set(feet.eq(0), {transformOrigin: '50% -90%'});
+        TweenMax.set(feet.eq(1), {transformOrigin: '0 -70%'});
+        TweenMax.set(legs.eq(2), {transformOrigin: '-20% -80%'});
+        TweenMax.set(feet.eq(2), {transformOrigin: '-50% -50%'});
+        TweenMax.set(legs.eq(3), {transformOrigin: '120% -80%'});
+        TweenMax.set(feet.eq(3), {transformOrigin: '145% -45%'});
+        TweenMax.set(earLeft, {transformOrigin: '100% 0'});
+    }
+
     function resizeHandler(){
         windowWidth = window.outerWidth;
         windowHeight = $(window).height();
+
+        setSheepLegs();
     }
 
     function moveEye( eye, e ){
@@ -38,24 +52,20 @@ module.exports = function( container, sheep, windowWidth, windowHeight ){
     }
 
 
-    TweenMax.set([legs.eq(0), forearms.eq(3)], {transformOrigin: '100% 0'});
-    TweenMax.set(feet.eq(0), {transformOrigin: '50% -90%'});
-    TweenMax.set(feet.eq(1), {transformOrigin: '0 -70%'});
-    TweenMax.set(legs.eq(2), {transformOrigin: '-20% -80%'});
-    TweenMax.set(feet.eq(2), {transformOrigin: '-50% -50%'});
-    TweenMax.set(legs.eq(3), {transformOrigin: '120% -80%'});
-    TweenMax.set(feet.eq(3), {transformOrigin: '145% -45%'});
+    setSheepLegs();
 
-    TweenMax.set(sheep.find('#earLeft'), {transformOrigin: '100% 0'});
-    TweenMax.set(sheep.find('#earRight'), {transformOrigin: '0 0'});
 
     container.on('mouseenter', '.js-cloud', function(){
 
-        TweenMax.to(sheep.find('#earLeft').eq(0), 0.3, {rotation: 40, onComplete: function(){
-            TweenMax.to(sheep.find('#earLeft').eq(0), 0.15, {rotation: 0});
+        TweenMax.to(sheep, 0.25, {y: '-15px', ease: Power2.easeOut, onComplete: function(){
+            TweenMax.to(sheep, 0.1, {y: 0, ease: Power2.easeIn});
         }});
-        TweenMax.to(sheep.find('#earRight').eq(0), 0.3, {rotation: -40, onComplete: function(){
-            TweenMax.to(sheep.find('#earRight').eq(0), 0.15, {rotation: 0});
+
+        TweenMax.to(earLeft, 0.3, {rotation: 40, ease: Power2.easeOut, onComplete: function(){
+            TweenMax.to(earLeft, 0.15, {rotation: 0, ease: Power2.easeIn});
+        }});
+        TweenMax.to(earRight, 0.3, {rotation: -40, ease: Power2.easeOut, onComplete: function(){
+            TweenMax.to(earRight, 0.15, {rotation: 0, ease: Power2.easeIn});
         }});
 
         switch( $(this).index() ){
@@ -104,6 +114,7 @@ module.exports = function( container, sheep, windowWidth, windowHeight ){
 
     });
     
+
     $(window).on('mousemove', function(e){
 
         e.preventDefault();
@@ -112,7 +123,7 @@ module.exports = function( container, sheep, windowWidth, windowHeight ){
 
     }).on('resize', throttle(function(){
 
-        requestAnimFrame(resizeHandler);
+        requestAnimFrame( resizeHandler );
 
     }, 60));
 

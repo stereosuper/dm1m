@@ -1,29 +1,27 @@
 const $ = require('jquery-slim');
 
-// require('gsap');
-require('gsap/CSSPlugin');
-const TweenLite = require('gsap/TweenLite');
+require('gsap');
 
 
 $(function(){
 
-    window.requestAnimFrame = require('./requestAnimFrame.js');
-    const throttle = require('./throttle.js');
-    const noTransition = require('./noTransition.js');
+    // const requestAnimFrame = require('./requestAnimFrame.js');
+    // const throttle = require('./throttle.js');
+    // const noTransition = require('./noTransition.js');
     const gridHover = require('./gridHover.js');
     const slider = require('./slider.js');
     const menuHover = require('./rolloverMenu.js');
     const methodo = require('./methodo.js');
     const animSheep = require('./animSheep.js');
 
-    const body = $('body');
+    // const body = $('body');
     let windowWidth = window.outerWidth, windowHeight = $(window).height();
 
 
-    function resizeHandler(){
-        windowWidth = window.outerWidth;
-        windowHeight = $(window).height();
-    }
+    // function resizeHandler(){
+    //     windowWidth = window.outerWidth;
+    //     windowHeight = $(window).height();
+    // }
 
     function loadHandler(){
         menuHover( $('#nav') );
@@ -39,14 +37,14 @@ $(function(){
     // Since script is loaded asynchronously, load event isn't always fired !!!
     document.readyState === 'complete' ? loadHandler() : $(window).on('load', loadHandler);
 
-    $(window).on('resize', throttle(function(){
-        requestAnimFrame(resizeHandler);
-    }, 60));
+    // $(window).on('resize', throttle(function(){
+    //     requestAnimFrame(resizeHandler);
+    // }, 60));
 
 
 
-    $(document).on('scroll', throttle(function(){
+    // $(document).on('scroll', throttle(function(){
 
-    }, 60));
+    // }, 60));
 
 });

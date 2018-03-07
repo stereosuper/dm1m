@@ -1,36 +1,15 @@
 .expert{
     padding: 0 0 100px;
     position: relative;
-    > .sheep{
-        display: block;
-        max-width: 325px;
-        position: relative;
-        margin: 0 auto;
-        z-index: 10;
-    }
 }
 
 .expert-cloud{
-    width: 320px;
+    max-width: 320px;
     min-height: 280px;
     padding: 10px 10px 20px;
     position: absolute;
     z-index: 1;
     border-radius: 50%;
-    &:hover{
-        z-index: 2;
-        > h4, > h4.big, > .bg, > .bubble{
-            transform: translate3d(0, 0, 0) scale(1);
-            transition: $transition;
-        }
-        > h4{
-            color: $primary;
-        }
-        .expert-txt{
-            opacity: 1;
-            transition: 0.3s $transition;
-        }
-    }
     &:nth-of-type(1){
         top: 10%;
         left: 5%;
@@ -116,6 +95,7 @@
         transform: translate3d(0, 0, 0) scale(0.6);
         transform-origin: 50% 50%;
         transition: $transition 0.1s;
+        backface-visibility: hidden;
         &:after{
             content: '';
             display: block;
@@ -212,5 +192,80 @@
 }
 
 .sheep{
+    display: block;
+    max-width: 325px;
+    min-width: 250px;
+    position: relative;
+    margin: 0 auto;
+    z-index: 10;
     overflow: visible !important;
+}
+
+
+@media (min-width: $desktop-small){
+    .expert-cloud{
+        &:hover{
+            z-index: 2;
+            > h4, > h4.big, > .bg, > .bubble{
+                transform: translate3d(0, 0, 0) scale(1);
+                transition: $transition;
+            }
+            > h4{
+                color: $primary;
+            }
+            .expert-txt{
+                opacity: 1;
+                transition: 0.3s $transition;
+            }
+        }
+    }
+}
+
+
+@media (max-width: $desktop){
+    .expert{
+        padding: 0 0 200px;
+        > .sheep{
+            width: 27%;
+        }
+    }
+}
+
+@media (max-width: $desktop-small){
+    .sheep{
+        display: none;
+    }
+
+    .expert{
+        padding: 0 0 30px;
+    }
+
+    .expert-cloud{
+        max-width: 500px;
+        min-height: 0;
+        position: static;
+        margin: 0 auto 20px;
+        border-radius: 0;
+        > .bg, > .bubble{
+            display: none;
+        }
+        > h4{
+            font-size: 4.5rem;
+        }
+        > h4, > h4.big{
+            transform: none;
+        }
+        .expert-txt{
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: $phone){
+    .expert-cloud{
+        > h4{
+            font-size: 4rem;
+            text-align: left;
+        }
+    }
 }
