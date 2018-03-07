@@ -49,10 +49,11 @@ get_header(); ?>
                         <path class="st3" d="M299,219.9c-3.6,3.6-8.5,9-14,9s-10.4-5.4-14-9"/>
                         <path class="st3" d="M299,240.9c-3.6,3.6-8.5,5.8-14,5.8s-10.4-2.2-14-5.8"/>
                         <line class="st3" x1="285" y1="228.9" x2="285" y2="246.6"/>
-                        <line class="st4" x1="149.4" y1="66.2" x2="114.7" y2="100.8"/>
-                        <line class="st4" x1="420.6" y1="66.5" x2="455.3" y2="101.2"/>
                         <polygon class="st5" points="403.5,38.1 166.2,38.1 208.4,1.3 361.2,1.3 "/>
                         
+                        <line id='earLeft' class="st4" x1="149.4" y1="66.2" x2="114.7" y2="100.8"/>
+                        <line id='earRight' class="st4" x1="420.6" y1="66.5" x2="455.3" y2="101.2"/>
+
                         <g id='eyeLeft'>
                             <circle class="st1" cx="234.7" cy="145.5" r="17.9"/>
                             <circle class="js-pupil st2" cx="234.7" cy="137.8" r="10.1"/>

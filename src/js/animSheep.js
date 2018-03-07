@@ -9,7 +9,9 @@ module.exports = function( container, sheep, windowWidth, windowHeight ){
     if( !container.length || !sheep.length ) return;
 
 
-    var x, y, mouseX, mouseY, distance, rad, pupil;
+    let x, y, mouseX, mouseY, distance, rad, pupil;
+    const eyeLeft = container.find('#eyeLeft'), eyeRight = container.find('#eyeRight');
+    const legs = sheep.find('.js-leg'), feet = sheep.find('.js-foot'), forearms = sheep.find('.js-forearm');
 
 
     function clamp( number, min, max ){
@@ -36,68 +38,77 @@ module.exports = function( container, sheep, windowWidth, windowHeight ){
     }
 
 
-    TweenMax.set([sheep.find('.js-leg').eq(0), sheep.find('.js-forearm').eq(3)], {transformOrigin: '100% 0'});
-    TweenMax.set(sheep.find('.js-foot').eq(0), {transformOrigin: '50% -90%'});
-    TweenMax.set(sheep.find('.js-foot').eq(1), {transformOrigin: '0 -70%'});
-    TweenMax.set(sheep.find('.js-leg').eq(2), {transformOrigin: '-20% -80%'});
-    TweenMax.set(sheep.find('.js-foot').eq(2), {transformOrigin: '-50% -50%'});
-    TweenMax.set(sheep.find('.js-leg').eq(3), {transformOrigin: '120% -80%'});
-    TweenMax.set(sheep.find('.js-foot').eq(3), {transformOrigin: '145% -45%'});
+    TweenMax.set([legs.eq(0), forearms.eq(3)], {transformOrigin: '100% 0'});
+    TweenMax.set(feet.eq(0), {transformOrigin: '50% -90%'});
+    TweenMax.set(feet.eq(1), {transformOrigin: '0 -70%'});
+    TweenMax.set(legs.eq(2), {transformOrigin: '-20% -80%'});
+    TweenMax.set(feet.eq(2), {transformOrigin: '-50% -50%'});
+    TweenMax.set(legs.eq(3), {transformOrigin: '120% -80%'});
+    TweenMax.set(feet.eq(3), {transformOrigin: '145% -45%'});
 
+    TweenMax.set(sheep.find('#earLeft'), {transformOrigin: '100% 0'});
+    TweenMax.set(sheep.find('#earRight'), {transformOrigin: '0 0'});
 
     container.on('mouseenter', '.js-cloud', function(){
+
+        TweenMax.to(sheep.find('#earLeft').eq(0), 0.3, {rotation: 40, onComplete: function(){
+            TweenMax.to(sheep.find('#earLeft').eq(0), 0.15, {rotation: 0});
+        }});
+        TweenMax.to(sheep.find('#earRight').eq(0), 0.3, {rotation: -40, onComplete: function(){
+            TweenMax.to(sheep.find('#earRight').eq(0), 0.15, {rotation: 0});
+        }});
 
         switch( $(this).index() ){
             case 0:
 
-                TweenMax.to(sheep.find('.js-leg').eq(0), 0.3, {rotation: 41});
-                TweenMax.to([sheep.find('.js-forearm').eq(0), sheep.find('.js-foot').eq(0)], 0.3, {rotation: 48});
+                TweenMax.to(legs.eq(0), 0.3, {rotation: 41});
+                TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, {rotation: 48});
 
-                TweenMax.to([sheep.find('.js-forearm').eq(1), sheep.find('.js-foot').eq(1)], 0.3, {rotation: -48});
+                TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, {rotation: -48});
 
-                TweenMax.to([sheep.find('.js-forearm').eq(2), sheep.find('.js-foot').eq(2)], 0.3, {rotation: 90});
+                TweenMax.to([forearms.eq(2), feet.eq(2)], 0.3, {rotation: 90});
 
-                TweenMax.to(sheep.find('.js-leg').eq(3), 0.3, {rotation: 90});
-                TweenMax.to([sheep.find('.js-forearm').eq(3), sheep.find('.js-foot').eq(3)], 0.3, {rotation: -46});
+                TweenMax.to(legs.eq(3), 0.3, {rotation: 90});
+                TweenMax.to([forearms.eq(3), feet.eq(3)], 0.3, {rotation: -46});
                 break;
 
             case 1:
 
-                TweenMax.to(sheep.find('.js-leg').eq(0), 0.3, {rotation: 90});
-                TweenMax.to([sheep.find('.js-forearm').eq(0), sheep.find('.js-foot').eq(0)], 0.3, {rotation: 48});
+                TweenMax.to(legs.eq(0), 0.3, {rotation: 90});
+                TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, {rotation: 48});
 
-                TweenMax.to(sheep.find('.js-leg').eq(1), 0.3, {rotation: -90});
-                TweenMax.to([sheep.find('.js-forearm').eq(1), sheep.find('.js-foot').eq(1)], 0.3, {rotation: -48});
+                TweenMax.to(legs.eq(1), 0.3, {rotation: -90});
+                TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, {rotation: -48});
 
-                TweenMax.to(sheep.find('.js-leg').eq(3), 0.3, {rotation: 90});
+                TweenMax.to(legs.eq(3), 0.3, {rotation: 90});
                 break;
 
             case 2:
 
-                TweenMax.to(sheep.find('.js-leg').eq(0), 0.3, {rotation: 41});
-                TweenMax.to([sheep.find('.js-forearm').eq(0), sheep.find('.js-foot').eq(0)], 0.3, {rotation: 48});
+                TweenMax.to(legs.eq(0), 0.3, {rotation: 41});
+                TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, {rotation: 48});
 
-                TweenMax.to(sheep.find('.js-leg').eq(1), 0.3, {rotation: -41});
-                TweenMax.to([sheep.find('.js-forearm').eq(1), sheep.find('.js-foot').eq(1)], 0.3, {rotation: -48});
+                TweenMax.to(legs.eq(1), 0.3, {rotation: -41});
+                TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, {rotation: -48});
 
-                TweenMax.to(sheep.find('.js-leg').eq(2), 0.3, {rotation: -90});
-                TweenMax.to([sheep.find('.js-forearm').eq(2), sheep.find('.js-foot').eq(2)], 0.3, {rotation: 90});
+                TweenMax.to(legs.eq(2), 0.3, {rotation: -90});
+                TweenMax.to([forearms.eq(2), feet.eq(2)], 0.3, {rotation: 90});
 
-                TweenMax.to([sheep.find('.js-forearm').eq(3), sheep.find('.js-foot').eq(3)], 0.3, {rotation: -46});
+                TweenMax.to([forearms.eq(3), feet.eq(3)], 0.3, {rotation: -46});
                 break;
         }
 
     }).on('mouseleave', '.js-cloud', function(){
 
-        TweenMax.to([sheep.find('.js-leg'), sheep.find('.js-forearm'), sheep.find('.js-foot')], 0.3, {rotation: 0});
+        TweenMax.to([legs, forearms, feet], 0.3, {rotation: 0});
 
     });
     
     $(window).on('mousemove', function(e){
 
         e.preventDefault();
-        moveEye( container.find('#eyeLeft'), e );
-        moveEye( container.find('#eyeRight'), e );
+        moveEye( eyeLeft, e );
+        moveEye( eyeRight, e );
 
     }).on('resize', throttle(function(){
 
