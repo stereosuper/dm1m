@@ -13,7 +13,8 @@ module.exports = function( nav ){
     let current = nav.find('.current-menu-item')
     const bubbles = nav.find('.bubble');
     const indicator = nav.find('.js-indic'), indicatorSemiWidth = indicator.width()/2;
-    const illus = $('.wrapper-logo .wrapper-illus');
+    
+    const illus = $('#logoIllus');
     const leftEye = illus.find('.left-eye'), rightEye = illus.find('.right-eye'), mouth = illus.find('.mouth');
 
 
