@@ -71,15 +71,12 @@
 }
 .project-link{
     display: block;
-    .no-js &{
-        &:hover, &:focus{
-            .overlay{
-                opacity: 1;
-            }
-        }
-    }
-    
     overflow: hidden;
+    .no-js &, .is-mobile & {
+      .overlay{
+        opacity: 1;
+      }
+    }
     .overlay{
         display: flex;
         align-items: center;
@@ -94,15 +91,27 @@
         text-align: center;
         opacity: 0;
         z-index: 2;
-        .no-js &{
+        .no-js & {
             transition: $transition;
             background-color: rgba($primary, 0.85);
+        }
+        .is-mobile & {
+            transition: $transition;
+            background-color: rgba($primary, 0.70);
         }
     }
     &.h-rect .clouds{
         width: 50%;
         top: 10%;
         left: -23%;
+        &.c-2{
+            top: 10%;
+            left: 2%;
+        }
+        &.c-3{
+            top: 10%;
+            left: 43%;
+        }
     }
     &.v-rect .clouds{
         height: 50%;

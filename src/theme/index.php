@@ -2,7 +2,7 @@
 
 <div class='container'>
 
-    <?php 
+    <?php
         if( have_rows('services', get_option('page_for_posts')) ):
     ?>
         <h3>
@@ -10,7 +10,7 @@
                 $count = 0;
                 while ( have_rows('services', get_option('page_for_posts')) ) : the_row();
 
-                    if($count > 0): 
+                    if($count > 0):
                         echo '<span class="separator">-</span>';
                     endif; ?>
 
@@ -30,84 +30,79 @@
     <div class='align-center'>
         <?php the_field('projects_text', get_option('page_for_posts')); ?>
     </div>
-    
+
 	<?php if ( have_posts() ) : ?>
-        
+
         <div id='grid' class="wrapper-grid">
-            
+          <?php for ($index=0; $index < 12; $index++) : ?>
+            <?php $counting = 1;
+                while ( have_posts() ) : the_post();
+                $grid_img = get_field('grid_img');
+                if ($grid_img) {
+                  $img_square = wp_get_attachment_image( $grid_img['square'], 'full' );
+                  // $img_square = addslashes($img_square);
+
+                  $img_v_rect = wp_get_attachment_image( $grid_img['v-rect'], 'full' );
+                  // $img_v_rect = addslashes($img_square);
+
+                  $img_h_rect = wp_get_attachment_image( $grid_img['h-rect'], 'full' );
+                  // $img_h_rect = addslashes($img_square);
+
+                  $img_square_src = wp_get_attachment_image_src( $grid_img['square'], 'full' )[0];
+                }
+                ?>
+                  <article class="js-grid-item" data-square-img='<?php echo json_encode($img_square) ?>'
+                  data-v-rect-img='<?php echo json_encode($img_v_rect) ?>'
+                  data-h-rect-img='<?php echo json_encode($img_h_rect) ?>'>
+                    <a class='js-hover project-link'
+                    href='<?php the_permalink(); ?>'
+                    style='background-image: url("<?php
+                    echo $img_square_src ? $img_square_src : ''
+                    ?>")'>
+                      <span class='overlay js-overlay'>
+                        <span class='categories'>
+                            <?php $cats = get_the_category(); for ($i=0; $i < count($cats); $i++) {
+
+                                if($i > 0):
+                                    echo '<span class="separator">-</span>';
+                                endif;
+                                echo '<span>'.$cats[$i]->name.'</span>';
+
+                            } ?>
+                        </span>
+                        <h2><?php the_title(); ?></h2>
+                        <span class='subtitle'><?php the_field('subtitle'); ?></span>
+                      </span>
+                      <div class='clouds-wrapper'>
+                          <div class='clouds c-1'></div>
+                          <div class='clouds c-2'></div>
+                          <div class='clouds c-3'></div>
+                      </div>
+                    </a>
+                  </article>
+
+              <?php
+                endwhile;
+              endfor;
+            ?>
+
+
+
+            <!--
             <?php for ($i=0; $i < 24; $i++) { ?>
-            
+
                 <article>
                     <h2><?php echo $i+1; ?></h2>
                 </article>
 
             <?php } ?>
+            -->
 
-            <!-- <?php $counting = 1;
-                while ( have_posts() ) : the_post(); ?>
-                
-                <article>
-                    <?php
-                        if($counting === 1 || $counting === 3 || $counting === 4 || $counting === 8 || $counting === 9 || $counting === 11 || $counting === 12){
-                            $type = 'square';
-                        }
-                        if($counting === 2 || $counting === 6 || $counting === 7){
-                            $type = 'v-rect';
-                        }
-                        if($counting === 5 || $counting === 10){
-                            $type = 'h-rect';
-                        }
-                    ?>
-
-                    <a class='js-hover project-link <?php echo $type ?>' href='<?php the_permalink(); ?>'>
-                        <?php if( $img = get_field('grid_img') ){ 
-                            if($type === 'square'){
-                                echo wp_get_attachment_image( $img['square'], 'full' );
-                            }
-                            if($type === 'v-rect'){
-                                echo wp_get_attachment_image( $img['v-rect'], 'full' );
-                            }
-                            if($type === 'h-rect'){
-                                echo wp_get_attachment_image( $img['h-rect'], 'full' );
-                            }
-                         } ?>
-                        <span class='overlay js-overlay'>
-                            <span class='categories'>
-                                <?php $cats = get_the_category(); for ($i=0; $i < count($cats); $i++) {
-
-                                    if($i > 0): 
-                                        echo '<span class="separator">-</span>';
-                                    endif;
-                                    echo '<span>'.$cats[$i]->name.'</span>';
-
-                                } ?>
-                            </span>
-                            <h2><?php the_title(); ?></h2>                
-                            <span class='subtitle'><?php the_field('subtitle'); ?></span>
-                        </span>
-                        <div class='clouds-wrapper'>
-                            <div class='clouds c-1'></div>
-                            <div class='clouds c-2'></div>
-                            <div class='clouds c-3'></div>
-                        </div>
-                    </a>
-                </article>
-            
-            <?php 
-                if($counting < 12){
-                    $counting++;
-                }else{
-                    $counting = 1;
-                }
-
-                endwhile; 
-            ?> -->
-            
         </div>
-        
-	
+
+
 	<?php else : ?>
-				
+
 		<p><?php _e('No posts yet'); ?></p>
 
 	<?php endif; ?>

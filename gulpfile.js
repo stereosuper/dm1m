@@ -131,21 +131,21 @@ gulp.task('root', function() {
 });
 
 gulp.task('watch', function () {
-    
+
     browserSync({
         notify: false,
         proxy: 'localhost'
     });
-    
+
 
     $.watch('src/scss/**/*', function(){
         gulp.start(['styles'], reload);
     });
-    
+
     $.watch('src/theme/**/*', function(){
         gulp.start(['theme'], reload);
     });
-    
+
     $.watch('src/fonts/**/*', function(){
         gulp.start(['fonts'], reload);
     });
@@ -158,7 +158,7 @@ gulp.task('watch', function () {
     $.watch('src/js/**/*', function(){
         gulp.start(['js'], reload);
     });
-    
+
     $.watch('src/*.*', function(){
         gulp.start(['root'], reload);
     });
@@ -166,4 +166,3 @@ gulp.task('watch', function () {
 
 
 gulp.task('start', ['styles', 'theme', 'fonts', 'img', 'layoutImg', 'js', 'root', 'sitemap', 'wp']);
-
