@@ -111,7 +111,7 @@
         bottom: 0;
         z-index: -1;
         border-radius: 50%;
-        overflow: hidden;
+        //overflow: hidden;
         background: $grey;
         transform: translate3d(0, 0, 0) scale(0.6);
         transform-origin: 50% 50%;
@@ -119,10 +119,11 @@
         &:after{
             content: '';
             display: block;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle closest-side, $white 50%, transparent 85%);
-            opacity: 0.7;
+            height: 110%;
+            //border-radius: 50%;
+            //background: radial-gradient(circle closest-side, $white 50%, transparent 85%);
+            background: url(../layoutImg/gradient.svg) no-repeat 0 0 / 100%;
+            //opacity: 0.7;
             transform: scale(1.25);
             transform-origin: 50% 50%;
         }
