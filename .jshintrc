@@ -20,6 +20,7 @@
         "window": false,
         "document": false,
         "console": false,
-        "TweenMax": false
+        "TweenMax": false,
+        "Power2": false
     }
 }

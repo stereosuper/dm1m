@@ -1,8 +1,8 @@
 const $ = require('jquery-slim');
+require('gsap');
 
-// require('gsap');
-require('gsap/CSSPlugin');
-const TweenLite = require('gsap/TweenLite');
+const requestAnimFrame = require('./requestAnimFrame.js');
+const throttle = require('./throttle.js');
 
 
 module.exports = function( nav ){
@@ -18,8 +18,8 @@ module.exports = function( nav ){
 
 
     function moveBubble( bubble, distance, scale, timing ){
-        TweenLite.to(bubble, timing, {x: distance, scaleY: scale, scaleX: 1.1, onComplete: function(){
-            TweenLite.to(bubble, timing, {x: '0px', scale: 1});
+        TweenMax.to(bubble, timing, {x: distance, scaleY: scale, scaleX: 1.1, onComplete: function(){
+            TweenMax.to(bubble, timing, {x: '0px', scale: 1});
         }});
     }
 
@@ -38,9 +38,25 @@ module.exports = function( nav ){
             moveBubble( bubbles.eq(3), '-8px', 1.15, timing/2+0.1 );
         }
 
-        TweenLite.to(indicator, timing, {x: newX + 'px', opacity: 1, onComplete: function(){
+        TweenMax.to(indicator, timing, {x: newX + 'px', opacity: 1, onComplete: function(){
             indicator.data('x', newX);
         }});
+    }
+
+    function setIndic(){
+        if( current.length ){
+
+            current.data({'x': (current.position().left + current.width()/2) - indicatorSemiWidth});
+            TweenMax.set(indicator, {x: current.data('x') + 'px'});
+            indicator.data('x', current.data('x'));
+            TweenMax.to(bubbles, 0.3, {scale: 1});
+
+        }else{
+
+            indicator.data('x', (nav.width()/2 - indicatorSemiWidth));
+            TweenMax.set(indicator, {x: indicator.data('x') + 'px'});
+
+        }
     }
 
     function activateSheep( indexHovered ){
@@ -61,23 +77,26 @@ module.exports = function( nav ){
 
 
     current = current.length ? current : nav.find('.current_page_parent');
-    if( current.length ){
-        current.data({'x': (current.position().left + current.width()/2) - indicatorSemiWidth});
-        TweenLite.set(indicator, {x: current.data('x') + 'px'});
-        indicator.data('x', current.data('x'));
-        TweenLite.to(bubbles, 0.3, {scale: 1});
-    }else{
-        indicator.data('x', (nav.width()/2 - indicatorSemiWidth));
-        TweenLite.set(indicator, {x: indicator.data('x') + 'px'});
-    }
+
+    setIndic();
 
 
     nav.on('mouseenter focusin', 'a', function(){
-        TweenLite.to(bubbles, 0.3, {scale: 1});
+
+        TweenMax.to(bubbles, 0.3, {scale: 1});
         moveIndic( ($(this).parents('li').position().left + $(this).parents('li').width()/2) - indicatorSemiWidth, 0.6 );
-        activateSheep($(this).parents('li').index());
+        activateSheep( $(this).parents('li').index() );
+
     }).on('mouseleave focusout', 'a', function(){
-        current.length ? moveIndic( current.data('x'), 0.4 ) : TweenLite.to(bubbles, 0.3, {scale: 0});
+
+        current.length ? moveIndic( current.data('x'), 0.4 ) : TweenMax.to(bubbles, 0.3, {scale: 0});
 
     });
+
+
+    $(window).on('resize', throttle(function(){
+
+        requestAnimFrame( setIndic );
+
+    }, 60));
 }
