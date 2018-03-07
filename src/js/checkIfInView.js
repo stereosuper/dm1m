@@ -1,7 +1,7 @@
 var $ = require('jquery-slim');
 
 var throttle = require('./throttle.js');
-window.requestAnimFrame = require('./requestAnimFrame.js');
+const requestAnimFrame = require('./requestAnimFrame.js');
 
 module.exports = function(body, elts){
     var elt, eltContent, eltHeight, eltTop, eltBottom;

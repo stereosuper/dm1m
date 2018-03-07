@@ -19,6 +19,8 @@
         "module": false,
         "window": false,
         "document": false,
-        "console": false
+        "console": false,
+        "TweenMax": false,
+        "Power2": false
     }
 }

@@ -77,7 +77,7 @@ gulp.task('js', function () {
         .pipe(source('main.js'))
         .pipe(buffer())
         .pipe($.sourcemaps.init({loadMaps: true}))
-        .pipe($.uglify())
+        //.pipe($.uglify())
         .pipe($.sourcemaps.write('./'))
         .pipe(gulp.dest('dest/wp-content/themes/dm1m/js'))
         .pipe($.size({ title: 'js' }));

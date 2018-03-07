@@ -19,7 +19,7 @@
 			<div class='container'>
 				<div class='wrapper-logo'>
 					<a href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'>
-						<span class='wrapper-illus'>
+						<span class='wrapper-illus' id='logoIllus'>
 						 	<span class='eye left-eye'></span><span class='eye right-eye'></span><span class='mouth'></span>
 						</span>
 					</a>

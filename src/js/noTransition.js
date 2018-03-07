@@ -1,6 +1,6 @@
 var $ = require('jquery-slim');
 
-window.requestAnimFrame = require('./requestAnimFrame.js');
+const requestAnimFrame = require('./requestAnimFrame.js');
 var throttle = require('./throttle.js');
 
 var rtime;

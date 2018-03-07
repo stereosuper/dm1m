@@ -1,12 +1,12 @@
 /* Header */
 .header{
+    width: 100%;;
+    border-top: 25px solid $black;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;;
-    border-top: 25px solid $black;
+    z-index: 20;
     background: $white;
-    z-index: 10;
     .container{
         display: flex;
         align-items: flex-start;

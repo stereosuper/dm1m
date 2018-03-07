@@ -1,7 +1,9 @@
 
-var $ = require('jquery-slim');
+const $ = require('jquery-slim');
+const requestAnimFrame = require('./requestAnimFrame.js');
+const throttle = require('./throttle.js');
 
-module.exports = function(grid, throttle, requestAnimFrame) {
+module.exports = function(grid) {
 
   if (!grid.length) {
     return;
