@@ -14,13 +14,17 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-	
+
 		<header class='header' role='banner'>
 			<div class='container'>
 				<div class='wrapper-logo'>
 					<a href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'>
 						<span class='wrapper-illus' id='logoIllus'>
-						 	<span class='eye left-eye'></span><span class='eye right-eye'></span><span class='mouth'></span>
+						 	<span class='eye left-eye js-left-eye'></span>
+							<span class='eye right-eye js-right-eye'></span>
+							<span class='cheek left-cheek js-left-cheek'></span>
+							<span class='cheek right-cheek js-right-cheek'></span>
+							<span class='mouth js-mouth'></span>
 						</span>
 					</a>
 				</div>
@@ -47,7 +51,7 @@
                             <svg class='icon'><use xlink:href='#icon-facebook'></use></svg>
                         </a>
                     <?php } ?>
-                    
+
                 </div>
 			</div>
 		</header>

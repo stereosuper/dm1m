@@ -57,6 +57,53 @@
     &.right-eye{
         left: 42px;
     }
+    .badass & {
+      top: 37.5px;
+      background: url('../layoutImg/sheep-badass/angry-eye.svg') no-repeat 0 0 !important;
+      transform: scale(1.5) !important;
+      backface-visibility: hidden;
+    }
+}
+.cheek{
+    display: block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 47.5px;
+    background: url('../layoutImg/sheep-blushing/blush.svg') no-repeat 0 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0s ease, visibility 0s;
+    will-change: opacity;
+    &.left-cheek{
+        left: 8px;
+    }
+    &.right-cheek{
+        left: 43px;
+    }
+    .visible-cheeks & {
+      opacity: 1;
+      visibility: visible;
+      backface-visibility: hidden;
+      transition: opacity .3s ease-in, visibility 0s;
+    }
+    .badass & {
+      top: 53px !important;
+      background: url('../layoutImg/sheep-badass/i-will-find-you-beard.svg') no-repeat 0 0 !important;
+      opacity: 1;
+      visibility: visible;
+      backface-visibility: hidden;
+      transition: opacity 0s, visibility 0s !important;
+      &.left-cheek {
+        left: 6px;
+        transform: scale(1.5) !important;
+      }
+      &.right-cheek {
+        top: 52px !important;
+        left: 45px;
+        transform: scale(1.5) rotateZ(270deg) !important;
+      }
+    }
 }
 .mouth{
     display: block;
@@ -65,8 +112,14 @@
     position: absolute;
     top: 60px;
     left: 50%;
-    margin-left: -5px;
+    // margin-left: -5px;
     background: url('../layoutImg/mouth.svg') no-repeat 0 0;
+    background-position: center;
+    transform: translateX(-50%); // centering the mouth
+    backface-visibility: hidden;
+    .badass & {
+      background-image: url('../layoutImg/sheep-badass/i-will-kill-you-mouth.svg') !important;
+    }
 }
 
 .menu{

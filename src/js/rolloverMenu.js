@@ -13,7 +13,7 @@ module.exports = function( nav ){
     let current = nav.find('.current-menu-item')
     const bubbles = nav.find('.bubble');
     const indicator = nav.find('.js-indic'), indicatorSemiWidth = indicator.width()/2;
-    
+
     const illus = $('#logoIllus');
     const leftEye = illus.find('.left-eye'), rightEye = illus.find('.right-eye'), mouth = illus.find('.mouth');
 
@@ -61,19 +61,129 @@ module.exports = function( nav ){
     }
 
     function activateSheep( indexHovered ){
+        const logo = $('#logoIllus');
+        const leftEye = logo.find('.js-left-eye');
+        const rightEye = logo.find('.js-right-eye');
+        const leftCheek = logo.find('.js-left-cheek');
+        const rightCheek = logo.find('.js-right-cheek');
+        const mouth = logo.find('.js-mouth');
+
+        logo.removeClass('badass');
+
         switch( indexHovered ){
             case 0:
                 // new
+                // rougir lien home ou new
+                logo.addClass('visible-cheeks');
+
+                leftEye.css({
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
+                  transform: 'none',
+                });
+
+                rightEye.css({
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
+                  transform: 'none',
+                });
+
+                leftCheek.css({
+                  top: '47.5px',
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
+                  transform: 'scale(1)',
+                });
+
+                rightCheek.css({
+                  top: '47.5px',
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
+                  transform: 'scale(1)',
+                });
+
+                mouth.css({
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/oh-mouth.svg\')',
+                  height: '9px',
+                  transform: 'translateX(-50%) scale(1.4)',
+                });
                 break;
             case 1:
                 // projects
+                // wink
+                if(logo.hasClass('visible-cheeks')) {
+                  logo.removeClass('visible-cheeks');
+                }
+
+                leftEye.css({
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
+                });
+
+                rightEye.css({
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-wink/eye-wink.svg\')',
+                  transform: 'none',
+                });
+
+                mouth.css({
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/mouth.svg\')',
+                  transform: 'translateX(-50%)',
+                });
                 break;
             case 2:
                 // agency
+                // surprise
+                if(logo.hasClass('visible-cheeks')) {
+                  logo.removeClass('visible-cheeks');
+                }
+
+                leftEye.css({
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-surprise/round-eye.svg\')',
+                  transform: 'none',
+                });
+
+                rightEye.css({
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-surprise/pupil.svg\')',
+                  transform: 'scale(0.5)',
+                });
+
+                mouth.css({
+                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-surprise/surprised-mouth.svg\')',
+                  height: '9px',
+                  transform: 'translateX(-50%) scale(1.4)',
+                });
                 break;
             default:
                 break;
         }
+    }
+
+    function deactivateSheep() {
+      const logo = $('#logoIllus');
+      const leftEye = logo.find('.js-left-eye');
+      const rightEye = logo.find('.js-right-eye');
+      const leftCheek = logo.find('.js-left-cheek');
+      const rightCheek = logo.find('.js-right-cheek');
+      const mouth = logo.find('.js-mouth');
+
+      if ($('body').hasClass('error404')) {
+        logo.addClass('badass');
+
+      } else {
+        if(logo.hasClass('visible-cheeks')) {
+          logo.removeClass('visible-cheeks');
+        }
+
+        leftEye.css({
+          backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
+        });
+
+        rightEye.css({
+          backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
+          transform: 'none',
+        });
+
+        mouth.css({
+          backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/mouth.svg\')',
+          height: '10px',
+          transform: 'translateX(-50%) scale(1)',
+        });
+      }
     }
 
 
@@ -81,6 +191,9 @@ module.exports = function( nav ){
 
     setIndic();
 
+    if($('body').hasClass('error404')) {
+      $('#logoIllus').addClass('badass');
+    }
 
     nav.on('mouseenter focusin', 'a', function(){
 
@@ -92,6 +205,7 @@ module.exports = function( nav ){
 
         current.length ? moveIndic( current.data('x'), 0.4 ) : TweenMax.to(bubbles, 0.3, {scale: 0});
 
+        deactivateSheep();
     });
 
 
