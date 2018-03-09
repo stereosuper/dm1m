@@ -34,6 +34,11 @@
 							<span class='cheek right-cheek js-right-cheek'></span>
 							<span class='mouth js-mouth'></span>
 						</span>
+						<span>
+							<?php if ($hLogo = get_field('logo', 'option')):
+								echo wp_get_attachment_image($hLogo['ID'], 'full', '', array('class' => 'h-logo'));
+							endif; ?>
+						</span>
 					</a>
 				</div>
 
