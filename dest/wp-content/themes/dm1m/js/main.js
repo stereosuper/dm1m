@@ -16331,7 +16331,8 @@ module.exports = function (nav) {
     var bubbles = nav.find('.bubble');
     var indicator = nav.find('.js-indic'),
         indicatorSemiWidth = indicator.width() / 2;
-    var illus = $('.wrapper-logo .wrapper-illus');
+
+    var illus = $('#logoIllus');
     var leftEye = illus.find('.left-eye'),
         rightEye = illus.find('.right-eye'),
         mouth = illus.find('.mouth');
