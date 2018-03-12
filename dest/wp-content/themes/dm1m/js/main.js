@@ -16062,7 +16062,64 @@ module.exports = function (container, sheep, windowWidth, windowHeight) {
     }, 60));
 };
 
-},{"./requestAnimFrame.js":9,"./throttle.js":12,"gsap":1,"jquery-slim":3}],5:[function(require,module,exports){
+},{"./requestAnimFrame.js":10,"./throttle.js":13,"gsap":1,"jquery-slim":3}],5:[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery-slim');
+require('gsap');
+
+module.exports = function (burger) {
+
+  if (!burger.length) {
+    return;
+  }
+
+  var bubbles = $('#nav').find('.js-indic').eq(0).find('.bubble');
+
+  function cloudTransition() {
+    var bubbleArray = [bubbles.eq(2), bubbles.eq(1), bubbles.eq(0)];
+
+    TweenMax.staggerFromTo(bubbleArray, 0.3, {
+      y: -$(window).height(),
+      scale: 0
+    }, {
+      y: -$(window).height() / 2,
+      scale: 2,
+      delay: 0.05
+    }, 0.1);
+
+    TweenMax.to(bubbleArray, 0.3, { scale: 1.5, delay: 0.2, onComplete: function onComplete() {
+        TweenMax.to(bubbleArray, 0.6, { scale: 0.05, delay: 0.25 });
+        TweenMax.staggerTo(bubbleArray, 0.6, { y: $('#nav').height() }, 0.1);
+      }
+    });
+  }
+
+  function burgerClicked() {
+    $(this).toggleClass('burger-clicked');
+    if ($(this).hasClass('burger-clicked')) {
+      $('body').css({
+        overflowY: 'hidden'
+      });
+      $('#nav').addClass('show-nav');
+      $('#social').addClass('show-social');
+
+      cloudTransition();
+    } else {
+      $('body').css({
+        overflowY: 'visible'
+      });
+      $('#nav').removeClass('show-nav');
+      $('#social').removeClass('show-social');
+
+      cloudTransition();
+    }
+  }
+
+  burger.on('click', burgerClicked);
+};
+
+},{"gsap":1,"jquery-slim":3}],6:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -16142,7 +16199,7 @@ module.exports = function (grid) {
     });
 };
 
-},{"gsap":1,"jquery-slim":3}],6:[function(require,module,exports){
+},{"gsap":1,"jquery-slim":3}],7:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -16161,6 +16218,7 @@ $(function () {
     var methodo = require('./methodo.js');
     var animSheep = require('./animSheep.js');
     var mosaic = require('./mosaic.js');
+    var burger = require('./burger.js');
 
     var body = $('body');
     var windowWidth = window.outerWidth,
@@ -16182,6 +16240,7 @@ $(function () {
     gridHover($('#teamGrid'));
     methodo($('#methodo'));
     mosaic($('#grid'));
+    burger($('#burger'));
     animSheep($('#expert'), $('#sheep'), windowWidth, windowHeight);
 
     // Since script is loaded asynchronously, load event isn't always fired !!!
@@ -16197,7 +16256,7 @@ $(function () {
     // }, 60));
 });
 
-},{"./animSheep.js":4,"./gridHover.js":5,"./methodo.js":7,"./mosaic.js":8,"./rolloverMenu.js":10,"./slider.js":11,"gsap":1,"is-mobile":2,"jquery-slim":3}],7:[function(require,module,exports){
+},{"./animSheep.js":4,"./burger.js":5,"./gridHover.js":6,"./methodo.js":8,"./mosaic.js":9,"./rolloverMenu.js":11,"./slider.js":12,"gsap":1,"is-mobile":2,"jquery-slim":3}],8:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -16223,7 +16282,7 @@ module.exports = function (methodoWrapper) {
     });
 };
 
-},{"gsap":1,"jquery-slim":3}],8:[function(require,module,exports){
+},{"gsap":1,"jquery-slim":3}],9:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -16305,7 +16364,7 @@ module.exports = function (grid) {
   }, 60));
 };
 
-},{"./requestAnimFrame.js":9,"./throttle.js":12,"jquery-slim":3}],9:[function(require,module,exports){
+},{"./requestAnimFrame.js":10,"./throttle.js":13,"jquery-slim":3}],10:[function(require,module,exports){
 "use strict";
 
 module.exports = function () {
@@ -16314,7 +16373,7 @@ module.exports = function () {
        };
 }();
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -16504,31 +16563,37 @@ module.exports = function (nav) {
 
   current = current.length ? current : nav.find('.current_page_parent');
 
-  setIndic();
+  if (window.innerWidth > 580) {
+    setIndic();
+  }
 
   if ($('body').hasClass('error404')) {
     $('#logoIllus').addClass('badass');
   }
 
-  nav.on('mouseenter focusin', 'a', function () {
+  if (window.innerWidth > 580) {
+    nav.on('mouseenter focusin', 'a', function () {
 
-    TweenMax.to(bubbles, 0.3, { scale: 1 });
-    moveIndic($(this).parents('li').position().left + $(this).parents('li').width() / 2 - indicatorSemiWidth, 0.6);
-    activateSheep($(this).parents('li').index());
-  }).on('mouseleave focusout', 'a', function () {
+      TweenMax.to(bubbles, 0.3, { scale: 1 });
+      moveIndic($(this).parents('li').position().left + $(this).parents('li').width() / 2 - indicatorSemiWidth, 0.6);
 
-    current.length ? moveIndic(current.data('x'), 0.4) : TweenMax.to(bubbles, 0.3, { scale: 0 });
+      activateSheep($(this).parents('li').index());
+    }).on('mouseleave focusout', 'a', function () {
 
-    deactivateSheep();
-  });
+      current.length ? moveIndic(current.data('x'), 0.4) : TweenMax.to(bubbles, 0.3, { scale: 0 });
+
+      deactivateSheep();
+    });
+  }
 
   $(window).on('resize', throttle(function () {
-
-    requestAnimFrame(setIndic);
+    if (window.innerWidth > 580) {
+      requestAnimFrame(setIndic);
+    }
   }, 60));
 };
 
-},{"./requestAnimFrame.js":9,"./throttle.js":12,"gsap":1,"jquery-slim":3}],11:[function(require,module,exports){
+},{"./requestAnimFrame.js":10,"./throttle.js":13,"gsap":1,"jquery-slim":3}],12:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -16589,7 +16654,7 @@ module.exports = function (slider) {
     TweenMax.delayedCall(10, showSlide, [firstPuce.next()]);
 };
 
-},{"gsap":1,"jquery-slim":3}],12:[function(require,module,exports){
+},{"gsap":1,"jquery-slim":3}],13:[function(require,module,exports){
 "use strict";
 
 module.exports = function (callback, delay) {
@@ -16612,6 +16677,6 @@ module.exports = function (callback, delay) {
     };
 };
 
-},{}]},{},[6])
+},{}]},{},[7])
 
 //# sourceMappingURL=main.js.map

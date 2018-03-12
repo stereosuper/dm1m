@@ -41,7 +41,9 @@
 						</span>
 					</a>
 				</div>
-
+				<div id="burger" class="burger">
+					<span></span>
+				</div>
 				<nav class='menu' role='navigation' id='nav'>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'menu-main' ) ); ?>
 					<div class='menu-indicator top js-indic'>
@@ -51,21 +53,21 @@
 						<div class='bubble'></div><div class='bubble'></div><div class='bubble'></div>
 					</div>
 				</nav>
+				<div id="social" class='social'>
+					<?php if( $contactLink = get_field('footer_contact', 'option') ){ ?>
+						<a class='btn-social' href='<?php echo $contactLink['url']; ?>' target='<?php echo $contactLink['target']; ?>'>
+							<svg class='icon'><use xlink:href='#icon-mail'></use></svg>
+						</a>
+					<?php } ?>
 
-				<div class='social'>
-                    <?php if( $contactLink = get_field('footer_contact', 'option') ){ ?>
-                        <a class='btn-social' href='<?php echo $contactLink['url']; ?>' target='<?php echo $contactLink['target']; ?>'>
-                            <svg class='icon'><use xlink:href='#icon-mail'></use></svg>
-                        </a>
-                    <?php } ?>
+					<?php if( $fbLink = get_field('fb_link', 'option') ){ ?>
+						<a class='btn-social' href='<?php echo $fbLink['url']; ?>' target='<?php echo $fbLink['target']; ?>'>
+							<svg class='icon'><use xlink:href='#icon-facebook'></use></svg>
+						</a>
+					<?php } ?>
 
-                    <?php if( $fbLink = get_field('fb_link', 'option') ){ ?>
-                        <a class='btn-social' href='<?php echo $fbLink['url']; ?>' target='<?php echo $fbLink['target']; ?>'>
-                            <svg class='icon'><use xlink:href='#icon-facebook'></use></svg>
-                        </a>
-                    <?php } ?>
+				</div>
 
-                </div>
 			</div>
 		</header>
 

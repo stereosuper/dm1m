@@ -189,29 +189,34 @@ module.exports = function( nav ){
 
     current = current.length ? current : nav.find('.current_page_parent');
 
-    setIndic();
+    if (window.innerWidth > 580) {
+      setIndic();
+    }
 
     if($('body').hasClass('error404')) {
       $('#logoIllus').addClass('badass');
     }
 
-    nav.on('mouseenter focusin', 'a', function(){
+    if (window.innerWidth > 580) {
+      nav.on('mouseenter focusin', 'a', function(){
 
         TweenMax.to(bubbles, 0.3, {scale: 1});
         moveIndic( ($(this).parents('li').position().left + $(this).parents('li').width()/2) - indicatorSemiWidth, 0.6 );
+
         activateSheep( $(this).parents('li').index() );
 
-    }).on('mouseleave focusout', 'a', function(){
+      }).on('mouseleave focusout', 'a', function(){
 
         current.length ? moveIndic( current.data('x'), 0.4 ) : TweenMax.to(bubbles, 0.3, {scale: 0});
 
         deactivateSheep();
-    });
+      });
+    }
 
 
     $(window).on('resize', throttle(function(){
-
+      if (window.innerWidth > 580) {
         requestAnimFrame( setIndic );
-
+      }
     }, 60));
 }
