@@ -31,7 +31,7 @@
     left: 0;
     opacity: 0;
     z-index: 2;
-    pointer-events: none;    
+    pointer-events: none;
     .no-js &{
         transition: $transition;
         background-color: rgba($primary, 0.85);
@@ -54,4 +54,57 @@
         letter-spacing: 1px;
         text-transform: uppercase;
     }
+}
+
+@media (max-width: $desktop-small) {
+  .team-grid {
+    .surname {
+      font-size: 3.25rem;
+    }
+    .name {
+      margin: 10px 0;
+      font-size: 2rem;
+    }
+    .job {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .team-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    .member {
+      max-width: 50%;
+      margin: 0;
+    }
+    .surname {
+      font-size: 3.6rem;
+    }
+    .name {
+      margin: 10px 0;
+      font-size: 2.5rem;
+    }
+    .job {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: $phone) {
+  .team-grid {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    .member {
+      width: 100%;
+      max-width: none;
+    }
+  }
+}
+
+@media (max-width: $phone-small) {
+  .team-grid {
+    // display: none;
+  }
 }
