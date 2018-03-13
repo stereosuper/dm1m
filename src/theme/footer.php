@@ -6,6 +6,12 @@
                 <div class='content-top'>
                     <div class='container'>
                         <div class='info' itemscope itemtype='http://schema.org/Organization'>
+                          <div id='small-cloud' class='small-cloud'>
+                              <p>Contactez-nous !</p>
+                              <i class='bubble'></i>
+                              <i class='bubble'></i>
+                              <i class='bubble'></i>
+                          </div>
                             <h4 itemprop='name'><?php the_field('footer_title', 'option'); ?></h4>
                             <?php $address = get_field('footer_address', 'option'); ?>
                             <div class='wrapper-contact'>
@@ -16,8 +22,8 @@
                             </div>
                             <div class='email' itemprop='email'><?php the_field('footer_mail', 'option'); ?></div>
                             <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
-                            
-                                <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>"><?php echo $contactLink['title']; ?></a> 
+
+                                <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>"><?php echo $contactLink['title']; ?></a>
 
                             <?php } ?>
                         </div>
@@ -61,6 +67,6 @@
                 </symbol>
             </defs>
         </svg>
-        
+
         </body>
     </html>

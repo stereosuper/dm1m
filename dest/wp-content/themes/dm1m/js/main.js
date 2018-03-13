@@ -16062,7 +16062,7 @@ module.exports = function (container, sheep, windowWidth, windowHeight) {
     }, 60));
 };
 
-},{"./requestAnimFrame.js":10,"./throttle.js":13,"gsap":1,"jquery-slim":3}],5:[function(require,module,exports){
+},{"./requestAnimFrame.js":10,"./throttle.js":14,"gsap":1,"jquery-slim":3}],5:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -16219,6 +16219,7 @@ $(function () {
     var animSheep = require('./animSheep.js');
     var mosaic = require('./mosaic.js');
     var burger = require('./burger.js');
+    var smallCloudAnimation = require('./smallCloudAnimation.js');
 
     var body = $('body');
     var windowWidth = window.outerWidth,
@@ -16241,6 +16242,7 @@ $(function () {
     methodo($('#methodo'));
     mosaic($('#grid'));
     burger($('#burger'));
+    smallCloudAnimation($('#small-cloud'));
     animSheep($('#expert'), $('#sheep'), windowWidth, windowHeight);
 
     // Since script is loaded asynchronously, load event isn't always fired !!!
@@ -16256,7 +16258,7 @@ $(function () {
     // }, 60));
 });
 
-},{"./animSheep.js":4,"./burger.js":5,"./gridHover.js":6,"./methodo.js":8,"./mosaic.js":9,"./rolloverMenu.js":11,"./slider.js":12,"gsap":1,"is-mobile":2,"jquery-slim":3}],8:[function(require,module,exports){
+},{"./animSheep.js":4,"./burger.js":5,"./gridHover.js":6,"./methodo.js":8,"./mosaic.js":9,"./rolloverMenu.js":11,"./slider.js":12,"./smallCloudAnimation.js":13,"gsap":1,"is-mobile":2,"jquery-slim":3}],8:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -16364,7 +16366,7 @@ module.exports = function (grid) {
   }, 60));
 };
 
-},{"./requestAnimFrame.js":10,"./throttle.js":13,"jquery-slim":3}],10:[function(require,module,exports){
+},{"./requestAnimFrame.js":10,"./throttle.js":14,"jquery-slim":3}],10:[function(require,module,exports){
 "use strict";
 
 module.exports = function () {
@@ -16593,7 +16595,7 @@ module.exports = function (nav) {
   }, 60));
 };
 
-},{"./requestAnimFrame.js":10,"./throttle.js":13,"gsap":1,"jquery-slim":3}],12:[function(require,module,exports){
+},{"./requestAnimFrame.js":10,"./throttle.js":14,"gsap":1,"jquery-slim":3}],12:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -16655,6 +16657,44 @@ module.exports = function (slider) {
 };
 
 },{"gsap":1,"jquery-slim":3}],13:[function(require,module,exports){
+'use strict';
+
+var $ = require('jquery-slim');
+require('gsap');
+
+module.exports = function (cloud) {
+
+  if (!cloud.length) {
+    return;
+  }
+
+  function animateCloudIn() {
+    var bubbles = cloud.find('.bubble');
+    TweenMax.fromTo(bubbles, 0.6, {
+      scaleX: 1,
+      scaleY: 1,
+      scaleZ: 0
+    }, {
+      scaleX: 1.1,
+      scaleY: 1.1,
+      scaleZ: 0,
+      ease: Back.easeOut.config(15)
+    });
+  }
+
+  function animateCloudOut() {
+    var bubbles = cloud.find('.bubble');
+    TweenMax.to(bubbles, 0.6, {
+      scaleX: 1,
+      scaleY: 1,
+      scaleZ: 0
+    });
+  }
+
+  cloud.hover(animateCloudIn, animateCloudOut);
+};
+
+},{"gsap":1,"jquery-slim":3}],14:[function(require,module,exports){
 "use strict";
 
 module.exports = function (callback, delay) {

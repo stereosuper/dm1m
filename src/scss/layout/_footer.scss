@@ -21,6 +21,14 @@
     address{
         font-style: normal;
     }
+    .info {
+      position: relative;
+      .small-cloud {
+        top: 0;
+        left: 80%;
+        transform: translateY(-100%);
+      }
+    }
 }
 .wrapper-contact, .email{
     font-family: $moon;
@@ -58,4 +66,16 @@
         letter-spacing: 1px;
         color: $white;
     }
+}
+
+@media (max-width: $phone) {
+  .footer {
+    .info {
+      .small-cloud {
+        top: -25%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+      }
+    }
+  }
 }
