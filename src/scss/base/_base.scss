@@ -29,7 +29,7 @@ body{
 }
 
 main{
-    padding: 100px 0 200px;
+    padding: 100px 0 150px;
     overflow: hidden;
 }
 
@@ -199,6 +199,7 @@ dd{
 img{
     max-width: 100%;
     height: auto;
+    // max-height: 50vh;
     .wrapper-content &{
         width: 100%;
         margin-bottom: 25px;
@@ -330,7 +331,23 @@ a{
     }
   }
   main {
-    padding: 140px 0 200px;
+    padding: 140px 0 50px;
+  }
+  img{
+    .wrapper-content.container-small &{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+  }
+}
+
+@media(max-width: $phone){
+  h1 {
+    font-size: 4rem;
+    &.small {
+      font-size: 3.5rem;
+    }
   }
   img{
     .wrapper-content.container-small &{

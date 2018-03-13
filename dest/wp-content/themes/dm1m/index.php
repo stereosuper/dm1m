@@ -34,7 +34,6 @@
 	<?php if ( have_posts() ) : ?>
 
         <div id='grid' class="wrapper-grid">
-          <?php for ($index=0; $index < 12; $index++) : ?>
             <?php $counting = 1;
                 while ( have_posts() ) : the_post();
                 $grid_img = get_field('grid_img');
@@ -83,21 +82,7 @@
 
               <?php
                 endwhile;
-              endfor;
             ?>
-
-
-
-            <!--
-            <?php for ($i=0; $i < 24; $i++) { ?>
-
-                <article>
-                    <h2><?php echo $i+1; ?></h2>
-                </article>
-
-            <?php } ?>
-            -->
-
         </div>
 
 

@@ -77,29 +77,29 @@ module.exports = function( nav ){
                 logo.addClass('visible-cheeks');
 
                 leftEye.css({
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
                   transform: 'none',
                 });
 
                 rightEye.css({
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
                   transform: 'none',
                 });
 
                 leftCheek.css({
                   top: '47.5px',
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
                   transform: 'scale(1)',
                 });
 
                 rightCheek.css({
                   top: '47.5px',
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
                   transform: 'scale(1)',
                 });
 
                 mouth.css({
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-blushing/oh-mouth.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/oh-mouth.svg\')',
                   height: '9px',
                   transform: 'translateX(-50%) scale(1.4)',
                 });
@@ -112,16 +112,16 @@ module.exports = function( nav ){
                 }
 
                 leftEye.css({
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
                 });
 
                 rightEye.css({
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-wink/eye-wink.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-wink/eye-wink.svg\')',
                   transform: 'none',
                 });
 
                 mouth.css({
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/mouth.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/mouth.svg\')',
                   transform: 'translateX(-50%)',
                 });
                 break;
@@ -133,17 +133,17 @@ module.exports = function( nav ){
                 }
 
                 leftEye.css({
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-surprise/round-eye.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/round-eye.svg\')',
                   transform: 'none',
                 });
 
                 rightEye.css({
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-surprise/pupil.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/pupil.svg\')',
                   transform: 'scale(0.5)',
                 });
 
                 mouth.css({
-                  backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/sheep-surprise/surprised-mouth.svg\')',
+                  backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/surprised-mouth.svg\')',
                   height: '9px',
                   transform: 'translateX(-50%) scale(1.4)',
                 });
@@ -170,16 +170,16 @@ module.exports = function( nav ){
         }
 
         leftEye.css({
-          backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
+          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
         });
 
         rightEye.css({
-          backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
+          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
           transform: 'none',
         });
 
         mouth.css({
-          backgroundImage: 'url(\'wp-content/themes/dm1m/layoutImg/mouth.svg\')',
+          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/mouth.svg\')',
           height: '10px',
           transform: 'translateX(-50%) scale(1)',
         });

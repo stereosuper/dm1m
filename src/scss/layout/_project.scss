@@ -151,3 +151,27 @@
         color: $white;
     }
 }
+@media (max-width: $phone-small) {
+  .wrapper-title{
+    .actions{
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, 100%);
+        & > a {
+          margin-left: 32.5px;
+        }
+        .grid-project {
+          width: 20px;
+          height: 20px;
+        }
+        .next-project, .prev-project {
+          width: 16.67px;
+          height: 20px;
+        }
+    }
+  }
+  .wrapper-content{
+    margin-top: 50px;
+  }
+}

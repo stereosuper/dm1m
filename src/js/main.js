@@ -30,8 +30,8 @@ $(function(){
         menuHover( $('#nav') );
     }
 
-    isMobile.any ? body.addClass('is-mobile') : body.addClass('is-desktop');
-    // isMobile.any ? body.addClass('is-mobile') : body.addClass('is-mobile');
+    isMobile() ? body.addClass('is-mobile') : body.addClass('is-desktop');
+
     slider($('#newsSlider'));
     gridHover($('#grid'));
     gridHover($('#teamGrid'));

@@ -206,9 +206,6 @@
 @media (max-width: $desktop-small) {
   .wrapper-logo {
       a {
-          display: inline-flex;
-          flex-direction: column;
-          align-items: center;
           .h-logo {
             display: none;
           }
@@ -255,6 +252,13 @@
     // Make a beatiful burger menu
     .header {
       background-color: transparent;
+    }
+    .wrapper-logo {
+      a {
+        .h-logo {
+          display: inline-block;
+        }
+      }
     }
     .burger {
       display: block;
