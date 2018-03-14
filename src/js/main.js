@@ -17,6 +17,7 @@ $(function(){
     const mosaic = require('./mosaic.js');
     const burger = require('./burger.js');
     const smallCloudAnimation = require('./smallCloudAnimation.js');
+    const moreSheepBox = require('./moreSheepBox.js');
 
     const body = $('body');
     let windowWidth = window.outerWidth, windowHeight = $(window).height();
@@ -38,9 +39,11 @@ $(function(){
     gridHover($('#teamGrid'));
     methodo($('#methodo'));
     mosaic($('#grid'));
+    animSheep($('#expert'), $('#sheep'), windowWidth, windowHeight);
     burger($('#burger'));
-    smallCloudAnimation($('#small-cloud'));
-    animSheep( $('#expert'), $('#sheep'), windowWidth, windowHeight );
+    smallCloudAnimation($('#contact-cloud'));
+    smallCloudAnimation($('#more-cloud'));
+    moreSheepBox($('#more'));
 
     // Since script is loaded asynchronously, load event isn't always fired !!!
     document.readyState === 'complete' ? loadHandler() : $(window).on('load', loadHandler);

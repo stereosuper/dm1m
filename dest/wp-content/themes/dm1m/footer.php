@@ -6,12 +6,17 @@
                 <div class='content-top'>
                     <div class='container'>
                         <div class='info' itemscope itemtype='http://schema.org/Organization'>
-                          <div id='small-cloud' class='small-cloud'>
-                              <p>Contactez-nous !</p>
-                              <i class='bubble'></i>
-                              <i class='bubble'></i>
-                              <i class='bubble'></i>
-                          </div>
+                          <?php if($contactLink = get_field('footer_contact', 'option')) : ?>
+                          <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>">
+                            <div id='contact-cloud' class='small-cloud'>
+                              <div class="hover-me js-hover-me"></div>
+                              <p><?php echo $contactLink['title']; ?></p>
+                              <i class='bubble js-bubble'></i>
+                              <i class='bubble js-bubble'></i>
+                              <i class='bubble js-bubble'></i>
+                            </div>
+                          </a>
+                        <?php endif; ?>
                             <h4 itemprop='name'><?php the_field('footer_title', 'option'); ?></h4>
                             <?php $address = get_field('footer_address', 'option'); ?>
                             <div class='wrapper-contact'>
@@ -21,11 +26,6 @@
                                 <span>&nbsp;-&nbsp;<span itemprop='telephone'><?php the_field('footer_phone', 'option'); ?></span></span>
                             </div>
                             <div class='email' itemprop='email'><?php the_field('footer_mail', 'option'); ?></div>
-                            <?php if($contactLink = get_field('footer_contact', 'option')){ ?>
-
-                                <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>"><?php echo $contactLink['title']; ?></a>
-
-                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -64,6 +64,10 @@
                 <symbol id='icon-facebook' viewBox='0 0 16 28'>
                     <title>Facebook</title>
                     <path d='M14.984 0.187v4.125h-2.453c-1.922 0-2.281 0.922-2.281 2.25v2.953h4.578l-0.609 4.625h-3.969v11.859h-4.781v-11.859h-3.984v-4.625h3.984v-3.406c0-3.953 2.422-6.109 5.953-6.109 1.687 0 3.141 0.125 3.563 0.187z'></path>
+                </symbol>
+                <symbol id="icon-hoove" viewBox="0 0 28 28">
+                  <title>hoove</title>
+                  <path d="M14 14l-14-14v28h28v-28l-14 14z"></path>
                 </symbol>
             </defs>
         </svg>

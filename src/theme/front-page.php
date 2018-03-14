@@ -18,15 +18,15 @@
 
                 <div class='slider-title'>
                     <?php for ($i=0, $loopMax = count($news); $i < $loopMax; $i++) { ?>
-                            
+
                         <h2 data-slide='<?php echo $i ?>' class='h1 <?php if($i === 0) echo "active" ?>'><?php echo get_the_title($news[$i]); ?></h2>
 
                     <?php } ?>
                 </div>
-                
+
                 <div class='slider-subtitle'>
                     <?php for ($i=0, $loopMax = count($news); $i < $loopMax; $i++) { ?>
-                            
+
                         <h3 data-slide='<?php echo $i ?>' class='h2 <?php if($i === 0) echo "active" ?>'><?php the_field('subtitle', $news[$i]); ?></h3>
 
                     <?php } ?>
@@ -35,7 +35,7 @@
                 <div class='slider-news'>
                     <div class='bullets'>
                         <?php for ($i=0, $loopMax = count($news); $i < $loopMax; $i++) { ?>
-                            
+
                             <span data-slide='<?php echo $i ?>' class='bullet <?php if($i === 0) echo "active" ?>'></span>
 
                         <?php } ?>
@@ -50,18 +50,18 @@
                             $field = get_field('grid_img', $news[$i]);
                             $img = wp_get_attachment_image_src( $field['h-rect'], 'full' );
                         ?>
-                            
+
                             <div data-slide='<?php echo $i ?>' class='slide <?php if($i === 0) echo "active" ?>' style='background-image: url(<?php echo $img[0]; ?>);'>
                                 <a href="<?php echo get_permalink($news[$i]); ?>"></a>
-                            
+
                             </div>
 
                         <?php } ?>
                     </div>
-                    
+
                 </div>
 
-            </div>            
+            </div>
 
         <?php
             endif;
@@ -72,12 +72,59 @@
         </div>
 
 
-		
+
 	<?php else : ?>
-				
-		
+
+
 
 	<?php endif; ?>
+	<div id="more" class="more">
+		<div class="left-legs js-legs">
+			<span class="leg"></span>
+			<span class="leg"></span>
+			<span class="leg"></span>
+			<span class="leg cotton"></span>
+			<span class="leg cotton"></span>
+			<span class="leg cotton">
+				<svg class="icon icon-hoove"><use xlink:href="#icon-hoove"></use></svg>
+			</span>
+			<span class="leg cotton">
+				<svg class="icon icon-hoove"><use xlink:href="#icon-hoove"></use></svg>
+			</span>
+			<span class="leg"></span>
+			<span class="leg"></span>
+		</div>
+		<div class="box">
+			<?php if($agencyLink = get_field('agency_link', 'option')) : ?>
+				<a href="<?php echo $agencyLink['url'] ?>" target="<?php echo $agencyLink['target'] ?>">
+					<div id='more-cloud' class='small-cloud'>
+						<div class="hover-me js-hover-me"></div>
+						<p>
+							<?php the_field('agency_label', 'option') ?>
+						</p>
+						<i class='bubble js-bubble'></i>
+						<i class='bubble js-bubble'></i>
+						<i class='bubble js-bubble'></i>
+					</div>
+				</a>
+			<?php endif; ?>
+		</div>
+		<div class="right-legs js-legs">
+			<span class="leg"></span>
+			<span class="leg"></span>
+			<span class="leg cotton">
+				<svg class="icon icon-hoove"><use xlink:href="#icon-hoove"></use></svg>
+			</span>
+			<span class="leg cotton"></span>
+			<span class="leg"></span>
+			<span class="leg cotton">
+				<svg class="icon icon-hoove"><use xlink:href="#icon-hoove"></use></svg>
+			</span>
+			<span class="leg cotton"></span>
+			<span class="leg"></span>
+			<span class="leg"></span>
+		</div>
+	</div>
 
 </div>
 

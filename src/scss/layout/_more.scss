@@ -1,0 +1,138 @@
+.more {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 5vh 0;
+  .left-legs,
+  .right-legs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 30%;
+  }
+  .leg {
+    display: inline-block;
+    position: relative;
+    width: 2.5%;
+    height: 10vh;
+    border-radius: 2.5vw;
+    background-color: $primary;
+    &.cotton {
+      &::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 1.75vw;
+        height: 1.75vw;
+        top: 0;
+        left: 50%;
+        border-radius: 50%;
+        background-color: $grey;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .icon-hoove {
+      position: absolute;
+      width: 1.85vw;
+      height: 1.85vw;
+      top: 0;
+      left: 50%;
+      transform: translate(-47.5%, -100%);
+      use {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .left-legs {
+    .leg {
+      &:nth-of-type(1) {
+        height: 3.33vh;
+      }
+      &:nth-of-type(2) {
+        height: 5vh;
+      }
+      &:nth-of-type(3) {
+        height: 3.33vh;
+      }
+      &:nth-of-type(4) {
+        height: 6.66vh;
+      }
+      &:nth-of-type(5) {
+        height: 5vh;
+      }
+      &:nth-of-type(7) {
+        height: 5vh;
+      }
+      &:nth-of-type(8) {
+        height: 3.33vh;
+      }
+      &:nth-of-type(9) {
+        height: 3.33vh;
+      }
+    }
+  }
+  .right-legs {
+    .leg {
+      &:nth-of-type(1) {
+        height: 6.66vh;
+      }
+      &:nth-of-type(2) {
+        height: 3.33vh;
+      }
+      &:nth-of-type(3) {
+        height: 5vh;
+      }
+      &:nth-of-type(4) {
+        height: 6.66vh;
+      }
+      &:nth-of-type(5) {
+        height: 3.33vh;
+      }
+      &:nth-of-type(7) {
+        height: 5vh;
+      }
+      &:nth-of-type(8) {
+        height: 3.33vh;
+      }
+      &:nth-of-type(9) {
+        height: 3.33vh;
+      }
+    }
+  }
+  .box {
+    position: relative;
+    width: 15%;
+    background-image: url('../layoutImg/head-box.svg');
+    background-size: contain;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    &::before {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+    .small-cloud {
+      top: 4vw;
+      left: 50%;
+      transform: translate(-47.5%, -100%);
+      p {
+        min-width: 100px;
+        margin: .5em;
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .more {
+    .left-legs,
+    .right-legs {
+      display: none;
+    }
+  }
+}

@@ -8,7 +8,7 @@ module.exports = function(cloud) {
   }
 
   function animateCloudIn() {
-    let bubbles = cloud.find('.bubble');
+    let bubbles = cloud.find('.js-bubble');
     TweenMax.fromTo(bubbles, 0.6, {
       scaleX: 1,
       scaleY: 1,
@@ -22,7 +22,7 @@ module.exports = function(cloud) {
   }
 
   function animateCloudOut() {
-    let bubbles = cloud.find('.bubble');
+    let bubbles = cloud.find('.js-bubble');
     TweenMax.to(bubbles, 0.6, {
       scaleX: 1,
       scaleY: 1,
@@ -30,5 +30,5 @@ module.exports = function(cloud) {
     });
   }
 
-  cloud.hover(animateCloudIn, animateCloudOut);
+  cloud.find('.js-hover-me').hover(animateCloudIn, animateCloudOut);
 };

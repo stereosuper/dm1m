@@ -1,12 +1,23 @@
 .small-cloud {
   position: absolute;
+  min-width: 100px;
   top: -200%;
   z-index: 1;
   border-radius: 50%;
+  .hover-me {
+    position: absolute;
+    top: -35%;
+    right: -10%;
+    bottom: -20%;
+    left: -10%;
+    border-radius: 50%;
+    z-index: 3;
+  }
   p {
     font-family: $aromatica-script;
     font-size: 3rem;
     text-shadow: -1px 2px 1px $primary;
+    word-break: keep-all;
     backface-visibility: hidden;
     transform: rotateZ(-16.180deg);
     z-index: 2;
@@ -97,6 +108,22 @@
       bottom: 0;
       left: 0;
       transform: translate(-75%, 15%) rotateZ(65deg);
+    }
+  }
+}
+
+@media (max-width: $desktop-small) {
+  .small-cloud {
+    p {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@media (max-width: $phone-small) {
+  .small-cloud {
+    p {
+      font-size: 2rem;
     }
   }
 }

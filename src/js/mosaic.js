@@ -1,4 +1,3 @@
-
 const $ = require('jquery-slim');
 const requestAnimFrame = require('./requestAnimFrame.js');
 const throttle = require('./throttle.js');
