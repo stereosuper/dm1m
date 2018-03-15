@@ -15,16 +15,38 @@ module.exports = function(more) {
 
   function moveCloudUp() {
     let cloud = $('#more-cloud');
+    let bubbles = cloud.find('.js-bubble');
+
     TweenMax.to(cloud, 1.6, {
-      y: -cloud.innerHeight() - ($(window).innerHeight() / 100 * 3),
+      y: -cloud.innerHeight() - ($(window).innerHeight() / 100 * 5),
+      ease: Power4.easeOut,
+    });
+
+    TweenMax.fromTo(bubbles, 1.6, {
+      scaleX: 1,
+      scaleY: 1,
+    }, {
+      scaleX: 1.2,
+      scaleY: 1.2,
       ease: Power4.easeOut,
     });
   }
 
   function moveCloudDown() {
     let cloud = $('#more-cloud');
+    let bubbles = cloud.find('.js-bubble');
+
     TweenMax.to(cloud, 1.6, {
       y: -cloud.innerHeight(),
+      ease: Power4.easeOut,
+    });
+
+    TweenMax.fromTo(bubbles, 1.6, {
+      scaleX: 1.2,
+      scaleY: 1.2,
+    }, {
+      scaleX: 1,
+      scaleY: 1,
       ease: Power4.easeOut,
     });
   }
@@ -36,8 +58,8 @@ module.exports = function(more) {
     });
     TweenMax.set(legs, {transformOrigin: 'bottom center'});
 
-    const rule = CSSRulePlugin.getRule('.more .leg.cotton::before');
-    TweenMax.set(rule, {
+    const cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
+    TweenMax.set(cotton, {
       cssRule: {
         scaleX: 0,
         scaleY: 0,
@@ -58,7 +80,7 @@ module.exports = function(more) {
       delay: 0.3,
     }, 0.05,
     () => {
-      TweenMax.to(rule, 0.3, {
+      TweenMax.to(cotton, 0.6, {
         cssRule: {
           scaleX: 1,
           scaleY: 1,
@@ -67,7 +89,8 @@ module.exports = function(more) {
         onComplete: () => {
           TweenMax.to(hooves, 0.6, {
             opacity: 1,
-            yPercent: 0,
+            y: 0,
+            yPercent: -100,
             ease: Power4.easeOut,
           });
         }
@@ -146,10 +169,10 @@ module.exports = function(more) {
 
   function resized() {
     let legs = $('.js-legs').find('.leg');
-    const rule = CSSRulePlugin.getRule('.more .leg.cotton::before');
+    const cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
     const hooves = legs.find('.icon-hoove');
 
-    TweenMax.set(rule, {
+    TweenMax.set(cotton, {
       cssRule: {
         x: 0,
         xPercent: -50,
@@ -158,7 +181,9 @@ module.exports = function(more) {
 
     TweenMax.set(hooves, {
       x: 0,
+      y: 0,
       xPercent: -50,
+      yPercent: -100,
     });
   }
 

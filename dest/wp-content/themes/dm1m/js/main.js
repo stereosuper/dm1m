@@ -18007,128 +18007,225 @@ var throttle = require('./throttle.js');
 
 module.exports = function (container, sheep, windowWidth, windowHeight) {
 
-    if (!container.length || !sheep.length) return;
+  if (!container.length || !sheep.length) return;
 
-    var x = void 0,
-        y = void 0,
-        mouseX = void 0,
-        mouseY = void 0,
-        distance = void 0,
-        rad = void 0,
-        pupil = void 0;
-    var eyeLeft = container.find('#eyeLeft'),
-        eyeRight = container.find('#eyeRight');
+  var isIE = '-ms-scroll-limit' in document.documentElement.style && '-ms-ime-align' in document.documentElement.style;
 
-    var legs = sheep.find('.js-leg'),
-        feet = sheep.find('.js-foot'),
-        forearms = sheep.find('.js-forearm'),
-        earLeft = sheep.find('#earLeft'),
-        earRight = sheep.find('#earRight');
+  var x = void 0,
+      y = void 0,
+      mouseX = void 0,
+      mouseY = void 0,
+      distance = void 0,
+      rad = void 0,
+      pupil = void 0;
+  var eyeLeft = container.find('#eyeLeft'),
+      eyeRight = container.find('#eyeRight');
 
-    function clamp(number, min, max) {
-        return Math.max(min, Math.min(number, max));
-    }
+  var legs = sheep.find('.js-leg'),
+      feet = sheep.find('.js-foot'),
+      forearms = sheep.find('.js-forearm'),
+      earLeft = sheep.find('#earLeft'),
+      earRight = sheep.find('#earRight');
 
-    function setSheepLegs() {
-        TweenMax.set([legs.eq(0), forearms.eq(3)], { transformOrigin: '100% 0' });
-        TweenMax.set(feet.eq(0), { transformOrigin: '50% -90%' });
-        TweenMax.set(feet.eq(1), { transformOrigin: '0 -70%' });
-        TweenMax.set(legs.eq(2), { transformOrigin: '-20% -80%' });
-        TweenMax.set(feet.eq(2), { transformOrigin: '-50% -50%' });
-        TweenMax.set(legs.eq(3), { transformOrigin: '120% -80%' });
-        TweenMax.set(feet.eq(3), { transformOrigin: '145% -45%' });
-        TweenMax.set(earLeft, { transformOrigin: '100% 0' });
-    }
+  function clamp(number, min, max) {
+    return Math.max(min, Math.min(number, max));
+  }
 
-    function resizeHandler() {
-        windowWidth = window.outerWidth;
-        windowHeight = $(window).height();
-
-        setSheepLegs();
-    }
-
-    function moveEye(eye, e) {
-        pupil = eye.find('.js-pupil');
-
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        x = mouseX - windowWidth / 2;
-        y = mouseY - windowHeight / 2;
-        distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-        rad = Math.atan2(y, x);
-
-        TweenMax.to(pupil, 0.1, { x: clamp(distance * Math.cos(rad) / 28, -7, 7) + 'px', y: clamp(distance * Math.sin(rad) / 8, 2, 15) + 'px' });
-    }
-
-    setSheepLegs();
-
-    container.on('mouseenter', '.js-cloud', function () {
-
-        TweenMax.to(sheep, 0.25, { y: '-15px', ease: Power2.easeOut, onComplete: function onComplete() {
-                TweenMax.to(sheep, 0.1, { y: 0, ease: Power2.easeIn });
-            } });
-
-        TweenMax.to(earLeft, 0.3, { rotation: 40, ease: Power2.easeOut, onComplete: function onComplete() {
-                TweenMax.to(earLeft, 0.15, { rotation: 0, ease: Power2.easeIn });
-            } });
-        TweenMax.to(earRight, 0.3, { rotation: -40, ease: Power2.easeOut, onComplete: function onComplete() {
-                TweenMax.to(earRight, 0.15, { rotation: 0, ease: Power2.easeIn });
-            } });
-
-        switch ($(this).index()) {
-            case 0:
-
-                TweenMax.to(legs.eq(0), 0.3, { rotation: 41 });
-                TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, { rotation: 48 });
-
-                TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, { rotation: -48 });
-
-                TweenMax.to([forearms.eq(2), feet.eq(2)], 0.3, { rotation: 90 });
-
-                TweenMax.to(legs.eq(3), 0.3, { rotation: 90 });
-                TweenMax.to([forearms.eq(3), feet.eq(3)], 0.3, { rotation: -46 });
-                break;
-
-            case 1:
-
-                TweenMax.to(legs.eq(0), 0.3, { rotation: 90 });
-                TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, { rotation: 48 });
-
-                TweenMax.to(legs.eq(1), 0.3, { rotation: -90 });
-                TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, { rotation: -48 });
-
-                TweenMax.to(legs.eq(3), 0.3, { rotation: 90 });
-                break;
-
-            case 2:
-
-                TweenMax.to(legs.eq(0), 0.3, { rotation: 41 });
-                TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, { rotation: 48 });
-
-                TweenMax.to(legs.eq(1), 0.3, { rotation: -41 });
-                TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, { rotation: -48 });
-
-                TweenMax.to(legs.eq(2), 0.3, { rotation: -90 });
-                TweenMax.to([forearms.eq(2), feet.eq(2)], 0.3, { rotation: 90 });
-
-                TweenMax.to([forearms.eq(3), feet.eq(3)], 0.3, { rotation: -46 });
-                break;
-        }
-    }).on('mouseleave', '.js-cloud', function () {
-
-        TweenMax.to([legs, forearms, feet], 0.3, { rotation: 0 });
+  function setSheepLegs() {
+    TweenMax.set([legs.eq(0), forearms.eq(3)], {
+      transformOrigin: '100% 0'
+    });
+    TweenMax.set(feet.eq(0), {
+      transformOrigin: '50% -90%'
+    });
+    TweenMax.set(feet.eq(1), {
+      transformOrigin: '0% -70%'
+    });
+    TweenMax.set(legs.eq(2), {
+      transformOrigin: '-20% -80%'
+    });
+    TweenMax.set(feet.eq(2), {
+      transformOrigin: '-50% -50%'
+    });
+    TweenMax.set(legs.eq(3), {
+      transformOrigin: '120% -80%'
+    });
+    TweenMax.set(feet.eq(3), {
+      transformOrigin: '145% -45%'
+    });
+    TweenMax.set(earLeft, {
+      transformOrigin: '100% 0%'
     });
 
-    $(window).on('mousemove', function (e) {
+    console.log(forearms.eq(1));
 
-        e.preventDefault();
-        moveEye(eyeLeft, e);
-        moveEye(eyeRight, e);
-    }).on('resize', throttle(function () {
+    if (isIE) {
+      TweenMax.set(forearms.eq(0), {
+        transformOrigin: '0% 10%'
+      });
+      TweenMax.set(forearms.eq(1), {
+        transformOrigin: '0% 10%'
+      });
+      TweenMax.set(forearms.eq(2), {
+        transformOrigin: '7.5% 10%'
+      });
+      TweenMax.set(forearms.eq(3), {
+        transformOrigin: '100% 13.5%'
+      });
+    }
+  }
 
-        requestAnimFrame(resizeHandler);
-    }, 60));
+  function resizeHandler() {
+    windowWidth = window.outerWidth;
+    windowHeight = $(window).height();
+
+    setSheepLegs();
+  }
+
+  function moveEye(eye, e) {
+    pupil = eye.find('.js-pupil');
+
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    x = mouseX - windowWidth / 2;
+    y = mouseY - windowHeight / 2;
+    distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+    rad = Math.atan2(y, x);
+
+    TweenMax.to(pupil, 0.1, {
+      x: clamp(distance * Math.cos(rad) / 28, -7, 7) + 'px',
+      y: clamp(distance * Math.sin(rad) / 8, 2, 15) + 'px'
+    });
+  }
+
+  setSheepLegs();
+
+  container.on('mouseenter', '.js-cloud', function () {
+
+    TweenMax.to(sheep, 0.25, {
+      y: '-15px',
+      ease: Power2.easeOut,
+      onComplete: function onComplete() {
+        TweenMax.to(sheep, 0.1, {
+          y: 0,
+          ease: Power2.easeIn
+        });
+      }
+    });
+
+    TweenMax.to(earLeft, 0.3, {
+      rotation: 40,
+      ease: Power2.easeOut,
+      onComplete: function onComplete() {
+        TweenMax.to(earLeft, 0.15, {
+          rotation: 0,
+          ease: Power2.easeIn
+        });
+      }
+    });
+    TweenMax.to(earRight, 0.3, {
+      rotation: -40,
+      ease: Power2.easeOut,
+      onComplete: function onComplete() {
+        TweenMax.to(earRight, 0.15, {
+          rotation: 0,
+          ease: Power2.easeIn
+        });
+      }
+    });
+
+    switch ($(this).index()) {
+      case 0:
+
+        TweenMax.to(legs.eq(0), 0.3, {
+          rotation: 41
+        });
+        TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, {
+          rotation: 48
+        });
+
+        TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, {
+          rotation: -48
+        });
+
+        TweenMax.to([forearms.eq(2), feet.eq(2)], 0.3, {
+          rotation: 90
+        });
+
+        TweenMax.to(legs.eq(3), 0.3, {
+          rotation: 90
+        });
+        TweenMax.to([forearms.eq(3), feet.eq(3)], 0.3, {
+          rotation: -46
+        });
+        break;
+
+      case 1:
+
+        TweenMax.to(legs.eq(0), 0.3, {
+          rotation: 90
+        });
+        TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, {
+          rotation: 48
+        });
+
+        TweenMax.to(legs.eq(1), 0.3, {
+          rotation: -90
+        });
+        TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, {
+          rotation: -48
+        });
+
+        TweenMax.to(legs.eq(3), 0.3, {
+          rotation: 90
+        });
+        break;
+
+      case 2:
+
+        TweenMax.to(legs.eq(0), 0.3, {
+          rotation: 41
+        });
+        TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, {
+          rotation: 48
+        });
+
+        TweenMax.to(legs.eq(1), 0.3, {
+          rotation: -41
+        });
+        TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, {
+          rotation: -48
+        });
+
+        TweenMax.to(legs.eq(2), 0.3, {
+          rotation: -90
+        });
+        TweenMax.to([forearms.eq(2), feet.eq(2)], 0.3, {
+          rotation: 90
+        });
+
+        TweenMax.to([forearms.eq(3), feet.eq(3)], 0.3, {
+          rotation: -46
+        });
+        break;
+    }
+  }).on('mouseleave', '.js-cloud', function () {
+
+    TweenMax.to([legs, forearms, feet], 0.3, {
+      rotation: 0
+    });
+  });
+
+  $(window).on('mousemove', function (e) {
+
+    e.preventDefault();
+    moveEye(eyeLeft, e);
+    moveEye(eyeRight, e);
+  }).on('resize', throttle(function () {
+
+    requestAnimFrame(resizeHandler);
+  }, 60));
 };
 
 },{"./requestAnimFrame.js":13,"./throttle.js":17,"gsap":3,"jquery-slim":5}],7:[function(require,module,exports){
@@ -18376,16 +18473,38 @@ module.exports = function (more) {
 
   function moveCloudUp() {
     var cloud = $('#more-cloud');
+    var bubbles = cloud.find('.js-bubble');
+
     TweenMax.to(cloud, 1.6, {
-      y: -cloud.innerHeight() - $(window).innerHeight() / 100 * 3,
+      y: -cloud.innerHeight() - $(window).innerHeight() / 100 * 5,
+      ease: Power4.easeOut
+    });
+
+    TweenMax.fromTo(bubbles, 1.6, {
+      scaleX: 1,
+      scaleY: 1
+    }, {
+      scaleX: 1.2,
+      scaleY: 1.2,
       ease: Power4.easeOut
     });
   }
 
   function moveCloudDown() {
     var cloud = $('#more-cloud');
+    var bubbles = cloud.find('.js-bubble');
+
     TweenMax.to(cloud, 1.6, {
       y: -cloud.innerHeight(),
+      ease: Power4.easeOut
+    });
+
+    TweenMax.fromTo(bubbles, 1.6, {
+      scaleX: 1.2,
+      scaleY: 1.2
+    }, {
+      scaleX: 1,
+      scaleY: 1,
       ease: Power4.easeOut
     });
   }
@@ -18397,8 +18516,8 @@ module.exports = function (more) {
     });
     TweenMax.set(legs, { transformOrigin: 'bottom center' });
 
-    var rule = CSSRulePlugin.getRule('.more .leg.cotton::before');
-    TweenMax.set(rule, {
+    var cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
+    TweenMax.set(cotton, {
       cssRule: {
         scaleX: 0,
         scaleY: 0
@@ -18418,7 +18537,7 @@ module.exports = function (more) {
       ease: Power4.easeOut,
       delay: 0.3
     }, 0.05, function () {
-      TweenMax.to(rule, 0.3, {
+      TweenMax.to(cotton, 0.6, {
         cssRule: {
           scaleX: 1,
           scaleY: 1
@@ -18427,7 +18546,8 @@ module.exports = function (more) {
         onComplete: function onComplete() {
           TweenMax.to(hooves, 0.6, {
             opacity: 1,
-            yPercent: 0,
+            y: 0,
+            yPercent: -100,
             ease: Power4.easeOut
           });
         }
@@ -18505,10 +18625,10 @@ module.exports = function (more) {
 
   function resized() {
     var legs = $('.js-legs').find('.leg');
-    var rule = CSSRulePlugin.getRule('.more .leg.cotton::before');
+    var cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
     var hooves = legs.find('.icon-hoove');
 
-    TweenMax.set(rule, {
+    TweenMax.set(cotton, {
       cssRule: {
         x: 0,
         xPercent: -50
@@ -18517,7 +18637,9 @@ module.exports = function (more) {
 
     TweenMax.set(hooves, {
       x: 0,
-      xPercent: -50
+      y: 0,
+      xPercent: -50,
+      yPercent: -100
     });
   }
 
@@ -18923,24 +19045,24 @@ module.exports = function (cloud) {
 
   function animateCloudIn() {
     var bubbles = cloud.find('.js-bubble');
+
     TweenMax.fromTo(bubbles, 0.6, {
       scaleX: 1,
-      scaleY: 1,
-      scaleZ: 0
+      scaleY: 1
     }, {
       scaleX: 1.1,
       scaleY: 1.1,
-      scaleZ: 0,
       ease: Back.easeOut.config(15)
     });
   }
 
   function animateCloudOut() {
+    // TweenMax.set(bubbles, {willChange: 'auto'});
+
     var bubbles = cloud.find('.js-bubble');
     TweenMax.to(bubbles, 0.6, {
       scaleX: 1,
-      scaleY: 1,
-      scaleZ: 0
+      scaleY: 1
     });
   }
 
