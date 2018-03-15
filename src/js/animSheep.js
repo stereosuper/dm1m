@@ -26,7 +26,7 @@ module.exports = function(container, sheep, windowWidth, windowHeight) {
   }
 
   function setSheepLegs() {
-    TweenMax.set([legs.eq(0), forearms.eq(3)], {
+    TweenMax.set([legs.eq(0), forearms.eq(3), earLeft], {
       transformOrigin: '100% 0'
     });
     TweenMax.set(feet.eq(0), {
@@ -47,17 +47,9 @@ module.exports = function(container, sheep, windowWidth, windowHeight) {
     TweenMax.set(feet.eq(3), {
       transformOrigin: '145% -45%'
     });
-    TweenMax.set(earLeft, {
-      transformOrigin: '100% 0%'
-    });
-
-    console.log(forearms.eq(1));
 
     if (isIE) {
-      TweenMax.set(forearms.eq(0), {
-        transformOrigin: '0% 10%'
-      });
-      TweenMax.set(forearms.eq(1), {
+      TweenMax.set([forearms.eq(0), forearms.eq(1)], {
         transformOrigin: '0% 10%'
       });
       TweenMax.set(forearms.eq(2), {
@@ -145,13 +137,10 @@ module.exports = function(container, sheep, windowWidth, windowHeight) {
           rotation: -48
         });
 
-        TweenMax.to([forearms.eq(2), feet.eq(2)], 0.3, {
+        TweenMax.to([forearms.eq(2), feet.eq(2), legs.eq(3)], 0.3, {
           rotation: 90
         });
 
-        TweenMax.to(legs.eq(3), 0.3, {
-          rotation: 90
-        });
         TweenMax.to([forearms.eq(3), feet.eq(3)], 0.3, {
           rotation: -46
         });
@@ -159,7 +148,7 @@ module.exports = function(container, sheep, windowWidth, windowHeight) {
 
       case 1:
 
-        TweenMax.to(legs.eq(0), 0.3, {
+        TweenMax.to([legs.eq(0), legs.eq(3)], 0.3, {
           rotation: 90
         });
         TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, {
@@ -171,10 +160,6 @@ module.exports = function(container, sheep, windowWidth, windowHeight) {
         });
         TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, {
           rotation: -48
-        });
-
-        TweenMax.to(legs.eq(3), 0.3, {
-          rotation: 90
         });
         break;
 

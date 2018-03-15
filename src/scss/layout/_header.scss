@@ -17,6 +17,60 @@
 
 .burger {
   display: none;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 45px 0 0;
+  z-index: 2;
+  span {
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 30px;
+      height: 4px;
+      border-radius: 2px;
+      background-color: $black;
+      transition: transform .5s .3s cubic-bezier(.31,0,.07,1);
+    }
+    &:before {
+      top: 4px;
+      transform-origin: 0 0;
+    }
+    &:after {
+      bottom: 4px;
+      transform-origin: 100% 0;
+    }
+  }
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: $black;
+    transform: translate3d(0, -50%, 0);
+    transition: transform .3s cubic-bezier(.31,0,.07,1);
+  }
+  &.burger-clicked {
+    span {
+      &:before, &:after {
+        transform: scale3d(0, 1, 1);
+        transition: transform .5s cubic-bezier(.31,0,.07,1);
+      }
+    }
+    &:before, &:after {
+      transition: transform .3s .5s cubic-bezier(.31,0,.07,1);
+    }
+    &:before {
+      transform: rotateZ(45deg);
+    }
+    &:after {
+      transform: rotateZ(-45deg);
+    }
+  }
 }
 
 .social{
@@ -262,62 +316,6 @@
     }
     .burger {
       display: block;
-      position: relative;
-      width: 30px;
-      height: 30px;
-      margin: 45px 0 0;
-      z-index: 2;
-      span {
-        &::before, &::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          width: 30px;
-          height: 4px;
-          border-radius: 2px;
-          background-color: $black;
-          transition: transform .5s .3s cubic-bezier(.31,0,.07,1);
-          will-change: transform;
-        }
-        &::before {
-          top: 4px;
-          transform-origin: left;
-        }
-        &::after {
-          bottom: 4px;
-          transform-origin: right;
-        }
-      }
-      &::before, &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 30px;
-        height: 4px;
-        border-radius: 2px;
-        background-color: $black;
-        transform: translate3d(0, -50%, 0);
-        transition: transform .3s cubic-bezier(.31,0,.07,1);
-        will-change: transform;
-      }
-      &.burger-clicked {
-        span {
-          &::before, &::after {
-            transform: scale3d(0, 1, 1);
-            transition: transform .5s cubic-bezier(.31,0,.07,1)
-          }
-        }
-        &::before, &::after {
-          transition: transform .3s .5s cubic-bezier(.31,0,.07,1)
-        }
-        &::before {
-          transform: rotateZ(45deg);
-        }
-        &::after {
-          transform: rotateZ(-45deg);
-        }
-      }
     }
     .menu {
       position: absolute;

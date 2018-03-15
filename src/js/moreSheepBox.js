@@ -5,68 +5,66 @@ const requestAnimFrame = require('./requestAnimFrame.js');
 const throttle = require('./throttle.js');
 
 module.exports = function(more) {
-  let isUp = false;
-  let animated = false;
-  let wScroll = $(window).scrollTop();
-
   if (!more.length) {
     return;
   }
 
-  function moveCloudUp() {
-    let cloud = $('#more-cloud');
-    let bubbles = cloud.find('.js-bubble');
+  const cloud = $('#more-cloud');
+  const bubbles = cloud.find('.js-bubble');
+  const legs = $('.js-legs').find('.leg');
+  const hooves = legs.find('.icon-hoove');
+  const cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
 
+  let isUp = false;
+  let animated = false;
+  let wScroll = $(window).scrollTop();
+  let windowHeight = $(window).innerHeight();
+
+  function randomizeLegs() {
+    legs.sort(function() {
+      return 0.5 - Math.random();
+    });
+
+    TweenMax.set(legs, {transformOrigin: 'bottom center'});
+  }
+
+  function moveCloudUp() {
     TweenMax.to(cloud, 1.6, {
       y: -cloud.innerHeight() - ($(window).innerHeight() / 100 * 5),
       ease: Power4.easeOut,
     });
 
     TweenMax.fromTo(bubbles, 1.6, {
-      scaleX: 1,
-      scaleY: 1,
+      scale: 1,
     }, {
-      scaleX: 1.2,
-      scaleY: 1.2,
+      scale: 1.2,
       ease: Power4.easeOut,
     });
   }
 
   function moveCloudDown() {
-    let cloud = $('#more-cloud');
-    let bubbles = cloud.find('.js-bubble');
-
     TweenMax.to(cloud, 1.6, {
       y: -cloud.innerHeight(),
       ease: Power4.easeOut,
     });
 
     TweenMax.fromTo(bubbles, 1.6, {
-      scaleX: 1.2,
-      scaleY: 1.2,
+      scale: 1.2,
     }, {
-      scaleX: 1,
-      scaleY: 1,
+      scale: 1,
       ease: Power4.easeOut,
     });
   }
 
   function legsUp() {
-    let legs = $('.js-legs').find('.leg');
-    legs.sort(() => {
-      return 0.5 - Math.random();
-    });
-    TweenMax.set(legs, {transformOrigin: 'bottom center'});
+    randomizeLegs();
 
-    const cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
     TweenMax.set(cotton, {
       cssRule: {
-        scaleX: 0,
-        scaleY: 0,
+        scale: 0,
       }
     });
 
-    const hooves = legs.find('.icon-hoove');
     TweenMax.set(hooves, {
       opacity: 0,
       yPercent: -125,
@@ -82,8 +80,7 @@ module.exports = function(more) {
     () => {
       TweenMax.to(cotton, 0.6, {
         cssRule: {
-          scaleX: 1,
-          scaleY: 1,
+          scale: 1,
         },
         ease: Elastic.easeOut.config(1, 0.5),
         onComplete: () => {
@@ -100,15 +97,7 @@ module.exports = function(more) {
   }
 
   function legsDown() {
-    let legs = $('.js-legs').find('.leg');
-    const rule = CSSRulePlugin.getRule('.more .leg.cotton::before');
-    const hooves = legs.find('.icon-hoove');
-
-    legs.sort(function() {
-      return 0.5 - Math.random();
-    });
-
-    TweenMax.set(legs, {transformOrigin: 'bottom center'});
+    randomizeLegs();
 
     TweenMax.to(hooves, 0.6, {
       opacity: 0,
@@ -116,10 +105,9 @@ module.exports = function(more) {
       ease: Power4.easeOut,
       delay: 0.3,
       onComplete: () => {
-        TweenMax.to(rule, 0.6, {
+        TweenMax.to(cotton, 0.6, {
           cssRule: {
-            scaleX: 0,
-            scaleY: 0,
+            scale: 0,
           },
           ease: Power4.easeIn,
           delay: 0.3,
@@ -135,24 +123,20 @@ module.exports = function(more) {
   }
 
   function checkMachin() {
-    if (!isUp && wScroll + $(window).innerHeight() >= more.offset().top + more.height()) {
+    if (!isUp && wScroll + windowHeight >= more.data('top') + more.data('height')) {
       isUp = true;
       animated = true;
       moveCloudUp();
       legsUp();
-    } else if (isUp && wScroll + $(window).innerHeight() < more.offset().top + more.height()) {
+    } else if (isUp && wScroll + windowHeight < more.data('top') + more.data('height')) {
       moveCloudDown();
       legsDown();
       isUp = false;
     } else if (!animated) {
-      let legs = $('.js-legs').find('.leg');
-      const rule = CSSRulePlugin.getRule('.more .leg.cotton::before');
-      const hooves = legs.find('.icon-hoove');
 
-      TweenMax.set(rule, {
+      TweenMax.set(cotton, {
         cssRule: {
-          scaleX: 0,
-          scaleY: 0,
+          scale: 0,
         }
       });
 
@@ -168,9 +152,12 @@ module.exports = function(more) {
   }
 
   function resized() {
-    let legs = $('.js-legs').find('.leg');
-    const cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
-    const hooves = legs.find('.icon-hoove');
+    windowHeight = $(window).innerHeight();
+
+    more.data({
+      'top': more.offset().top,
+      'height': more.height(),
+    });
 
     TweenMax.set(cotton, {
       cssRule: {
@@ -187,6 +174,10 @@ module.exports = function(more) {
     });
   }
 
+  more.data({
+    'top': more.offset().top,
+    'height': more.height(),
+  });
   checkMachin();
 
   $(window).on('scroll', throttle(() => {

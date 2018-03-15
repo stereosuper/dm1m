@@ -18032,7 +18032,7 @@ module.exports = function (container, sheep, windowWidth, windowHeight) {
   }
 
   function setSheepLegs() {
-    TweenMax.set([legs.eq(0), forearms.eq(3)], {
+    TweenMax.set([legs.eq(0), forearms.eq(3), earLeft], {
       transformOrigin: '100% 0'
     });
     TweenMax.set(feet.eq(0), {
@@ -18053,17 +18053,9 @@ module.exports = function (container, sheep, windowWidth, windowHeight) {
     TweenMax.set(feet.eq(3), {
       transformOrigin: '145% -45%'
     });
-    TweenMax.set(earLeft, {
-      transformOrigin: '100% 0%'
-    });
-
-    console.log(forearms.eq(1));
 
     if (isIE) {
-      TweenMax.set(forearms.eq(0), {
-        transformOrigin: '0% 10%'
-      });
-      TweenMax.set(forearms.eq(1), {
+      TweenMax.set([forearms.eq(0), forearms.eq(1)], {
         transformOrigin: '0% 10%'
       });
       TweenMax.set(forearms.eq(2), {
@@ -18149,13 +18141,10 @@ module.exports = function (container, sheep, windowWidth, windowHeight) {
           rotation: -48
         });
 
-        TweenMax.to([forearms.eq(2), feet.eq(2)], 0.3, {
+        TweenMax.to([forearms.eq(2), feet.eq(2), legs.eq(3)], 0.3, {
           rotation: 90
         });
 
-        TweenMax.to(legs.eq(3), 0.3, {
-          rotation: 90
-        });
         TweenMax.to([forearms.eq(3), feet.eq(3)], 0.3, {
           rotation: -46
         });
@@ -18163,7 +18152,7 @@ module.exports = function (container, sheep, windowWidth, windowHeight) {
 
       case 1:
 
-        TweenMax.to(legs.eq(0), 0.3, {
+        TweenMax.to([legs.eq(0), legs.eq(3)], 0.3, {
           rotation: 90
         });
         TweenMax.to([forearms.eq(0), feet.eq(0)], 0.3, {
@@ -18175,10 +18164,6 @@ module.exports = function (container, sheep, windowWidth, windowHeight) {
         });
         TweenMax.to([forearms.eq(1), feet.eq(1)], 0.3, {
           rotation: -48
-        });
-
-        TweenMax.to(legs.eq(3), 0.3, {
-          rotation: 90
         });
         break;
 
@@ -18241,46 +18226,45 @@ module.exports = function (burger) {
   }
 
   var bubbles = $('#nav').find('.js-indic').eq(0).find('.bubble');
+  var windowHeight = $(window).height();
+  var navHeight = $('#nav').height();
 
   function cloudTransition() {
     var bubbleArray = [bubbles.eq(2), bubbles.eq(1), bubbles.eq(0)];
 
     TweenMax.staggerFromTo(bubbleArray, 0.3, {
-      y: -$(window).height(),
+      y: -windowHeight,
       scale: 0
     }, {
-      y: -$(window).height() / 2,
+      y: -windowHeight / 2,
       scale: 2,
       delay: 0.05
     }, 0.1);
 
     TweenMax.to(bubbleArray, 0.3, { scale: 1.5, delay: 0.2, onComplete: function onComplete() {
         TweenMax.to(bubbleArray, 0.6, { scale: 0.05, delay: 0.25 });
-        TweenMax.staggerTo(bubbleArray, 0.6, { y: $('#nav').height() }, 0.1);
+        TweenMax.staggerTo(bubbleArray, 0.6, { y: navHeight }, 0.1);
       }
     });
   }
 
   function burgerClicked() {
     $(this).toggleClass('burger-clicked');
+    // FIXME: TOGGLE ???????
     if ($(this).hasClass('burger-clicked')) {
-      $('body').css({
-        overflowY: 'hidden'
-      });
+      // css class add
+      $('body').addClass('hide-overflow');
       $('#nav').addClass('show-nav');
       $('#social').addClass('show-social');
-
-      cloudTransition();
     } else {
-      $('body').css({
-        overflowY: 'visible'
-      });
+      // css class add
       $('#nav').removeClass('show-nav');
       $('#social').removeClass('show-social');
-
-      cloudTransition();
     }
+    cloudTransition();
   }
+
+  // TODO: UPDATE windowHeight resize && navHeight
 
   burger.on('click', burgerClicked);
 };
@@ -18463,68 +18447,66 @@ var requestAnimFrame = require('./requestAnimFrame.js');
 var throttle = require('./throttle.js');
 
 module.exports = function (more) {
-  var isUp = false;
-  var animated = false;
-  var wScroll = $(window).scrollTop();
-
   if (!more.length) {
     return;
   }
 
-  function moveCloudUp() {
-    var cloud = $('#more-cloud');
-    var bubbles = cloud.find('.js-bubble');
+  var cloud = $('#more-cloud');
+  var bubbles = cloud.find('.js-bubble');
+  var legs = $('.js-legs').find('.leg');
+  var hooves = legs.find('.icon-hoove');
+  var cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
 
+  var isUp = false;
+  var animated = false;
+  var wScroll = $(window).scrollTop();
+  var windowHeight = $(window).innerHeight();
+
+  function randomizeLegs() {
+    legs.sort(function () {
+      return 0.5 - Math.random();
+    });
+
+    TweenMax.set(legs, { transformOrigin: 'bottom center' });
+  }
+
+  function moveCloudUp() {
     TweenMax.to(cloud, 1.6, {
       y: -cloud.innerHeight() - $(window).innerHeight() / 100 * 5,
       ease: Power4.easeOut
     });
 
     TweenMax.fromTo(bubbles, 1.6, {
-      scaleX: 1,
-      scaleY: 1
+      scale: 1
     }, {
-      scaleX: 1.2,
-      scaleY: 1.2,
+      scale: 1.2,
       ease: Power4.easeOut
     });
   }
 
   function moveCloudDown() {
-    var cloud = $('#more-cloud');
-    var bubbles = cloud.find('.js-bubble');
-
     TweenMax.to(cloud, 1.6, {
       y: -cloud.innerHeight(),
       ease: Power4.easeOut
     });
 
     TweenMax.fromTo(bubbles, 1.6, {
-      scaleX: 1.2,
-      scaleY: 1.2
+      scale: 1.2
     }, {
-      scaleX: 1,
-      scaleY: 1,
+      scale: 1,
       ease: Power4.easeOut
     });
   }
 
   function legsUp() {
-    var legs = $('.js-legs').find('.leg');
-    legs.sort(function () {
-      return 0.5 - Math.random();
-    });
-    TweenMax.set(legs, { transformOrigin: 'bottom center' });
+    randomizeLegs();
 
-    var cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
     TweenMax.set(cotton, {
       cssRule: {
-        scaleX: 0,
-        scaleY: 0
+        scale: 0
       }
     });
 
-    var hooves = legs.find('.icon-hoove');
     TweenMax.set(hooves, {
       opacity: 0,
       yPercent: -125
@@ -18539,8 +18521,7 @@ module.exports = function (more) {
     }, 0.05, function () {
       TweenMax.to(cotton, 0.6, {
         cssRule: {
-          scaleX: 1,
-          scaleY: 1
+          scale: 1
         },
         ease: Elastic.easeOut.config(1, 0.5),
         onComplete: function onComplete() {
@@ -18556,15 +18537,7 @@ module.exports = function (more) {
   }
 
   function legsDown() {
-    var legs = $('.js-legs').find('.leg');
-    var rule = CSSRulePlugin.getRule('.more .leg.cotton::before');
-    var hooves = legs.find('.icon-hoove');
-
-    legs.sort(function () {
-      return 0.5 - Math.random();
-    });
-
-    TweenMax.set(legs, { transformOrigin: 'bottom center' });
+    randomizeLegs();
 
     TweenMax.to(hooves, 0.6, {
       opacity: 0,
@@ -18572,10 +18545,9 @@ module.exports = function (more) {
       ease: Power4.easeOut,
       delay: 0.3,
       onComplete: function onComplete() {
-        TweenMax.to(rule, 0.6, {
+        TweenMax.to(cotton, 0.6, {
           cssRule: {
-            scaleX: 0,
-            scaleY: 0
+            scale: 0
           },
           ease: Power4.easeIn,
           delay: 0.3,
@@ -18591,24 +18563,20 @@ module.exports = function (more) {
   }
 
   function checkMachin() {
-    if (!isUp && wScroll + $(window).innerHeight() >= more.offset().top + more.height()) {
+    if (!isUp && wScroll + windowHeight >= more.data('top') + more.data('height')) {
       isUp = true;
       animated = true;
       moveCloudUp();
       legsUp();
-    } else if (isUp && wScroll + $(window).innerHeight() < more.offset().top + more.height()) {
+    } else if (isUp && wScroll + windowHeight < more.data('top') + more.data('height')) {
       moveCloudDown();
       legsDown();
       isUp = false;
     } else if (!animated) {
-      var legs = $('.js-legs').find('.leg');
-      var rule = CSSRulePlugin.getRule('.more .leg.cotton::before');
-      var hooves = legs.find('.icon-hoove');
 
-      TweenMax.set(rule, {
+      TweenMax.set(cotton, {
         cssRule: {
-          scaleX: 0,
-          scaleY: 0
+          scale: 0
         }
       });
 
@@ -18624,9 +18592,12 @@ module.exports = function (more) {
   }
 
   function resized() {
-    var legs = $('.js-legs').find('.leg');
-    var cotton = CSSRulePlugin.getRule('.more .leg.cotton::before');
-    var hooves = legs.find('.icon-hoove');
+    windowHeight = $(window).innerHeight();
+
+    more.data({
+      'top': more.offset().top,
+      'height': more.height()
+    });
 
     TweenMax.set(cotton, {
       cssRule: {
@@ -18643,6 +18614,10 @@ module.exports = function (more) {
     });
   }
 
+  more.data({
+    'top': more.offset().top,
+    'height': more.height()
+  });
   checkMachin();
 
   $(window).on('scroll', throttle(function () {
@@ -18761,213 +18736,208 @@ var throttle = require('./throttle.js');
 
 module.exports = function (nav) {
 
-  if (!nav.length) return;
+    if (!nav.length) return;
 
-  var current = nav.find('.current-menu-item');
-  var bubbles = nav.find('.bubble');
-  var indicator = nav.find('.js-indic'),
-      indicatorSemiWidth = indicator.width() / 2;
+    var current = nav.find('.current-menu-item');
+    var bubbles = nav.find('.bubble');
+    var indicator = nav.find('.js-indic'),
+        indicatorSemiWidth = indicator.width() / 2;
 
-  var illus = $('#logoIllus');
-  var leftEye = illus.find('.left-eye'),
-      rightEye = illus.find('.right-eye'),
-      mouth = illus.find('.mouth');
+    var illus = $('#logoIllus');
+    var leftEye = illus.find('.left-eye'),
+        rightEye = illus.find('.right-eye'),
+        mouth = illus.find('.mouth');
 
-  function moveBubble(bubble, distance, scale, timing) {
-    TweenMax.to(bubble, timing, { x: distance, scaleY: scale, scaleX: 1.1, onComplete: function onComplete() {
-        TweenMax.to(bubble, timing, { x: '0px', scale: 1 });
-      } });
-  }
-
-  function moveIndic(newX, timing) {
-    if (indicator.data('x') < newX) {
-      // to the right
-      moveBubble(bubbles.eq(1), '-8px', 0.9, timing / 2);
-      moveBubble(bubbles.eq(0), '-11px', 1.1, timing / 2 + 0.1);
-      moveBubble(bubbles.eq(4), '6px', 0.85, timing / 2);
-      moveBubble(bubbles.eq(5), '8px', 1.15, timing / 2 + 0.1);
-    } else {
-      // to the left
-      moveBubble(bubbles.eq(1), '8px', 0.9, timing / 2);
-      moveBubble(bubbles.eq(2), '11px', 1.1, timing / 2 + 0.1);
-      moveBubble(bubbles.eq(4), '-6px', 0.85, timing / 2);
-      moveBubble(bubbles.eq(3), '-8px', 1.15, timing / 2 + 0.1);
+    function moveBubble(bubble, distance, scale, timing) {
+        TweenMax.to(bubble, timing, { x: distance, scaleY: scale, scaleX: 1.1, onComplete: function onComplete() {
+                TweenMax.to(bubble, timing, { x: '0px', scale: 1 });
+            } });
     }
 
-    TweenMax.to(indicator, timing, { x: newX + 'px', opacity: 1, onComplete: function onComplete() {
-        indicator.data('x', newX);
-      } });
-  }
-
-  function setIndic() {
-    if (current.length) {
-
-      current.data({ 'x': current.position().left + current.width() / 2 - indicatorSemiWidth });
-      TweenMax.set(indicator, { x: current.data('x') + 'px' });
-      indicator.data('x', current.data('x'));
-      TweenMax.to(bubbles, 0.3, { scale: 1 });
-    } else {
-
-      indicator.data('x', nav.width() / 2 - indicatorSemiWidth);
-      TweenMax.set(indicator, { x: indicator.data('x') + 'px' });
-    }
-  }
-
-  function activateSheep(indexHovered) {
-    var logo = $('#logoIllus');
-    var leftEye = logo.find('.js-left-eye');
-    var rightEye = logo.find('.js-right-eye');
-    var leftCheek = logo.find('.js-left-cheek');
-    var rightCheek = logo.find('.js-right-cheek');
-    var mouth = logo.find('.js-mouth');
-
-    logo.removeClass('badass');
-
-    switch (indexHovered) {
-      case 0:
-        // new
-        // rougir lien home ou new
-        logo.addClass('visible-cheeks');
-
-        leftEye.css({
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
-          transform: 'none'
-        });
-
-        rightEye.css({
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
-          transform: 'none'
-        });
-
-        leftCheek.css({
-          top: '47.5px',
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
-          transform: 'scale(1)'
-        });
-
-        rightCheek.css({
-          top: '47.5px',
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
-          transform: 'scale(1)'
-        });
-
-        mouth.css({
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/oh-mouth.svg\')',
-          height: '9px',
-          transform: 'translateX(-50%) scale(1.4)'
-        });
-        break;
-      case 1:
-        // projects
-        // wink
-        if (logo.hasClass('visible-cheeks')) {
-          logo.removeClass('visible-cheeks');
+    function moveIndic(newX, timing) {
+        if (indicator.data('x') < newX) {
+            // to the right
+            moveBubble(bubbles.eq(1), '-8px', 0.9, timing / 2);
+            moveBubble(bubbles.eq(0), '-11px', 1.1, timing / 2 + 0.1);
+            moveBubble(bubbles.eq(4), '6px', 0.85, timing / 2);
+            moveBubble(bubbles.eq(5), '8px', 1.15, timing / 2 + 0.1);
+        } else {
+            // to the left
+            moveBubble(bubbles.eq(1), '8px', 0.9, timing / 2);
+            moveBubble(bubbles.eq(2), '11px', 1.1, timing / 2 + 0.1);
+            moveBubble(bubbles.eq(4), '-6px', 0.85, timing / 2);
+            moveBubble(bubbles.eq(3), '-8px', 1.15, timing / 2 + 0.1);
         }
 
-        leftEye.css({
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')'
-        });
-
-        rightEye.css({
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-wink/eye-wink.svg\')',
-          transform: 'none'
-        });
-
-        mouth.css({
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/mouth.svg\')',
-          transform: 'translateX(-50%)'
-        });
-        break;
-      case 2:
-        // agency
-        // surprise
-        if (logo.hasClass('visible-cheeks')) {
-          logo.removeClass('visible-cheeks');
-        }
-
-        leftEye.css({
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/round-eye.svg\')',
-          transform: 'none'
-        });
-
-        rightEye.css({
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/pupil.svg\')',
-          transform: 'scale(0.5)'
-        });
-
-        mouth.css({
-          backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/surprised-mouth.svg\')',
-          height: '9px',
-          transform: 'translateX(-50%) scale(1.4)'
-        });
-        break;
-      default:
-        break;
+        TweenMax.to(indicator, timing, { x: newX + 'px', opacity: 1, onComplete: function onComplete() {
+                indicator.data('x', newX);
+            } });
     }
-  }
 
-  function deactivateSheep() {
-    var logo = $('#logoIllus');
-    var leftEye = logo.find('.js-left-eye');
-    var rightEye = logo.find('.js-right-eye');
-    var leftCheek = logo.find('.js-left-cheek');
-    var rightCheek = logo.find('.js-right-cheek');
-    var mouth = logo.find('.js-mouth');
+    function setIndic() {
+        if (current.length) {
+
+            current.data({ 'x': current.position().left + current.width() / 2 - indicatorSemiWidth });
+            TweenMax.set(indicator, { x: current.data('x') + 'px' });
+            indicator.data('x', current.data('x'));
+            TweenMax.to(bubbles, 0.3, { scale: 1 });
+        } else {
+
+            indicator.data('x', nav.width() / 2 - indicatorSemiWidth);
+            TweenMax.set(indicator, { x: indicator.data('x') + 'px' });
+        }
+    }
+
+    function activateSheep(indexHovered) {
+        var logo = $('#logoIllus');
+        var leftEye = logo.find('.js-left-eye');
+        var rightEye = logo.find('.js-right-eye');
+        var leftCheek = logo.find('.js-left-cheek');
+        var rightCheek = logo.find('.js-right-cheek');
+        var mouth = logo.find('.js-mouth');
+
+        logo.removeClass('badass');
+
+        switch (indexHovered) {
+            case 0:
+                // new
+                // rougir lien home ou new
+                logo.addClass('visible-cheeks');
+                logo.addClass('sheep-blushing');
+
+                // leftEye.css({
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
+                //   transform: 'none',
+                // });
+                //
+                // rightEye.css({
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
+                //   transform: 'none',
+                // });
+                //
+                // leftCheek.css({
+                //   top: '47.5px',
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
+                //   transform: 'scale(1)',
+                // });
+                //
+                // rightCheek.css({
+                //   top: '47.5px',
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
+                //   transform: 'scale(1)',
+                // });
+                //
+                // mouth.css({
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/oh-mouth.svg\')',
+                //   height: '9px',
+                //   transform: 'translateX(-50%) scale(1.4)',
+                // });
+                break;
+            case 1:
+                // projects
+                // wink
+                logo.removeClass('visible-cheeks');
+                logo.removeClass('sheep-winking');
+
+                // leftEye.css({
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
+                // });
+                //
+                // rightEye.css({
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-wink/eye-wink.svg\')',
+                //   transform: 'none',
+                // });
+                //
+                // mouth.css({
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/mouth.svg\')',
+                //   transform: 'translateX(-50%)',
+                // });
+                break;
+            case 2:
+                // agency
+                // surprise
+                logo.removeClass('visible-cheeks');
+                logo.removeClass('sheep-surprised');
+
+                // leftEye.css({
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/round-eye.svg\')',
+                //   transform: 'none',
+                // });
+                //
+                // rightEye.css({
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/pupil.svg\')',
+                //   transform: 'scale(0.5)',
+                // });
+                //
+                // mouth.css({
+                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/surprised-mouth.svg\')',
+                //   height: '9px',
+                //   transform: 'translateX(-50%) scale(1.4)',
+                // });
+                break;
+            default:
+                break;
+        }
+    }
+
+    function deactivateSheep() {
+        var logo = $('#logoIllus');
+        var leftEye = logo.find('.js-left-eye');
+        var rightEye = logo.find('.js-right-eye');
+        var mouth = logo.find('.js-mouth');
+
+        if ($('body').hasClass('error404')) {
+            logo.addClass('badass');
+        } else {
+            logo.removeClass('visible-cheeks');
+
+            // leftEye.css({
+            //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
+            // });
+            //
+            // rightEye.css({
+            //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
+            //   transform: 'none',
+            // });
+            //
+            // mouth.css({
+            //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/mouth.svg\')',
+            //   height: '10px',
+            //   transform: 'translateX(-50%) scale(1)',
+            // });
+        }
+    }
+
+    current = current.length ? current : nav.find('.current_page_parent');
+
+    if (window.innerWidth > 580) {
+        setIndic();
+    }
 
     if ($('body').hasClass('error404')) {
-      logo.addClass('badass');
-    } else {
-      if (logo.hasClass('visible-cheeks')) {
-        logo.removeClass('visible-cheeks');
-      }
-
-      leftEye.css({
-        backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')'
-      });
-
-      rightEye.css({
-        backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
-        transform: 'none'
-      });
-
-      mouth.css({
-        backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/mouth.svg\')',
-        height: '10px',
-        transform: 'translateX(-50%) scale(1)'
-      });
+        $('#logoIllus').addClass('badass');
     }
-  }
 
-  current = current.length ? current : nav.find('.current_page_parent');
-
-  if (window.innerWidth > 580) {
-    setIndic();
-  }
-
-  if ($('body').hasClass('error404')) {
-    $('#logoIllus').addClass('badass');
-  }
-
-  if (window.innerWidth > 580) {
-    nav.on('mouseenter focusin', 'a', function () {
-
-      TweenMax.to(bubbles, 0.3, { scale: 1 });
-      moveIndic($(this).parents('li').position().left + $(this).parents('li').width() / 2 - indicatorSemiWidth, 0.6);
-
-      activateSheep($(this).parents('li').index());
-    }).on('mouseleave focusout', 'a', function () {
-
-      current.length ? moveIndic(current.data('x'), 0.4) : TweenMax.to(bubbles, 0.3, { scale: 0 });
-
-      deactivateSheep();
-    });
-  }
-
-  $(window).on('resize', throttle(function () {
     if (window.innerWidth > 580) {
-      requestAnimFrame(setIndic);
+        nav.on('mouseenter focusin', 'a', function () {
+
+            TweenMax.to(bubbles, 0.3, { scale: 1 });
+            moveIndic($(this).parents('li').position().left + $(this).parents('li').width() / 2 - indicatorSemiWidth, 0.6);
+
+            activateSheep($(this).parents('li').index());
+        }).on('mouseleave focusout', 'a', function () {
+
+            current.length ? moveIndic(current.data('x'), 0.4) : TweenMax.to(bubbles, 0.3, { scale: 0 });
+
+            deactivateSheep();
+        });
     }
-  }, 60));
+
+    $(window).on('resize', throttle(function () {
+        if (window.innerWidth > 580) {
+            requestAnimFrame(setIndic);
+        }
+    }, 60));
 };
 
 },{"./requestAnimFrame.js":13,"./throttle.js":17,"gsap":3,"jquery-slim":5}],15:[function(require,module,exports){
@@ -19047,26 +19017,21 @@ module.exports = function (cloud) {
     var bubbles = cloud.find('.js-bubble');
 
     TweenMax.fromTo(bubbles, 0.6, {
-      scaleX: 1,
-      scaleY: 1
+      scale: 1
     }, {
-      scaleX: 1.1,
-      scaleY: 1.1,
+      scale: 1.1,
       ease: Back.easeOut.config(15)
     });
   }
 
   function animateCloudOut() {
-    // TweenMax.set(bubbles, {willChange: 'auto'});
-
     var bubbles = cloud.find('.js-bubble');
     TweenMax.to(bubbles, 0.6, {
-      scaleX: 1,
-      scaleY: 1
+      scale: 1
     });
   }
 
-  cloud.find('.js-hover-me').hover(animateCloudIn, animateCloudOut);
+  cloud.on('mouseenter', '.js-hover-me', animateCloudIn).on('mouseleave', '.js-hover-me', animateCloudOut);
 };
 
 },{"gsap":3,"jquery-slim":5}],17:[function(require,module,exports){

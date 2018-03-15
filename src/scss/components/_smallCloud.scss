@@ -22,7 +22,7 @@
     transform: rotateZ(-16.180deg);
     z-index: 2;
   }
-  &::before {
+  &:before {
     content: '';
     // display: inline-block;
     position: absolute;
@@ -41,8 +41,8 @@
     height: 75%;
     backface-visibility: hidden;
     z-index: -2;
-    &::before,
-    &::after {
+    &:before,
+    &:after {
       position: absolute;
       content: '';
       width: 100%;
@@ -55,16 +55,16 @@
   .bubble:nth-of-type(1) {
     top: 0;
     left: 0;
-    &::before,
-    &::after {
+    &:before,
+    &:after {
       // background-color: red;
     }
-    &::before {
+    &:before {
       width: 85%;
       left: 0;
       transform: translate(-15%, -25%) rotateZ(-30deg);
     }
-    &::after {
+    &:after {
       width: 90%;
       right: 0;
       transform: translate(50%, -50%) rotateZ(-20deg);
@@ -73,16 +73,16 @@
   .bubble:nth-of-type(2) {
     top: 0;
     right: 0;
-    &::before,
-    &::after {
+    &:before,
+    &:after {
       // background-color: blue;
     }
-    &::before {
+    &:before {
       top: 0;
       right: 0;
       transform: translate(25%, -20%) rotateZ(30deg);
     }
-    &::after {
+    &:after {
       width: 80%;
       bottom: 0;
       right: 0;
@@ -93,17 +93,17 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    &::before,
-    &::after {
+    &:before,
+    &:after {
       // background-color: green;
     }
-    &::before {
+    &:before {
       width: 85%;
       bottom: 0;
       right: 0;
       transform: translate(-20%, 30%) rotateZ(30deg);
     }
-    &::after {
+    &:after {
       width: 90%;
       bottom: 0;
       left: 0;
