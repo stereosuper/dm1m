@@ -18219,57 +18219,72 @@ module.exports = function (container, sheep, windowWidth, windowHeight) {
 var $ = require('jquery-slim');
 require('gsap');
 
+var requestAnimFrame = require('./requestAnimFrame.js');
+var throttle = require('./throttle.js');
+
 module.exports = function (burger) {
 
-  if (!burger.length) {
-    return;
-  }
-
-  var bubbles = $('#nav').find('.js-indic').eq(0).find('.bubble');
-  var windowHeight = $(window).height();
-  var navHeight = $('#nav').height();
-
-  function cloudTransition() {
-    var bubbleArray = [bubbles.eq(2), bubbles.eq(1), bubbles.eq(0)];
-
-    TweenMax.staggerFromTo(bubbleArray, 0.3, {
-      y: -windowHeight,
-      scale: 0
-    }, {
-      y: -windowHeight / 2,
-      scale: 2,
-      delay: 0.05
-    }, 0.1);
-
-    TweenMax.to(bubbleArray, 0.3, { scale: 1.5, delay: 0.2, onComplete: function onComplete() {
-        TweenMax.to(bubbleArray, 0.6, { scale: 0.05, delay: 0.25 });
-        TweenMax.staggerTo(bubbleArray, 0.6, { y: navHeight }, 0.1);
-      }
-    });
-  }
-
-  function burgerClicked() {
-    $(this).toggleClass('burger-clicked');
-    // FIXME: TOGGLE ???????
-    if ($(this).hasClass('burger-clicked')) {
-      // css class add
-      $('body').addClass('hide-overflow');
-      $('#nav').addClass('show-nav');
-      $('#social').addClass('show-social');
-    } else {
-      // css class add
-      $('#nav').removeClass('show-nav');
-      $('#social').removeClass('show-social');
+    if (!burger.length) {
+        return;
     }
-    cloudTransition();
-  }
 
-  // TODO: UPDATE windowHeight resize && navHeight
+    var bubbles = $('#nav').find('.js-indic').eq(0).find('.bubble');
+    var windowHeight = $(window).height();
+    var navHeight = $('#nav').height();
 
-  burger.on('click', burgerClicked);
+    function cloudTransition() {
+        var bubbleArray = [bubbles.eq(2), bubbles.eq(1), bubbles.eq(0)];
+
+        TweenMax.staggerFromTo(bubbleArray, 0.3, {
+            y: -windowHeight,
+            scale: 0
+        }, {
+            y: -windowHeight / 2,
+            scale: 2,
+            delay: 0.05
+        }, 0.1);
+
+        TweenMax.to(bubbleArray, 0.3, {
+            scale: 1.5,
+            delay: 0.2,
+            onComplete: function onComplete() {
+                TweenMax.to(bubbleArray, 0.6, {
+                    scale: 0.05,
+                    delay: 0.25
+                });
+                TweenMax.staggerTo(bubbleArray, 0.6, {
+                    y: navHeight
+                }, 0.1);
+            }
+        });
+    }
+
+    function burgerClicked() {
+        $(this).toggleClass('burger-clicked');
+        $('body').toggleClass('hide-overflow');
+        $('#nav').toggleClass('show-nav');
+        $('#social').toggleClass('show-social');
+
+        cloudTransition();
+    }
+
+    function resizeHandler() {
+        if ($('body').hasClass('is-mobile')) {
+            TweenMax.set(bubbles, {
+                x: 0,
+                xPercent: -50
+            });
+        }
+    }
+
+    $(window).on('resize', throttle(function () {
+        requestAnimFrame(resizeHandler);
+    }, 60));
+
+    burger.on('click', burgerClicked);
 };
 
-},{"gsap":3,"jquery-slim":5}],8:[function(require,module,exports){
+},{"./requestAnimFrame.js":13,"./throttle.js":17,"gsap":3,"jquery-slim":5}],8:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery-slim');
@@ -18803,77 +18818,25 @@ module.exports = function (nav) {
                 // new
                 // rougir lien home ou new
                 logo.addClass('visible-cheeks');
+                logo.removeClass('sheep-winking');
+                logo.removeClass('sheep-surprised');
                 logo.addClass('sheep-blushing');
-
-                // leftEye.css({
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
-                //   transform: 'none',
-                // });
-                //
-                // rightEye.css({
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/eye-up.svg\')',
-                //   transform: 'none',
-                // });
-                //
-                // leftCheek.css({
-                //   top: '47.5px',
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
-                //   transform: 'scale(1)',
-                // });
-                //
-                // rightCheek.css({
-                //   top: '47.5px',
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/blush.svg\')',
-                //   transform: 'scale(1)',
-                // });
-                //
-                // mouth.css({
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-blushing/oh-mouth.svg\')',
-                //   height: '9px',
-                //   transform: 'translateX(-50%) scale(1.4)',
-                // });
                 break;
             case 1:
                 // projects
                 // wink
                 logo.removeClass('visible-cheeks');
-                logo.removeClass('sheep-winking');
-
-                // leftEye.css({
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
-                // });
-                //
-                // rightEye.css({
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-wink/eye-wink.svg\')',
-                //   transform: 'none',
-                // });
-                //
-                // mouth.css({
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/mouth.svg\')',
-                //   transform: 'translateX(-50%)',
-                // });
+                logo.removeClass('sheep-blushing');
+                logo.removeClass('sheep-surprised');
+                logo.addClass('sheep-winking');
                 break;
             case 2:
                 // agency
                 // surprise
                 logo.removeClass('visible-cheeks');
-                logo.removeClass('sheep-surprised');
-
-                // leftEye.css({
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/round-eye.svg\')',
-                //   transform: 'none',
-                // });
-                //
-                // rightEye.css({
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/pupil.svg\')',
-                //   transform: 'scale(0.5)',
-                // });
-                //
-                // mouth.css({
-                //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/sheep-surprise/surprised-mouth.svg\')',
-                //   height: '9px',
-                //   transform: 'translateX(-50%) scale(1.4)',
-                // });
+                logo.removeClass('sheep-blushing');
+                logo.removeClass('sheep-winking');
+                logo.addClass('sheep-surprised');
                 break;
             default:
                 break;
@@ -18886,25 +18849,14 @@ module.exports = function (nav) {
         var rightEye = logo.find('.js-right-eye');
         var mouth = logo.find('.js-mouth');
 
+        logo.removeClass('sheep-blushing');
+        logo.removeClass('sheep-winking');
+        logo.removeClass('sheep-surprised');
+
         if ($('body').hasClass('error404')) {
             logo.addClass('badass');
         } else {
             logo.removeClass('visible-cheeks');
-
-            // leftEye.css({
-            //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
-            // });
-            //
-            // rightEye.css({
-            //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/open-eye.svg\')',
-            //   transform: 'none',
-            // });
-            //
-            // mouth.css({
-            //   backgroundImage: 'url(\'/wp-content/themes/dm1m/layoutImg/mouth.svg\')',
-            //   height: '10px',
-            //   transform: 'translateX(-50%) scale(1)',
-            // });
         }
     }
 

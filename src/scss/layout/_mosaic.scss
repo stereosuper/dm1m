@@ -1,15 +1,17 @@
-.wrapper-grid{
+.wrapper-grid {
     display: grid;
+    display: -ms-grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    > article{
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+    > article {
         position: relative;
-        &:before{
+        &:before {
             content: '';
             height: 0;
             width: 1px;
             display: block;
         }
-        > a{
+        > a {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -20,298 +22,317 @@
                 pointer-events: none;
             }
             img {
-              position: relative;
-              object-fit: cover;
-              object-position: center;
+                position: relative;
+                object-fit: cover;
+                object-position: center;
+            }
+            h2 {
+                width: 100%;
             }
             .no-js & {
-              background-position: center;
-              background-size: cover;
-              background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
             }
         }
-        &:nth-child(12n+1){
-            grid-column: 1 / 3;
-            grid-row: span 2;
-            &:before{
+        &:nth-child(12n+1) {
+            @include grid-child(1, 3, auto, 2);
+            // grid-column: 1 / 3;
+            // grid-row: span 2;
+            &:before {
                 padding-top: 100%;
             }
             h2 {
-              font-size: $h2SizeBigSquare;
+                font-size: $h2SizeBigSquare;
             }
         }
-        &:nth-child(12n+2){
-            grid-column: 3 / 4;
-            grid-row: span 2;
+        &:nth-child(12n+2) {
+            @include grid-child(3, 4, auto, 2);
+            // grid-column: 3 / 4;
+            // grid-row: span 2;
             h2 {
-              font-size: $h2SizeVRect;
+                font-size: $h2SizeVRect;
             }
         }
-        &:nth-child(12n+3){
-            grid-column: 4 / 5;
-            grid-row: span 1;
+        &:nth-child(12n+3) {
+            @include grid-child(4, 5, auto, 1);
+            // grid-column: 4 / 5;
+            // grid-row: span 1;
             h2 {
-              font-size: $h2SizeSmallSquare;
+                font-size: $h2SizeSmallSquare;
             }
         }
-        &:nth-child(12n+4){
+        &:nth-child(12n+4) {
             h2 {
-              font-size: $h2SizeSmallSquare;
+                font-size: $h2SizeSmallSquare;
             }
         }
-        &:nth-child(12n+5){
-            grid-column: 1 / 3;
-            grid-row: span 1;
+        &:nth-child(12n+5) {
+            @include grid-child(1, 3, auto, 1);
+            // grid-column: 1 / 3;
+            // grid-row: span 1;
             h2 {
-              font-size: $h2SizeHRect;
+                font-size: $h2SizeHRect;
             }
         }
-        &:nth-child(12n+6){
-            grid-column: 3 / 4;
-            grid-row: span 2;
-            &:before{
+        &:nth-child(12n+6) {
+            @include grid-child(3, 4, auto, 2);
+            // grid-column: 3 / 4;
+            // grid-row: span 2;
+            &:before {
                 padding-top: 200%;
             }
             h2 {
-              font-size: $h2SizeVRect;
+                font-size: $h2SizeVRect;
             }
         }
-        &:nth-child(12n+7){
-            grid-column: 4 / 5;
-            grid-row: span 2;
+        &:nth-child(12n+7) {
+            @include grid-child(4, 5, auto, 2);
+            // grid-column: 4 / 5;
+            // grid-row: span 2;
             h2 {
-              font-size: $h2SizeVRect;
+                font-size: $h2SizeVRect;
             }
         }
-        &:nth-child(12n+8){
+        &:nth-child(12n+8) {
             h2 {
-              font-size: $h2SizeSmallSquare;
+                font-size: $h2SizeSmallSquare;
             }
         }
-        &:nth-child(12n+9){
+        &:nth-child(12n+9) {
             h2 {
-              font-size: $h2SizeSmallSquare;
+                font-size: $h2SizeSmallSquare;
             }
         }
-        &:nth-child(12n+10){
-            grid-column: 1 / 3;
-            grid-row: span 1;
-            &:before{
+        &:nth-child(12n+10) {
+            @include grid-child(1, 3, auto, 1);
+            // grid-column: 1 / 3;
+            // grid-row: span 1;
+            &:before {
                 padding-top: 50%;
             }
             h2 {
-              font-size: $h2SizeVRect;
+                font-size: $h2SizeVRect;
             }
         }
-        &:nth-child(12n+11){
+        &:nth-child(12n+11) {
             h2 {
-              font-size: $h2SizeSmallSquare;
+                font-size: $h2SizeSmallSquare;
             }
         }
-        &:nth-child(12n+12){
+        &:nth-child(12n+12) {
             h2 {
-              font-size: $h2SizeSmallSquare;
+                font-size: $h2SizeSmallSquare;
             }
         }
     }
 }
-
 @media (max-width: $desktop-small) {
-  .wrapper-grid{
-    grid-template-columns: 1fr 1fr 1fr;
-    & > article {
-      &:nth-child(12n+1){
-        grid-column: 1 / 3;
-        grid-row: span 2;
-        &:before{
-          padding-top: 100%;
+    .wrapper-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        & > article {
+            &:nth-child(12n+1) {
+                @include grid-child(1, 3, auto, 2);
+                // grid-column: 1 / 3;
+                // grid-row: span 2;
+                &:before {
+                    padding-top: 100%;
+                }
+                .categories {
+                    font-size: $categoriesSizeBigSquareDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeBigSquareDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeBigSquareDesktop;
+                }
+            }
+            &:nth-child(12n+2) {
+                @include grid-child(3, 4, auto, 1);
+                // grid-column: 3 / 4;
+                // grid-row: span 1;
+                .categories {
+                    font-size: $categoriesSizeSmallSquareDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeSmallSquareDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeSmallSquareDesktop;
+                }
+            }
+            &:nth-child(12n+3) {
+                @include grid-child(3, 4, auto, 1);
+                // grid-column: 3 / 4;
+                // grid-row: span 1;
+                .categories {
+                    font-size: $categoriesSizeSmallSquareDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeSmallSquareDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeSmallSquareDesktop;
+                }
+            }
+            &:nth-child(12n+4) {
+                @include grid-child(1, 2, auto, 1);
+                // grid-column: 1 / 2;
+                // grid-row: span 1;
+                &:before {
+                    padding-top: 100%;
+                }
+                .categories {
+                    font-size: $categoriesSizeSmallSquareDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeSmallSquareDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeSmallSquareDesktop;
+                }
+            }
+            &:nth-child(12n+5) {
+                @include grid-child(2, 4, auto, 1);
+                // grid-column: 2 / 4;
+                // grid-row: span 1;
+                .categories {
+                    font-size: $categoriesSizeHRectDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeHRectDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeHRectDesktop;
+                }
+            }
+            &:nth-child(12n+6) {
+                @include grid-child(1, 2, auto, 1);
+                // grid-column: 1 / 2;
+                // grid-row: span 1;
+                &:before {
+                    padding-top: 100%;
+                }
+                .categories {
+                    font-size: $categoriesSizeSmallSquareDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeSmallSquareDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeSmallSquareDesktop;
+                }
+            }
+            &:nth-child(12n+7) {
+                @include grid-child(2, 3, auto, 1);
+                // grid-column: 2 / 3;
+                // grid-row: span 1;
+                .categories {
+                    font-size: $categoriesSizeSmallSquareDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeSmallSquareDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeSmallSquareDesktop;
+                }
+            }
+            &:nth-child(12n+8) {
+                .categories {
+                    font-size: $categoriesSizeSmallSquareDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeSmallSquareDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeSmallSquareDesktop;
+                }
+            }
+            &:nth-child(12n+9) {
+                @include grid-child(1, 2, auto, 2);
+                // grid-column: 1 / 2;
+                // grid-row: span 2;
+                &:before {
+                    padding-top: 200%;
+                }
+                .categories {
+                    font-size: $categoriesSizeVRectDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeVRectDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeVRectDesktop;
+                }
+            }
+            &:nth-child(12n+10) {
+                @include grid-child(2, 3, auto, 1);
+                // grid-column: 2 / 3;
+                // grid-row: span 1;
+                &:before {
+                    padding-top: 0;
+                }
+                .categories {
+                    font-size: $categoriesSizeSmallSquareDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeSmallSquareDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeSmallSquareDesktop;
+                }
+            }
+            &:nth-child(12n+11) {
+                @include grid-child(3, 4, auto, 2);
+                // grid-column: 3 / 4;
+                // grid-row: span 2;
+                &:before {
+                    padding-top: 200%;
+                }
+                .categories {
+                    font-size: $categoriesSizeVRectDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeVRectDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeVRectDesktop;
+                }
+            }
+            &:nth-child(12n+12) {
+                .categories {
+                    font-size: $categoriesSizeSmallSquareDesktop;
+                }
+                h2 {
+                    font-size: $h2SizeSmallSquareDesktop;
+                }
+                .subtitle {
+                    font-size: $subtitleSizeSmallSquareDesktop;
+                }
+            }
         }
-        .categories {
-          font-size: $categoriesSizeBigSquareDesktop;
-        }
-        h2 {
-          font-size: $h2SizeBigSquareDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeBigSquareDesktop;
-        }
-      }
-      &:nth-child(12n+2){
-        grid-column: 3 / 4;
-        grid-row: span 1;
-        .categories {
-          font-size: $categoriesSizeSmallSquareDesktop;
-        }
-        h2 {
-          font-size: $h2SizeSmallSquareDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeSmallSquareDesktop;
-        }
-      }
-      &:nth-child(12n+3){
-        grid-column: 3 / 4;
-        grid-row: span 1;
-        .categories {
-          font-size: $categoriesSizeSmallSquareDesktop;
-        }
-        h2 {
-          font-size: $h2SizeSmallSquareDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeSmallSquareDesktop;
-        }
-      }
-      &:nth-child(12n+4){
-        grid-column: 1 / 2;
-        grid-row: span 1;
-        &:before{
-          padding-top: 100%;
-        }
-        .categories {
-          font-size: $categoriesSizeSmallSquareDesktop;
-        }
-        h2 {
-          font-size: $h2SizeSmallSquareDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeSmallSquareDesktop;
-        }
-      }
-      &:nth-child(12n+5){
-        grid-column: 2 / 4;
-        grid-row: span 1;
-        .categories {
-          font-size: $categoriesSizeHRectDesktop;
-        }
-        h2 {
-          font-size: $h2SizeHRectDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeHRectDesktop;
-        }
-      }
-      &:nth-child(12n+6){
-        grid-column: 1 / 2;
-        grid-row: span 1;
-        &:before{
-            padding-top: 100%;
-        }
-        .categories {
-          font-size: $categoriesSizeSmallSquareDesktop;
-        }
-        h2 {
-          font-size: $h2SizeSmallSquareDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeSmallSquareDesktop;
-        }
-      }
-      &:nth-child(12n+7){
-        grid-column: 2 / 3;
-        grid-row: span 1;
-        .categories {
-          font-size: $categoriesSizeSmallSquareDesktop;
-        }
-        h2 {
-          font-size: $h2SizeSmallSquareDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeSmallSquareDesktop;
-        }
-      }
-      &:nth-child(12n+8){
-        .categories {
-          font-size: $categoriesSizeSmallSquareDesktop;
-        }
-        h2 {
-          font-size: $h2SizeSmallSquareDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeSmallSquareDesktop;
-        }
-      }
-      &:nth-child(12n+9){
-        grid-column: 1 / 2;
-        grid-row: span 2;
-        &:before{
-          padding-top: 200%;
-        }
-        .categories {
-          font-size: $categoriesSizeVRectDesktop;
-        }
-        h2 {
-          font-size: $h2SizeVRectDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeVRectDesktop;
-        }
-      }
-      &:nth-child(12n+10){
-        grid-column: 2 / 3;
-        grid-row: span 1;
-        &:before{
-            padding-top: 0;
-        }
-        .categories {
-          font-size: $categoriesSizeSmallSquareDesktop;
-        }
-        h2 {
-          font-size: $h2SizeSmallSquareDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeSmallSquareDesktop;
-        }
-      }
-      &:nth-child(12n+11){
-        grid-column: 3 / 4;
-        grid-row: span 2;
-        &:before{
-            padding-top: 200%;
-        }
-        .categories {
-          font-size: $categoriesSizeVRectDesktop;
-        }
-        h2 {
-          font-size: $h2SizeVRectDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeVRectDesktop;
-        }
-      }
-      &:nth-child(12n+12){
-        .categories {
-          font-size: $categoriesSizeSmallSquareDesktop;
-        }
-        h2 {
-          font-size: $h2SizeSmallSquareDesktop;
-        }
-        .subtitle {
-          font-size: $subtitleSizeSmallSquareDesktop;
-        }
-      }
     }
-  }
 }
-
 @media (max-width: $phone) {
-  .wrapper-grid{
-    grid-template-columns: 1fr;
-    & > article {
-      grid-column: 1 / 2;
-      grid-row: span 1;
-      &:before{
-        padding-top: 100% !important;
-      }
-      .categories {
-        font-size: $categoriesSizePhone !important;
-      }
-      h2 {
-        font-size: $h2SizePhone !important;
-      }
-      .subtitle {
-        font-size: $subtitleSizePhone !important;
-      }
+    .wrapper-grid {
+        grid-template-columns: 1fr;
+        & > article {
+            @include grid-child(1, 2, auto, 1);
+            // grid-column: 1 / 2;
+            // grid-row: span 1;
+            &:before {
+                padding-top: 100% !important;
+            }
+            .categories {
+                font-size: $categoriesSizePhone !important;
+            }
+            h2 {
+                font-size: $h2SizePhone !important;
+            }
+            .subtitle {
+                font-size: $subtitleSizePhone !important;
+            }
+        }
     }
-  }
 }

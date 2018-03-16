@@ -201,7 +201,7 @@
   margin: auto;
   max-width: 325px;
   min-width: 250px;
-  &::before {
+  &:before {
     content: '';
     display: block;
     padding-bottom: 400px;

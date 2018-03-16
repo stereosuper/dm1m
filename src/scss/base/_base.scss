@@ -26,6 +26,9 @@ body{
     background: $white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    &.hide-overflow {
+        overflow: hidden;
+    }
 }
 
 main{
