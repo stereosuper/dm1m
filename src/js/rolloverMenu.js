@@ -61,39 +61,32 @@ module.exports = function( nav ){
     }
 
     function activateSheep( indexHovered ){
-        const logo = $('#logoIllus');
-        const leftEye = logo.find('.js-left-eye');
-        const rightEye = logo.find('.js-right-eye');
-        const leftCheek = logo.find('.js-left-cheek');
-        const rightCheek = logo.find('.js-right-cheek');
-        const mouth = logo.find('.js-mouth');
+        const leftEye = illus.find('.js-left-eye');
+        const rightEye = illus.find('.js-right-eye');
+        const leftCheek = illus.find('.js-left-cheek');
+        const rightCheek = illus.find('.js-right-cheek');
+        const mouth = illus.find('.js-mouth');
 
-        logo.removeClass('badass');
+        illus.removeClass('badass');
 
         switch( indexHovered ){
             case 0:
                 // new
                 // rougir lien home ou new
-                logo.addClass('visible-cheeks');
-                logo.removeClass('sheep-winking');
-                logo.removeClass('sheep-surprised');
-                logo.addClass('sheep-blushing');
+                illus.addClass('visible-cheeks sheep-blushing');
+                illus.removeClass('sheep-winking sheep-surprised');
                 break;
             case 1:
                 // projects
                 // wink
-                  logo.removeClass('visible-cheeks');
-                  logo.removeClass('sheep-blushing');
-                  logo.removeClass('sheep-surprised');
-                  logo.addClass('sheep-winking');
+                illus.removeClass('visible-cheeks sheep-blushing sheep-surprised');
+                illus.addClass('sheep-winking');
                 break;
             case 2:
                 // agency
                 // surprise
-                logo.removeClass('visible-cheeks');
-                logo.removeClass('sheep-blushing');
-                logo.removeClass('sheep-winking');
-                logo.addClass('sheep-surprised');
+                illus.removeClass('visible-cheeks sheep-blushing sheep-winking');
+                illus.addClass('sheep-surprised');
                 break;
             default:
                 break;
@@ -101,20 +94,17 @@ module.exports = function( nav ){
     }
 
     function deactivateSheep() {
-      const logo = $('#logoIllus');
-      const leftEye = logo.find('.js-left-eye');
-      const rightEye = logo.find('.js-right-eye');
-      const mouth = logo.find('.js-mouth');
+      const leftEye = illus.find('.js-left-eye');
+      const rightEye = illus.find('.js-right-eye');
+      const mouth = illus.find('.js-mouth');
 
-      logo.removeClass('sheep-blushing');
-      logo.removeClass('sheep-winking');
-      logo.removeClass('sheep-surprised');
+      illus.removeClass('sheep-blushing sheep-winking sheep-surprised');
 
       if ($('body').hasClass('error404')) {
-        logo.addClass('badass');
+        illus.addClass('badass');
 
       } else {
-        logo.removeClass('visible-cheeks');
+        illus.removeClass('visible-cheeks');
       }
     }
 
@@ -142,6 +132,12 @@ module.exports = function( nav ){
         current.length ? moveIndic( current.data('x'), 0.4 ) : TweenMax.to(bubbles, 0.3, {scale: 0});
 
         deactivateSheep();
+      });
+
+      $('.wrapper-logo a').on('mouseenter focusin', function(){
+        illus.addClass('visible-cheeks sheep-blushing');
+      }).on('mouseleave focusout', function(){
+        illus.removeClass('visible-cheeks sheep-blushing');
       });
     }
 
