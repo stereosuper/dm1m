@@ -18439,8 +18439,9 @@ module.exports = function (methodoWrapper) {
     var liParent = void 0,
         liParentIndex = void 0;
 
-    btnStep.on('click', function (e) {
+    function handleClick(e) {
         e.preventDefault();
+
         liParent = $(this).parents('li');
         if (!liParent.hasClass('active')) {
             liParentIndex = liParent.index() + 1;
@@ -18449,7 +18450,9 @@ module.exports = function (methodoWrapper) {
             methodoWrapper.find('.steps li.active').removeClass('active');
             liParent.addClass('active');
         }
-    });
+    }
+
+    btnStep.on('click', handleClick).on('focus', handleClick);
 };
 
 },{"gsap":3,"jquery-slim":5}],11:[function(require,module,exports){
