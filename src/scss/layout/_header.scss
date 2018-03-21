@@ -22,6 +22,8 @@
     width: 30px;
     height: 30px;
     margin: 45px 0 0;
+    border: 0;
+    outline: none;
     z-index: 2;
 
     span {
@@ -88,7 +90,7 @@
 
 .social {
     display: flex;
-    padding: 15px 0;
+    padding: 13px 0 0;
     justify-content: flex-end;
 
     > *:nth-child(2) {
@@ -98,91 +100,93 @@
 
 .social,
 .wrapper-logo {
-    width: 200px;
+    width: 236px;
 }
 
 .wrapper-logo {
     position: relative;
     margin: 20px 0 0;
-
     a {
         position: absolute;
         top: 0;
         left: 0;
         display: inline-flex;
         align-items: flex-end;
+        padding: 0 16px 12px 0;
+        background: $white;
+    }
+    .wrapper-illus {
+        display: block;
+        width: 66px;
+        height: 76px;
+        position: relative;
+        background: url("../layoutImg/bg-logo.svg") no-repeat 0 0;
+        flex: 0 0 auto;
 
+        &.sheep-blushing {
+            .left-eye,
+            .right-eye {
+                background-image: url("../layoutImg/sheep-blushing/eye-up.svg");
+                transform: none;
+            }
+
+            .left-cheek,
+            .right-cheek {
+                top: 47.5px;
+                background-image: url("../layoutImg/sheep-blushing/blush.svg");
+                transform: scale(1);
+            }
+
+            .mouth {
+                background-image: url("../layoutImg/sheep-blushing/oh-mouth.svg");
+                height: 9px;
+                transform: translateX(-50%) scale(1.4);
+            }
+        }
+
+        &.sheep-winking {
+            .left-eye {
+                background-image: url("../layoutImg/open-eye.svg");
+            }
+
+            .right-eye {
+                background-image: url("../layoutImg/sheep-wink/eye-wink.svg");
+                transform: none;
+            }
+
+            .mouth {
+                background-image: url("../layoutImg/mouth.svg");
+                transform: translateX(-50%);
+            }
+        }
+
+        &.sheep-surprised {
+            .left-eye {
+                background-image: url("../layoutImg/sheep-surprise/round-eye.svg");
+                transform: none;
+            }
+
+            .right-eye {
+                background-image: url("../layoutImg/sheep-surprise/pupil.svg");
+                transform: scale(0.5);
+            }
+
+            .left-cheek {}
+
+            .right-cheek {}
+
+            .mouth {
+                background-image: url("../layoutImg/sheep-surprise/surprised-mouth.svg");
+                height: 9px;
+                transform: translateX(-50%) scale(1.4);
+            }
+        }
+    }
+    .wrapper-txt{
+        height: 66px;
+        margin-left: 16px;
         .h-logo {
-            margin-left: 1.5vw;
             width: 100%;
-        }
-    }
-}
-
-.wrapper-illus {
-    display: block;
-    width: 66px;
-    height: 76px;
-    position: relative;
-    background: url("../layoutImg/bg-logo.svg") no-repeat 0 0;
-    flex: 0 0 auto;
-
-    &.sheep-blushing {
-        .left-eye,
-        .right-eye {
-            background-image: url("../layoutImg/sheep-blushing/eye-up.svg");
-            transform: none;
-        }
-
-        .left-cheek,
-        .right-cheek {
-            top: 47.5px;
-            background-image: url("../layoutImg/sheep-blushing/blush.svg");
-            transform: scale(1);
-        }
-
-        .mouth {
-            background-image: url("../layoutImg/sheep-blushing/oh-mouth.svg");
-            height: 9px;
-            transform: translateX(-50%) scale(1.4);
-        }
-    }
-
-    &.sheep-winking {
-        .left-eye {
-            background-image: url("../layoutImg/open-eye.svg");
-        }
-
-        .right-eye {
-            background-image: url("../layoutImg/sheep-wink/eye-wink.svg");
-            transform: none;
-        }
-
-        .mouth {
-            background-image: url("../layoutImg/mouth.svg");
-            transform: translateX(-50%);
-        }
-    }
-
-    &.sheep-surprised {
-        .left-eye {
-            background-image: url("../layoutImg/sheep-surprise/round-eye.svg");
-            transform: none;
-        }
-
-        .right-eye {
-            background-image: url("../layoutImg/sheep-surprise/pupil.svg");
-            transform: scale(0.5);
-        }
-
-        .left-cheek {}
-
-        .right-cheek {}
-
-        .mouth {
-            background-image: url("../layoutImg/sheep-surprise/surprised-mouth.svg");
-            height: 9px;
-            transform: translateX(-50%) scale(1.4);
         }
     }
 }
@@ -282,6 +286,7 @@
     z-index: 1;
 
     li {
+        margin: 0;
         &:before {
             content: none;
         }
@@ -296,7 +301,7 @@
 
     a {
         display: block;
-        padding: 20px 15px 10px;
+        padding: 25px 15px 18px;
         font-family: $moon;
         font-size: 1.3rem;
         text-transform: uppercase;
@@ -360,7 +365,11 @@
 }
 @media (max-width: $desktop-small) {
     .wrapper-logo {
-        a {
+        a{
+            padding: 0;
+            background: none;
+        }
+        .wrapper-txt {
             .h-logo {
                 display: none;
             }

@@ -34,16 +34,16 @@
 							<span class='cheek right-cheek js-right-cheek'></span>
 							<span class='mouth js-mouth'></span>
 						</span>
-						<span>
+						<span class='wrapper-txt'>
 							<?php if ($hLogo = get_field('logo', 'option')):
 								echo wp_get_attachment_image($hLogo['ID'], 'full', '', array('class' => 'h-logo'));
 							endif; ?>
 						</span>
 					</a>
 				</div>
-				<div id="burger" class="burger">
+				<button id='burger' class='burger'>
 					<span></span>
-				</div>
+				</button>
 				<nav class='menu' role='navigation' id='nav'>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_class' => 'menu-main' ) ); ?>
 					<div class='menu-indicator top js-indic'>
