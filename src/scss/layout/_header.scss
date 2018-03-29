@@ -5,6 +5,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    padding-bottom: 47px;
     z-index: 20;
     background: $white;
 
@@ -36,7 +37,7 @@
             height: 4px;
             border-radius: 2px;
             background-color: $black;
-            transition: transform 0.5s 0.3s cubic-bezier(.31,0,.07,1);
+            transition: transform 0.5s 0.3s cubic-bezier(0.31, 0, 0.07, 1);
         }
 
         &:before {
@@ -61,7 +62,7 @@
         border-radius: 2px;
         background-color: $black;
         transform: translate3d(0, -50%, 0);
-        transition: transform 0.3s cubic-bezier(.31,0,.07,1);
+        transition: transform 0.3s cubic-bezier(0.31, 0, 0.07, 1);
     }
 
     &.burger-clicked {
@@ -69,13 +70,13 @@
             &:after,
             &:before {
                 transform: scale3d(0, 1, 1);
-                transition: transform 0.5s cubic-bezier(.31,0,.07,1);
+                transition: transform 0.5s cubic-bezier(0.31, 0, 0.07, 1);
             }
         }
 
         &:after,
         &:before {
-            transition: transform 0.3s 0.5s cubic-bezier(.31,0,.07,1);
+            transition: transform 0.3s 0.5s cubic-bezier(0.31, 0, 0.07, 1);
         }
 
         &:before {
@@ -113,32 +114,31 @@
         display: inline-flex;
         align-items: flex-end;
         padding: 0 16px 12px 0;
-        background: $white;
     }
     .wrapper-illus {
         display: block;
         width: 66px;
         height: 76px;
         position: relative;
-        background: url("../layoutImg/bg-logo.svg") no-repeat 0 0;
+        background: url('../layoutImg/bg-logo.svg') no-repeat 0 0;
         flex: 0 0 auto;
 
         &.sheep-blushing {
             .left-eye,
             .right-eye {
-                background-image: url("../layoutImg/sheep-blushing/eye-up.svg");
+                background-image: url('../layoutImg/sheep-blushing/eye-up.svg');
                 transform: none;
             }
 
             .left-cheek,
             .right-cheek {
                 top: 47.5px;
-                background-image: url("../layoutImg/sheep-blushing/blush.svg");
+                background-image: url('../layoutImg/sheep-blushing/blush.svg');
                 transform: scale(1);
             }
 
             .mouth {
-                background-image: url("../layoutImg/sheep-blushing/oh-mouth.svg");
+                background-image: url('../layoutImg/sheep-blushing/oh-mouth.svg');
                 height: 9px;
                 transform: translateX(-50%) scale(1.4);
             }
@@ -146,43 +146,45 @@
 
         &.sheep-winking {
             .left-eye {
-                background-image: url("../layoutImg/open-eye.svg");
+                background-image: url('../layoutImg/open-eye.svg');
             }
 
             .right-eye {
-                background-image: url("../layoutImg/sheep-wink/eye-wink.svg");
+                background-image: url('../layoutImg/sheep-wink/eye-wink.svg');
                 transform: none;
             }
 
             .mouth {
-                background-image: url("../layoutImg/mouth.svg");
+                background-image: url('../layoutImg/mouth.svg');
                 transform: translateX(-50%);
             }
         }
 
         &.sheep-surprised {
             .left-eye {
-                background-image: url("../layoutImg/sheep-surprise/round-eye.svg");
+                background-image: url('../layoutImg/sheep-surprise/round-eye.svg');
                 transform: none;
             }
 
             .right-eye {
-                background-image: url("../layoutImg/sheep-surprise/pupil.svg");
+                background-image: url('../layoutImg/sheep-surprise/pupil.svg');
                 transform: scale(0.5);
             }
 
-            .left-cheek {}
+            .left-cheek {
+            }
 
-            .right-cheek {}
+            .right-cheek {
+            }
 
             .mouth {
-                background-image: url("../layoutImg/sheep-surprise/surprised-mouth.svg");
+                background-image: url('../layoutImg/sheep-surprise/surprised-mouth.svg');
                 height: 9px;
                 transform: translateX(-50%) scale(1.4);
             }
         }
     }
-    .wrapper-txt{
+    .wrapper-txt {
         height: 66px;
         margin-left: 16px;
         .h-logo {
@@ -197,7 +199,7 @@
     height: 10px;
     position: absolute;
     top: 35px;
-    background: url("../layoutImg/open-eye.svg") no-repeat 0 0;
+    background: url('../layoutImg/open-eye.svg') no-repeat 0 0;
 
     &.left-eye {
         left: 14px;
@@ -209,7 +211,7 @@
 
     .badass & {
         top: 37.5px;
-        background: url("../layoutImg/sheep-badass/angry-eye.svg") no-repeat 0 0 !important;
+        background: url('../layoutImg/sheep-badass/angry-eye.svg') no-repeat 0 0 !important;
         transform: scale(1.5) !important;
         backface-visibility: hidden;
     }
@@ -221,7 +223,7 @@
     height: 15px;
     position: absolute;
     top: 47.5px;
-    background: url("../layoutImg/sheep-blushing/blush.svg") no-repeat 0 0;
+    background: url('../layoutImg/sheep-blushing/blush.svg') no-repeat 0 0;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0s ease, visibility 0s;
@@ -244,7 +246,8 @@
 
     .badass & {
         top: 53px !important;
-        background: url("../layoutImg/sheep-badass/i-will-find-you-beard.svg") no-repeat 0 0 !important;
+        background: url('../layoutImg/sheep-badass/i-will-find-you-beard.svg')
+            no-repeat 0 0 !important;
         opacity: 1;
         visibility: visible;
         backface-visibility: hidden;
@@ -271,13 +274,13 @@
     top: 60px;
     left: 50%;
     // margin-left: -5px;
-    background: url("../layoutImg/mouth.svg") no-repeat 0 0;
+    background: url('../layoutImg/mouth.svg') no-repeat 0 0;
     background-position: center;
     transform: translateX(-50%); // centering the mouth
     backface-visibility: hidden;
 
     .badass & {
-        background-image: url("../layoutImg/sheep-badass/i-will-kill-you-mouth.svg") !important;
+        background-image: url('../layoutImg/sheep-badass/i-will-kill-you-mouth.svg') !important;
     }
 }
 
@@ -365,7 +368,7 @@
 }
 @media (max-width: $desktop-small) {
     .wrapper-logo {
-        a{
+        a {
             padding: 0;
             background: none;
         }
@@ -507,7 +510,7 @@
         }
 
         &.show-nav {
-            background-color: rgba($primary, .95);
+            background-color: rgba($primary, 0.95);
             opacity: 1;
             visibility: visible;
             transition: background-color 0.3s 0.6s;

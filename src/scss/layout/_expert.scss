@@ -1,88 +1,92 @@
-.expert{
+.expert {
     padding: 0 0 100px;
     position: relative;
 }
 
-.expert-cloud{
+.expert-cloud {
     max-width: 320px;
     min-height: 280px;
     padding: 10px 10px 20px;
     position: absolute;
     z-index: 1;
     border-radius: 50%;
-    &:nth-of-type(1){
+    &:nth-of-type(1) {
         top: 10%;
         left: 5%;
-        > .bubble{
-            &:nth-of-type(2){
-                &:before, &:after{
+        > .bubble {
+            &:nth-of-type(2) {
+                &:before,
+                &:after {
                     width: 180px;
                     height: 180px;
                 }
-                &:before{
+                &:before {
                     right: -26px;
                     top: 10px;
                 }
-                &:after{
+                &:after {
                     left: -30px;
                     bottom: 0;
                 }
             }
-            &:nth-of-type(3){
-                &:before, &:after{
+            &:nth-of-type(3) {
+                &:before,
+                &:after {
                     width: 185px;
                     height: 175px;
                 }
-                &:before{
+                &:before {
                     right: -75px;
                     bottom: -5px;
                 }
-                &:after{
+                &:after {
                     left: -50px;
                     top: -10px;
                 }
             }
         }
     }
-    &:nth-of-type(2){
+    &:nth-of-type(2) {
         top: -10%;
         right: 3%;
-        > .bubble{
-            &:nth-of-type(2){
-                &:before, &:after{
+        > .bubble {
+            &:nth-of-type(2) {
+                &:before,
+                &:after {
                     width: 200px;
                     height: 180px;
                 }
-                &:before{
+                &:before {
                     right: -70px;
                     top: -5px;
                 }
-                &:after{
+                &:after {
                     left: -50px;
                     bottom: 0;
                 }
             }
-            &:nth-of-type(3){
-                &:before, &:after{
+            &:nth-of-type(3) {
+                &:before,
+                &:after {
                     width: 185px;
                     height: 175px;
                 }
-                &:before{
+                &:before {
                     right: -25px;
                     bottom: 5px;
                 }
-                &:after{
+                &:after {
                     left: -25px;
                     top: -20px;
                 }
             }
         }
     }
-    &:nth-of-type(3){
+    &:nth-of-type(3) {
         top: 40%;
         right: 10%;
     }
-    .bg{
+    .bg {
         position: absolute;
         top: 0;
         left: 0;
@@ -96,7 +100,7 @@
         transform-origin: 50% 50%;
         transition: $transition 0.1s;
         backface-visibility: hidden;
-        &:after{
+        &:after {
             content: '';
             display: block;
             height: 110%;
@@ -108,7 +112,10 @@
             transform-origin: 50% 50%;
         }
     }
-    > h4{
+    > h4 {
+        display: inline-block;
+        position: relative;
+        top: 50%;
         padding: 0.3em 0 0.3em;
         margin: 0;
         font-family: $aromatica-script;
@@ -118,15 +125,15 @@
         transform-origin: 50% 50%;
         transform: translate3d(0, 105%, 0) scale(0.6);
         transition: $transition 0.1s;
-        &.big{
-            transform: translate3d(0, 50%, 0) scale(0.6);
+        &.big {
+            transform: translate3d(0, 0%, 0) scale(0.6);
         }
     }
-    .expert-txt{
+    .expert-txt {
         opacity: 0;
         transition: $transition;
     }
-    > .bubble{
+    > .bubble {
         position: absolute;
         top: 0;
         left: 0;
@@ -136,54 +143,58 @@
         transform: translate3d(0, 0, 0) scale(0.6);
         transform-origin: 50% 50%;
         transition: $transition 0.1s;
-        &:before, &:after{
+        &:before,
+        &:after {
             content: '';
             position: absolute;
             border-radius: 50%;
             background: $grey;
         }
-        &:first-of-type{
+        &:first-of-type {
             transition-duration: 0.4s;
-            &:before, &:after{
+            &:before,
+            &:after {
                 width: 200px;
                 height: 200px;
                 left: 0;
                 right: 0;
                 margin: auto;
             }
-            &:before{
+            &:before {
                 top: -70px;
             }
-            &:after{
+            &:after {
                 bottom: -70px;
             }
         }
-        &:nth-of-type(2){
+        &:nth-of-type(2) {
             transition-duration: 0.35s;
-            &:before, &:after{
+            &:before,
+            &:after {
                 width: 180px;
                 height: 170px;
             }
-            &:before{
+            &:before {
                 right: -45px;
                 top: -10px;
             }
-            &:after{
+            &:after {
                 left: -60px;
                 bottom: 5px;
             }
         }
-        &:nth-of-type(3){
+        &:nth-of-type(3) {
             transition-duration: 0.47s;
-            &:before, &:after{
+            &:before,
+            &:after {
                 width: 160px;
                 height: 160px;
             }
-            &:before{
+            &:before {
                 right: -30px;
                 bottom: -5px;
             }
-            &:after{
+            &:after {
                 left: -20px;
                 top: 20px;
             }
@@ -192,47 +203,49 @@
 }
 
 .sheep-container {
-  display: block;
-  position: relative;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  max-width: 325px;
-  min-width: 250px;
-  &:before {
-    content: '';
     display: block;
-    padding-bottom: 400px;
-  }
-  .sheep {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
-      overflow: visible !important;
-      z-index: 10;
-  }
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-width: 325px;
+    min-width: 250px;
+    &:before {
+        content: '';
+        display: block;
+        padding-bottom: 400px;
+    }
+    .sheep {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        overflow: visible !important;
+        z-index: 10;
+    }
 }
 
-
-@media (min-width: $desktop-small){
-    .expert-cloud{
+@media (min-width: $desktop-small) {
+    .expert-cloud {
         &:hover,
         &:focus {
             outline: none;
             z-index: 2;
-            > h4, > h4.big, > .bg, > .bubble{
+            > h4,
+            > h4.big,
+            > .bg,
+            > .bubble {
                 transform: translate3d(0, 0, 0) scale(1);
                 transition: $transition;
             }
-            > h4{
+            > h4 {
                 color: $primary;
             }
-            .expert-txt{
+            .expert-txt {
                 opacity: 1;
                 transition: 0.3s $transition;
             }
@@ -240,49 +253,50 @@
     }
 }
 
-
-@media (max-width: $desktop){
-    .expert{
+@media (max-width: $desktop) {
+    .expert {
         padding: 0 0 200px;
-        > .sheep{
+        > .sheep {
             width: 27%;
         }
     }
 }
 
-@media (max-width: $desktop-small){
-    .sheep{
+@media (max-width: $desktop-small) {
+    .sheep {
         display: none;
     }
 
-    .expert{
+    .expert {
         padding: 0 0 30px;
     }
 
-    .expert-cloud{
+    .expert-cloud {
         max-width: 500px;
         min-height: 0;
         position: static;
         margin: 0 auto 20px;
         border-radius: 0;
-        > .bg, > .bubble{
+        > .bg,
+        > .bubble {
             display: none;
         }
-        > h4{
+        > h4 {
             font-size: 4.5rem;
         }
-        > h4, > h4.big{
+        > h4,
+        > h4.big {
             transform: none;
         }
-        .expert-txt{
+        .expert-txt {
             opacity: 1;
         }
     }
 }
 
-@media (max-width: $phone){
-    .expert-cloud{
-        > h4{
+@media (max-width: $phone) {
+    .expert-cloud {
+        > h4 {
             font-size: 4rem;
             text-align: left;
         }

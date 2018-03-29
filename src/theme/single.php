@@ -12,7 +12,7 @@
             echo '<span>'.$cats[$i]->name.'</span>';
 
         } ?></h3>
-		<h1 class="small"><?php the_title(); ?></h1>
+		<h1><?php the_title(); ?></h1>
         <div class='wrapper-title'>
             <h2><?php the_field('subtitle') ?></h2>
             <div class='actions'>

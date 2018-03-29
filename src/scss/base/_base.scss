@@ -1,24 +1,24 @@
 /******* GÉNÉRAL *******/
 
-::-moz-selection{
+::-moz-selection {
     background: $primary;
     color: $white;
     text-shadow: none;
 }
-::selection{
+::selection {
     background: $primary;
     color: $white;
     text-shadow: none;
 }
 
-html{
+html {
     font-size: 62.5%; /* sets the base font to 10px for easier math */
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
     background: $black;
 }
 
-body{
+body {
     min-height: 100vh;
     font-family: $aromatica-semi-bold;
     font-size: 1.6em;
@@ -31,66 +31,70 @@ body{
     }
 }
 
-main{
+main {
     min-height: calc(100vh - 93px - 273px);
-    padding: 100px 0 150px;
+    padding: 130px 0 150px;
     overflow: hidden;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 400;
 }
 
-h1, .h1{
-    font-size: 6rem;
+h1,
+.h1 {
+    font-size: 4.8rem;
     letter-spacing: 6px;
-    margin: 10px 0 5px;
+    margin: 0.45em 0;
     font-family: $aquawax-bold;
     color: $black;
     text-transform: uppercase;
     text-align: center;
-    &.small{
-        font-size: 4.8rem;
-        margin: 0.45em 0;
-    }
 }
 
-h2, .h2{
+h2,
+.h2 {
     font-family: $aromatica-script;
     font-size: 4.8rem;
     color: $primary;
     text-transform: none;
     letter-spacing: 0;
     margin: 0;
-    .wrapper-content &{
+    .wrapper-content & {
         font-family: $aquawax-bold;
         font-size: 3.6rem;
         color: $black;
     }
 }
 
-h3, .h3{
+h3,
+.h3 {
     font-size: 2rem;
     letter-spacing: 2px;
     margin: 0;
     font-family: $aquawax-bold;
     text-transform: uppercase;
     text-align: center;
-    .wrapper-content &{
+    .wrapper-content & {
         font-family: $aromatica-script;
         font-size: 3rem;
         color: $primary;
         text-transform: none;
         letter-spacing: initial;
     }
-    &.underlined{
+    &.underlined {
         display: flex;
         justify-content: center;
         margin: 6rem 0 4rem;
-        > span{
+        > span {
             position: relative;
             padding-bottom: 10px;
-            &:after{
+            &:after {
                 content: '';
                 display: block;
                 position: absolute;
@@ -104,48 +108,50 @@ h3, .h3{
     }
 }
 
-h4{
+h4 {
     font-size: 2.2rem;
     margin: 1.33em 0;
 }
 
-h5{
+h5 {
     font-size: 2rem;
     margin: 1.67em 0;
 }
 
-h6{
+h6 {
     font-size: 1.8rem;
     margin: 2.33em 0;
 }
 
-p{
+p {
     font-size: 1.6rem;
     margin: 1em 0;
     line-height: 1.1;
 }
 
-b, strong{
+b,
+strong {
     font-family: $aromatica-bold;
 }
 
-i, em{
-
+i,
+em {
 }
 
-blockquote{
+blockquote {
     margin: 1em 40px;
 }
 
-ol, ul{
+ol,
+ul {
     padding: 0;
     margin: 1em 0;
 }
-ul{
+ul {
     list-style-type: none;
     > li {
         margin: 5px 0;
-        &:before{
+        &:before {
             content: '';
             position: relative;
             top: -3px;
@@ -157,58 +163,59 @@ ul{
             border-radius: 50%;
         }
     }
-    ul{
+    ul {
         padding: 0 0 0 25px;
         margin: 1em 0;
     }
 }
-ol{
+ol {
     counter-reset: ol-counter;
-    > li{
+    > li {
         counter-increment: ol-counter;
-        &:before{
-            content: counter(ol-counter)'.';
+        &:before {
+            content: counter(ol-counter) '.';
         }
     }
-    ol{
+    ol {
         padding: 0 0 0 25px;
         margin: 1em 0;
     }
 }
 
-dt, dd{
+dt,
+dd {
     display: inline;
     margin: 0;
 }
-dt{
-    &:after{
+dt {
+    &:after {
         content: ': ';
     }
 }
-dd{
-    + dt{
-        &:before{
+dd {
+    + dt {
+        &:before {
             content: '\A';
             white-space: pre;
         }
     }
-    + dd{
-        &:before{
+    + dd {
+        &:before {
             content: ', ';
             margin: 0 0 0 -0.25em;
         }
     }
 }
 
-img{
+img {
     max-width: 100%;
     height: auto;
     // max-height: 50vh;
-    .wrapper-content &{
+    .wrapper-content & {
         width: 100%;
         margin-bottom: 25px;
     }
-    .wrapper-content.container-small &{
+    .wrapper-content.container-small & {
         width: calc(100% + 360px);
         margin-left: -180px;
         margin-right: -180px;
@@ -216,14 +223,15 @@ img{
     }
 }
 
-code, pre{
+code,
+pre {
     display: block;
     padding: 10px 15px;
     margin: 1em 0;
     background: grey;
 }
 
-hr{
+hr {
     height: 1px;
     max-width: 250px;
     border: 0;
@@ -231,30 +239,29 @@ hr{
     background: $black;
 }
 
-
 /******* LIENS / BOUTONS *******/
 
-a{
+a {
     color: inherit;
     text-decoration: none;
     transition: $transition;
-    &:focus, &:hover{
+    &:focus,
+    &:hover {
     }
-    &:focus{
+    &:focus {
         outline: 0;
     }
-    &:active{
+    &:active {
         filter: saturate(200%);
     }
 }
 
-
 /******* CLASSES GENERALES  *******/
 
-.hidden{
+.hidden {
     display: none !important;
 }
-.visually-hidden{
+.visually-hidden {
     width: 1px;
     height: 1px;
     padding: 0;
@@ -265,61 +272,62 @@ a{
     overflow: hidden;
 }
 
-.clearfix{
+.clearfix {
     @include clearfix;
 }
 
-.pos-relative{
+.pos-relative {
     position: relative;
 }
 
-.align-center{
+.align-center {
     text-align: center;
 }
-.align-left{
+.align-left {
     text-align: left;
 }
-.align-right{
+.align-right {
     text-align: right;
 }
 
-.inline-b{
+.inline-b {
     display: inline-block;
     vertical-align: middle;
-    transform: translateY(-.1em);
+    transform: translateY(-0.1em);
 }
 
-.full-width{
+.full-width {
     width: 100%;
 }
 
-.wrapper-content{
+.wrapper-content {
     font-family: $aromatica;
 }
 
-.icon{
+.icon {
     width: 1.2em;
     height: 1.2em;
     fill: currentColor;
 }
 
-.img-fit{
-    &.compat-object-fit{
+.img-fit {
+    &.compat-object-fit {
         background-size: cover;
         background-position: 50% 50%;
-        img{ // hide image if object fit is not supported - opacity to 0 for the link area
+        img {
+            // hide image if object fit is not supported - opacity to 0 for the link area
             opacity: 0;
         }
     }
 }
 
-.separator{
+.separator {
     color: $primary;
 }
 
-@media(max-width: $desktop){
-    img{
-        .wrapper-content.container-small &{
+@media (max-width: $desktop) {
+    img {
+        .wrapper-content.container-small & {
             width: calc(100vw - 40px);
             margin-left: calc((100vw - 740px) / -2);
             margin-right: calc((100vw - 740px) / -2);
@@ -327,40 +335,34 @@ a{
     }
 }
 
-@media(max-width: $tablet){
-  h1 {
-    font-size: 4.5rem;
-    &.small {
-      font-size: 4rem;
+@media (max-width: $tablet) {
+    h1 {
+        font-size: 4.5rem;
     }
-  }
-  main {
-    padding: 200px 0 50px;
-  }
-  img{
-    .wrapper-content.container-small &{
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
+    main {
+        padding: 200px 0 50px;
     }
-  }
+    img {
+        .wrapper-content.container-small & {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
 }
 
-@media(max-width: $phone){
-  h1 {
-    font-size: 4rem;
-    &.small {
-      font-size: 3.5rem;
+@media (max-width: $phone) {
+    h1 {
+        font-size: 4rem;
     }
-  }
-  main {
-    padding: 140px 0 100px;
-  }
-  img{
-    .wrapper-content.container-small &{
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
+    main {
+        padding: 140px 0 100px;
     }
-  }
+    img {
+        .wrapper-content.container-small & {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
 }

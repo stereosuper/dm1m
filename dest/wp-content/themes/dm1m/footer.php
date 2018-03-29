@@ -10,7 +10,7 @@
                           <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>">
                             <div id='contact-cloud' class='small-cloud'>
                               <div class="hover-me js-hover-me"></div>
-                              <p><?php echo $contactLink['title']; ?></p>
+                              <p><?php the_field('footer_contact_label', 'option') ?></p>
                               <i class='bubble js-bubble'></i>
                               <i class='bubble js-bubble'></i>
                               <i class='bubble js-bubble'></i>
