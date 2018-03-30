@@ -269,8 +269,13 @@
 
     .sheep-mobile {
         display: block;
-        svg {
-            width: 40vw;
+        .sheep {
+            display: block;
+            position: relative;
+            left: 0;
+            right: 0;
+            margin: auto;
+            height: 20vh;
         }
     }
 
@@ -302,6 +307,12 @@
 }
 
 @media (max-width: $phone) {
+    .sheep-mobile {
+        .sheep {
+            height: auto;
+            width: 50vw;
+        }
+    }
     .expert-cloud {
         > h4 {
             font-size: 4rem;

@@ -80,8 +80,8 @@
 	<?php endif; ?>
 	<div id="more" class="more">
 		<div class="left-legs js-legs">
-			<span class="leg"></span>
-			<span class="leg"></span>
+			<!-- <span class="leg"></span>
+			<span class="leg"></span> -->
 			<span class="leg"></span>
 			<span class="leg cotton"></span>
 			<span class="leg cotton"></span>
@@ -91,8 +91,8 @@
 			<span class="leg cotton">
 				<svg class="icon icon-hoove"><use xlink:href="#icon-hoove"></use></svg>
 			</span>
-			<span class="leg"></span>
-			<span class="leg"></span>
+			<!-- <span class="leg"></span>
+			<span class="leg"></span> -->
 		</div>
 		<div class="box">
 			<?php if($agencyLink = get_field('agency_link', 'option')) : ?>
@@ -110,8 +110,8 @@
 			<?php endif; ?>
 		</div>
 		<div class="right-legs js-legs">
-			<span class="leg"></span>
-			<span class="leg"></span>
+			<!-- <span class="leg"></span>
+			<span class="leg"></span> -->
 			<span class="leg cotton">
 				<svg class="icon icon-hoove"><use xlink:href="#icon-hoove"></use></svg>
 			</span>
@@ -121,8 +121,8 @@
 				<svg class="icon icon-hoove"><use xlink:href="#icon-hoove"></use></svg>
 			</span>
 			<span class="leg cotton"></span>
-			<span class="leg"></span>
-			<span class="leg"></span>
+			<!-- <span class="leg"></span>
+			<span class="leg"></span> -->
 		</div>
 	</div>
 

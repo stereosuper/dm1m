@@ -1,156 +1,160 @@
 .more {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
-  margin: 5vh 0;
-  .left-legs,
-  .right-legs {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-end;
-    width: 30%;
-  }
-  .leg {
-    display: inline-block;
     position: relative;
-    width: 3%;
-    height: 10vh;
-    border-radius: 2.5vw;
-    background-color: $primary;
-    &.cotton {
-      &:before {
-        content: '';
-        position: absolute;
-        width: 1.35vw;
-        height: 1.35vw;
-        top: 0;
-        left: 50%;
-        border-radius: 50%;
-        background-color: $grey;
-        transform: translate(-50%, -50%);
-      }
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 7.5vh auto 5vh;
+    .left-legs,
+    .right-legs {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 25%;
     }
-    .icon-hoove {
-      position: absolute;
-      width: 1.45vw;
-      height: 1.45vw;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, -100%);
-    }
-  }
-  .left-legs {
     .leg {
-      &:nth-of-type(1),
-      &:nth-of-type(3),
-      &:nth-of-type(8),
-      &:nth-of-type(9) {
-        height: 3.33vh;
-      }
-      &:nth-of-type(2),
-      &:nth-of-type(5),
-      &:nth-of-type(7) {
-        height: 5vh;
-      }
-      &:nth-of-type(4) {
-        height: 6.66vh;
-      }
+        display: inline-block;
+        position: relative;
+        width: 3%;
+        height: 10vh;
+        border-radius: 2.5vw;
+        background-color: $primary;
+        &.cotton {
+            &:before {
+                content: '';
+                position: absolute;
+                width: 1.35vw;
+                height: 1.35vw;
+                top: 0;
+                left: 50%;
+                border-radius: 50%;
+                background-color: $grey;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .icon-hoove {
+            position: absolute;
+            width: 1.45vw;
+            height: 1.45vw;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -100%);
+        }
     }
-  }
-  .right-legs {
-    .leg {
-      &:nth-of-type(1),
-      &:nth-of-type(4) {
-        height: 6.66vh;
-      }
-      &:nth-of-type(2),
-      &:nth-of-type(5),
-      &:nth-of-type(8),
-      &:nth-of-type(9) {
-        height: 3.33vh;
-      }
-      &:nth-of-type(3),
-      &:nth-of-type(7) {
-        height: 5vh;
-      }
+    .left-legs {
+        .leg {
+            &:nth-of-type(1),
+            &:nth-of-type(3),
+            &:nth-of-type(8),
+            &:nth-of-type(9) {
+                height: 3.33vh;
+            }
+            &:nth-of-type(2),
+            &:nth-of-type(5),
+            &:nth-of-type(7) {
+                height: 5vh;
+            }
+            &:nth-of-type(4) {
+                height: 6.66vh;
+            }
+        }
     }
-  }
-  .box {
-    position: relative;
-    width: 15%;
-    background: url('../layoutImg/head-box.svg') no-repeat 100% 50%;
-    transform: translate3d(0, 0, 0);
-    &:before {
-      content: '';
-      display: block;
-      padding: 0 0 100%;
+    .right-legs {
+        .leg {
+            &:nth-of-type(1),
+            &:nth-of-type(4) {
+                height: 6.66vh;
+            }
+            &:nth-of-type(2),
+            &:nth-of-type(5),
+            &:nth-of-type(8),
+            &:nth-of-type(9) {
+                height: 3.33vh;
+            }
+            &:nth-of-type(3),
+            &:nth-of-type(7) {
+                height: 5vh;
+            }
+        }
     }
-    .small-cloud {
-      top: 22.5%;
-      left: 50%;
-      transform: translate(-47.5%, -100%);
-      p {
-        min-width: 100px;
-        margin: 0.5em;
-        font-size: 2rem;
-        text-align: center;
-      }
+    .box {
+        position: relative;
+        width: 25%;
+        background: url('../layoutImg/head-box.svg') no-repeat 100% 50%;
+        transform: translate3d(0, 0, 0);
+        &:before {
+            content: '';
+            display: block;
+            padding: 0 0 97%;
+        }
+        .small-cloud {
+            top: 22.5%;
+            left: 50%;
+            transform: translate(-47.5%, -100%);
+            p {
+                min-width: 125px;
+                margin: 0.5em;
+                font-size: 3rem;
+                text-align: center;
+            }
+        }
     }
-  }
 }
 
 @media (max-width: $desktop) {
-  .more {
-    .leg {
-      width: 2.5%;
-      &.cotton {
-        &:before {
-          width: 1.75vw;
-          height: 1.75vw;
+    .more {
+        .leg {
+            width: 2.5%;
+            &.cotton {
+                &:before {
+                    width: 1.75vw;
+                    height: 1.75vw;
+                }
+            }
+            .icon-hoove {
+                width: 1.85vw;
+                height: 1.85vw;
+                transform: translate(-47.5%, -100%);
+            }
         }
-      }
-      .icon-hoove {
-        width: 1.85vw;
-        height: 1.85vw;
-        transform: translate(-47.5%, -100%);
-      }
     }
-  }
 }
 
 @media (max-width: $tablet) {
-  .more {
-    .left-legs,
-    .right-legs {
-      display: none;
-    }
-    .box {
-      width: 35%;
-      .small-cloud {
-        p {
-          min-width: 50%;
-          font-size: 2rem;
+    .more {
+        .left-legs,
+        .right-legs {
+            display: none;
         }
-      }
+        .box {
+            width: 35%;
+            .small-cloud {
+                p {
+                    min-width: 50%;
+                    font-size: 2rem;
+                }
+            }
+        }
     }
-  }
 }
 
 @media (max-width: $phone) {
-  .more {
-    .box {
-      width: 50%;
+    .more {
+        .box {
+            width: 50%;
+        }
     }
-  }
 }
 
 @media (max-width: $phone) {
-  .more {
-    margin-top: 10vh;
-    .box {
-      width: 65%;
+    .more {
+        margin-top: 10vh;
+        .box {
+            width: 65%;
+        }
     }
-  }
 }
