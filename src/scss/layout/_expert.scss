@@ -199,6 +199,9 @@
     }
 }
 
+.sheep-mobile {
+    display: none;
+}
 .sheep-container {
     display: block;
     position: relative;
@@ -262,6 +265,13 @@
 @media (max-width: $desktop-small) {
     .sheep {
         display: none;
+    }
+
+    .sheep-mobile {
+        display: block;
+        svg {
+            width: 40vw;
+        }
     }
 
     .expert {
