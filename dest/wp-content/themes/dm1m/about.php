@@ -20,7 +20,7 @@ get_header(); ?>
 
             <?php if( have_rows('expertise_clouds') ): ?>
 				<div class='sheep-mobile'>
-				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570.9 672.3" class='sheep' id='sheep'>
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570.9 672.3" class='sheep'>
 	                        <style type="text/css">
 	                            .st0{fill:#FFB1B9;}
 	                            .st1{fill:#FFFFFF;}
