@@ -232,6 +232,14 @@ add_action( 'widgets_init', 'dm1m_unregister_default_widgets' );
 // add_action( 'init', 'dm1m_taxonomies' );
 
 
+function limit_posts_per_archive_page($query) {
+    $query->set( 'posts_per_page', -1 );
+    return;
+ }
+
+add_action('pre_get_posts', 'limit_posts_per_archive_page');
+
+
 /*-----------------------------------------------------------------------------------*/
 /* Enqueue Styles and Scripts
 /*-----------------------------------------------------------------------------------*/

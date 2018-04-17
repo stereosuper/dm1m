@@ -9,7 +9,7 @@ module.exports = function(slider){
     
 
     const showSlide = ( puce ) => {
-        
+
         const data = puce.data('slide');
 
 
@@ -56,7 +56,8 @@ module.exports = function(slider){
 
     slider.on('click', '.bullet', function(){
         if($(this).hasClass('active')) return;
-        TweenMax.killAll(true, true, true);
+        TweenMax.killAll(true, true, false);
+        TweenMax.killAll(false, false, true);
         showSlide( $(this) );
     });
 
