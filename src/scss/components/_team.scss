@@ -1,25 +1,31 @@
-.team-grid{
+.team-grid {
     display: flex;
     margin: 0 0 5px;
 }
 
-.member{
+.member {
     position: relative;
     overflow: hidden;
     margin: 0 5px 0 0;
-    &:last-child{
+    &:last-child {
         margin: 0;
     }
-    .no-js &{
-        &:hover, &:focus{
-            .member-overlay{
+    .is-mobile & {
+        .member-overlay {
+            opacity: 1;
+        }
+    }
+    .no-js & {
+        &:hover,
+        &:focus {
+            .member-overlay {
                 opacity: 1;
             }
         }
     }
 }
 
-.member-overlay{
+.member-overlay {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -32,79 +38,80 @@
     opacity: 0;
     z-index: 2;
     pointer-events: none;
-    .no-js &{
+    .no-js &,
+    .is-mobile & {
         transition: $transition;
         background-color: rgba($primary, 0.85);
     }
-    .surname{
+    .surname {
         font-family: $aromatica-script;
         color: $white;
         font-size: 3.6rem;
     }
-    .name{
-        margin: 5px 0;
+    .name {
+        margin: 0 0 0.4em;
         font-family: $aquawax-bold;
         text-transform: uppercase;
-        font-size: 3rem;
+        font-size: 2.8rem;
         letter-spacing: 4px;
     }
-    .job{
+    .job {
+        padding: 0 2.5em;
         font-family: $aquawax-bold;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         letter-spacing: 1px;
         text-transform: uppercase;
     }
 }
 
 @media (max-width: $desktop-small) {
-  .team-grid {
-    .surname {
-      font-size: 3.25rem;
+    .team-grid {
+        .surname {
+            font-size: 3.25rem;
+        }
+        .name {
+            font-size: 2rem;
+        }
+        .job {
+            padding: 0 1em;
+            font-size: 1.2rem;
+        }
     }
-    .name {
-      margin: 10px 0;
-      font-size: 2rem;
-    }
-    .job {
-      font-size: 1.25rem;
-    }
-  }
 }
 
 @media (max-width: $tablet) {
-  .team-grid {
-    flex-wrap: wrap;
-    justify-content: center;
-    .member {
-      max-width: 50%;
-      margin: 0;
+    .team-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+        .member {
+            max-width: 50%;
+            margin: 0;
+        }
+        .surname {
+            font-size: 3.6rem;
+        }
+        .name {
+            // margin: 10px 0;
+            font-size: 2.5rem;
+        }
+        .job {
+            padding: 0 2em;
+            font-size: 1.5rem;
+        }
     }
-    .surname {
-      font-size: 3.6rem;
-    }
-    .name {
-      margin: 10px 0;
-      font-size: 2.5rem;
-    }
-    .job {
-      font-size: 1.5rem;
-    }
-  }
 }
 
 @media (max-width: $phone) {
-  .team-grid {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    .member {
-      width: 100%;
-      max-width: none;
+    .team-grid {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        .member {
+            width: 100%;
+            max-width: none;
+        }
+        .job {
+            padding: 0 2.5em;
+            font-size: 1.5rem;
+        }
     }
-  }
-}
-
-@media (max-width: $phone-small) {
-  .team-grid {
-    // display: none;
-  }
 }
