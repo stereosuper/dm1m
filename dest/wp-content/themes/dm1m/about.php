@@ -22,14 +22,14 @@ get_header(); ?>
 				<div class='sheep-mobile'>
 				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570.9 672.3" class='sheep'>
 	                        <style type="text/css">
-	                            .st0{fill:#FFB1B9;}
-	                            .st1{fill:#FFFFFF;}
-	                            .st2{fill:#1C1C1A;}
-	                            .st3{fill:none;stroke:#1C1C1A;stroke-width:8.3915;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	                            .st4{fill:none;stroke:#FFB1B9;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	                            .st5{fill:#F0ECE6;}
-	                            .st6{fill:url(#SVGID_1_);}
-	                            .st7{fill:url(#SVGID_2_);}
+	                            .sheep-mobile .sheep .st0{fill:#FFB1B9;}
+	                            .sheep-mobile .sheep .st1{fill:#FFFFFF;}
+	                            .sheep-mobile .sheep .st2{fill:#1C1C1A;}
+	                            .sheep-mobile .sheep .st3{fill:none;stroke:#1C1C1A;stroke-width:8.3915;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	                            .sheep-mobile .sheep .st4{fill:none;stroke:#FFB1B9;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	                            .sheep-mobile .sheep .st5{fill:#F0ECE6;}
+	                            .sheep-mobile .sheep .st6{fill:url(#SVGID_1_mobile);}
+	                            .sheep-mobile .sheep .st7{fill:url(#SVGID_2_mobile);}
 	                        </style>
 	                        <rect x="166.2" y="38.1" class="st0" width="237.3" height="474.7"/>
 	                        <path class="st3" d="M299,219.9c-3.6,3.6-8.5,9-14,9s-10.4-5.4-14-9"/>
@@ -37,14 +37,14 @@ get_header(); ?>
 	                        <line class="st3" x1="285" y1="228.9" x2="285" y2="246.6"/>
 	                        <polygon class="st5" points="403.5,38.1 166.2,38.1 208.4,1.3 361.2,1.3 "/>
 
-	                        <line id='earLeft' class="st4" x1="149.4" y1="66.2" x2="114.7" y2="100.8"/>
-	                        <line id='earRight' class="st4" x1="420.6" y1="66.5" x2="455.3" y2="101.2"/>
+	                        <line id='earLeft-mobile' class="st4" x1="149.4" y1="66.2" x2="114.7" y2="100.8"/>
+	                        <line id='earRight-mobile' class="st4" x1="420.6" y1="66.5" x2="455.3" y2="101.2"/>
 
-	                        <g id='eyeLeft'>
+	                        <g id='eyeLeft-mobile'>
 	                            <circle class="st1" cx="234.7" cy="145.5" r="17.9"/>
 	                            <circle class="js-pupil st2" cx="234.7" cy="137.8" r="10.1"/>
 	                        </g>
-	                        <g id='eyeRight'>
+	                        <g id='eyeRight-mobile'>
 	                            <circle class="st1" cx="334.9" cy="145.5" r="17.9"/>
 	                            <circle class="js-pupil st2" cx="334.9" cy="137.8" r="10.1"/>
 	                        </g>
@@ -89,7 +89,7 @@ get_header(); ?>
 	                            </g>
 	                        </g>
 
-	                        <radialGradient id="SVGID_1_" cx="284.825" cy="367.0517" r="192.8734" gradientTransform="matrix(1 0 0 -1 0 673.75)" gradientUnits="userSpaceOnUse">
+	                        <radialGradient id="SVGID_1_mobile" cx="284.825" cy="367.0517" r="192.8734" gradientTransform="matrix(1 0 0 -1 0 673.75)" gradientUnits="userSpaceOnUse">
 	                            <stop offset="0" style="stop-color:#FFFFFF"/>
 	                            <stop offset="0.5942" style="stop-color:#FEFEFD"/>
 	                            <stop offset="0.808" style="stop-color:#FAF8F6"/>
@@ -97,7 +97,7 @@ get_header(); ?>
 	                            <stop offset="1" style="stop-color:#F0ECE6"/>
 	                        </radialGradient>
 	                        <path class="st6" d="M403.5,304.9c0-16.4-13.3-29.6-29.7-29.6c-16.4,0-29.7,13.3-29.7,29.6c0-16.4-13.3-29.6-29.7-29.6 c-16.4,0-29.7,13.3-29.7,29.6c0-16.4-13.3-29.6-29.7-29.6s-29.7,13.3-29.7,29.6c0-16.4-13.3-29.6-29.7-29.6s-29.4,13.3-29.4,29.6 v207.7h237.3V304.9z"/>
-	                        <radialGradient id="SVGID_2_" cx="284.675" cy="791.3766" r="117.5718" gradientTransform="matrix(1 0 0 -0.6207 0 603.7973)" gradientUnits="userSpaceOnUse">
+	                        <radialGradient id="SVGID_2_mobile" cx="284.675" cy="791.3766" r="117.5718" gradientTransform="matrix(1 0 0 -0.6207 0 603.7973)" gradientUnits="userSpaceOnUse">
 	                            <stop offset="0" style="stop-color:#FFFFFF"/>
 	                            <stop offset="0.5942" style="stop-color:#FEFEFD"/>
 	                            <stop offset="0.808" style="stop-color:#FAF8F6"/>
@@ -120,17 +120,17 @@ get_header(); ?>
                             <i class='bubble'></i>
                         </div>
                     <?php endwhile; ?>
-										<div class="sheep-container">
+						<div class="sheep-container">
 	                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570.9 672.3" class='sheep' id='sheep'>
 	                        <style type="text/css">
-	                            .st0{fill:#FFB1B9;}
-	                            .st1{fill:#FFFFFF;}
-	                            .st2{fill:#1C1C1A;}
-	                            .st3{fill:none;stroke:#1C1C1A;stroke-width:8.3915;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	                            .st4{fill:none;stroke:#FFB1B9;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-	                            .st5{fill:#F0ECE6;}
-	                            .st6{fill:url(#SVGID_1_);}
-	                            .st7{fill:url(#SVGID_2_);}
+	                            .sheep-container .sheep .st0{fill:#FFB1B9;}
+	                            .sheep-container .sheep .st1{fill:#FFFFFF;}
+	                            .sheep-container .sheep .st2{fill:#1C1C1A;}
+	                            .sheep-container .sheep .st3{fill:none;stroke:#1C1C1A;stroke-width:8.3915;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	                            .sheep-container .sheep .st4{fill:none;stroke:#FFB1B9;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	                            .sheep-container .sheep .st5{fill:#F0ECE6;}
+	                            .sheep-container .sheep .st6{fill:url(#SVGID_1_);}
+	                            .sheep-container .sheep .st7{fill:url(#SVGID_2_);}
 	                        </style>
 	                        <rect x="166.2" y="38.1" class="st0" width="237.3" height="474.7"/>
 	                        <path class="st3" d="M299,219.9c-3.6,3.6-8.5,9-14,9s-10.4-5.4-14-9"/>
