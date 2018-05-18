@@ -54,7 +54,7 @@
                   data-v-rect-img='<?php echo json_encode($img_v_rect) ?>'
                   data-h-rect-img='<?php echo json_encode($img_h_rect) ?>'>
                     <a class='js-hover project-link'
-                    href='<?php the_permalink(); ?>'
+                    href='<?php the_permalink(); ?>' title='<?php echo htmlspecialchars(strip_tags(the_title()), ENT_QUOTES); ?>'
                     style='background-image: url("<?php
                     echo $img_square_src ? $img_square_src : ''
                     ?>")'>

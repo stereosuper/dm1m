@@ -7,7 +7,7 @@
                     <div class='container'>
                         <div class='info' itemscope itemtype='http://schema.org/Organization'>
                           <?php if($contactLink = get_field('footer_contact', 'option')) : ?>
-                          <a href="<?php echo $contactLink['url']; ?>" target="<?php echo $contactLink['target']; ?>">
+                          <a href="<?php echo $contactLink['url']; ?>" title="<?php echo htmlspecialchars(strip_tags(get_field('footer_contact_label', 'option')), ENT_QUOTES); ?>" target="<?php echo $contactLink['target']; ?>" <?php echo $contactLink['target'] === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>>
                             <div id='contact-cloud' class='small-cloud'>
                               <div class="hover-me js-hover-me"></div>
                               <p><?php the_field('footer_contact_label', 'option') ?></p>

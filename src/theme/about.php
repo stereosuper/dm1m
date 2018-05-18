@@ -223,7 +223,7 @@ get_header(); ?>
                     <?php while ( have_rows('methodo_steps') ) : the_row(); ?>
                         <li class='<?php if($counting == 1) echo 'active'; ?>'>
                             <div class='wrapper-img'>
-                                <a href='#'>
+                                <a href='#' rel='nofollow' title='<?php echo htmlspecialchars(get_sub_field('step_title'), ENT_QUOTES); ?>'>
                                     <?php echo wp_get_attachment_image(get_sub_field('step_img'), 'full'); ?>
                                 </a>
                             </div>

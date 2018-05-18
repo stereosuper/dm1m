@@ -55,13 +55,13 @@
 				</nav>
 				<div id="social" class='social'>
 					<?php if( $contactLink = get_field('footer_contact', 'option') ){ ?>
-						<a class='btn-social' href='<?php echo $contactLink['url']; ?>' target='<?php echo $contactLink['target']; ?>'>
+						<a class='btn-social' href='<?php echo $contactLink['url']; ?>' title='<?php echo htmlspecialchars(strip_tags($contactLink['title']), ENT_QUOTES); ?>' target='<?php echo $contactLink['target']; ?>' <?php echo $contactLink['target'] === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>>
 							<svg class='icon'><use xlink:href='#icon-mail'></use></svg>
 						</a>
 					<?php } ?>
 
 					<?php if( $fbLink = get_field('fb_link', 'option') ){ ?>
-						<a class='btn-social' href='<?php echo $fbLink['url']; ?>' target='<?php echo $fbLink['target']; ?>'>
+						<a class='btn-social' href='<?php echo $fbLink['url']; ?>' title='<?php echo htmlspecialchars(strip_tags($fbLink['title']), ENT_QUOTES); ?>' target='<?php echo $fbLink['target']; ?>' <?php echo $fbLink['target'] === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>>
 							<svg class='icon'><use xlink:href='#icon-facebook'></use></svg>
 						</a>
 					<?php } ?>

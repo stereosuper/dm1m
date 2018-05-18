@@ -50,9 +50,8 @@
                             $field = get_field('grid_img', $news[$i]);
                             $img = wp_get_attachment_image_src( $field['h-rect'], 'full' );
                         ?>
-
                             <div data-slide='<?php echo $i ?>' class='slide <?php if($i === 0) echo "active" ?>' style='background-image: url(<?php echo $img[0]; ?>);'>
-                                <a href="<?php echo get_permalink($news[$i]); ?>"></a>
+                                <a href="<?php echo get_permalink($news[$i]); ?>" title='<?php echo get_the_title($news[$i]) ?>'></a>
 
                             </div>
 
@@ -96,7 +95,7 @@
 		</div>
 		<div class="box">
 			<?php if($agencyLink = get_field('agency_link', 'option')) : ?>
-				<a href="<?php echo $agencyLink['url'] ?>" target="<?php echo $agencyLink['target'] ?>">
+				<a href="<?php echo $agencyLink['url'] ?>" title='<?php echo htmlspecialchars(strip_tags(get_field('agency_label', 'option')), ENT_QUOTES); ?>' target="<?php echo $agencyLink['target'] ?>" <?php echo $agencyLink['target'] === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>>
 					<div id='more-cloud' class='small-cloud'>
 						<div class="hover-me js-hover-me"></div>
 						<p>
