@@ -95,16 +95,14 @@
 		</div>
 		<div class="box">
 			<?php if($agencyLink = get_field('agency_link', 'option')) : ?>
-				<a href="<?php echo $agencyLink['url'] ?>" title='<?php echo htmlspecialchars(strip_tags(get_field('agency_label', 'option')), ENT_QUOTES); ?>' target="<?php echo $agencyLink['target'] ?>" <?php echo $agencyLink['target'] === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>>
-					<div id='more-cloud' class='small-cloud'>
-						<div class="hover-me js-hover-me"></div>
-						<p>
-							<?php the_field('agency_label', 'option') ?>
-						</p>
-						<i class='bubble js-bubble'></i>
-						<i class='bubble js-bubble'></i>
-						<i class='bubble js-bubble'></i>
-					</div>
+				<a id='more-cloud' class='small-cloud' href="<?php echo $agencyLink['url'] ?>" title='<?php echo htmlspecialchars(strip_tags(get_field('agency_label', 'option')), ENT_QUOTES); ?>' target="<?php echo $agencyLink['target'] ?>" <?php echo $agencyLink['target'] === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>>
+					<div class="hover-me js-hover-me"></div>
+					<p>
+						<?php the_field('agency_label', 'option') ?>
+					</p>
+					<i class='bubble js-bubble'></i>
+					<i class='bubble js-bubble'></i>
+					<i class='bubble js-bubble'></i>
 				</a>
 			<?php endif; ?>
 		</div>
