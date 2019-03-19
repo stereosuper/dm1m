@@ -32,6 +32,9 @@
                 <div class='container'>
                     <?php wp_nav_menu( array( 'theme_location' => 'secondary', 'container' => false, 'menu_class' => 'menu-footer' ) ); ?>
                 </div>
+                <div class="trustfolio">
+                    <a href="https://prestashare.com/profil/design-moi-un-mouton-VAOoaBfuz/recommandations?utm_source=badge"><img src="https://mrcrstatic.blob.core.windows.net/images/badge_light@2x.png" width="116px" alt="Nos clients nous recommandent" /></a>
+                </div>
             </div>
         </footer>
 

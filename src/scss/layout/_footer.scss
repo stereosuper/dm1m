@@ -5,7 +5,7 @@
         .border-top {
             height: 20px;
             background: linear-gradient(to bottom, #f2ece9 0%, #f4f0ed 100%);
-            mask: url('../layoutImg/mask.svg');
+            mask: url("../layoutImg/mask.svg");
         }
         .content-top {
             padding: 30px 0 50px;
@@ -71,6 +71,12 @@
         letter-spacing: 1px;
         color: $white;
     }
+}
+.trustfolio {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
 }
 
 @media (max-width: $tablet) {
