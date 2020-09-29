@@ -21,7 +21,7 @@
                                 <address itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>
                                     <span itemprop='streetAddress'><?php echo $address['footer_street']; ?></span> -&nbsp;<span itemprop='postalCode'><?php echo $address['footer_cp']; ?></span>&nbsp;<span itemprop='addressLocality'><?php echo $address['footer_city']; ?></span>
                                 </address>
-                                <span>&nbsp;-&nbsp;<span itemprop='telephone'><?php the_field('footer_phone', 'option'); ?></span></span>
+                                <?php if(get_field('footer_phone', 'option')) : ?><span>&nbsp;-&nbsp;<span itemprop='telephone'><?php the_field('footer_phone', 'option'); ?></span></span><?php endif; ?>
                             </div>
                             <div class='email' itemprop='email'><?php the_field('footer_mail', 'option'); ?></div>
                         </div>
