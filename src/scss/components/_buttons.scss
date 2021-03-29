@@ -1,5 +1,5 @@
 /* Buttons */
-.btn-social{
+.btn-social {
     display: inline-flex;
     width: 34px;
     height: 34px;
@@ -11,7 +11,7 @@
     border-radius: 50%;
     background: $secondary;
     color: $white;
-    &:after{
+    &:after {
         content: '';
         position: absolute;
         top: 0;
@@ -25,12 +25,14 @@
         transform: rotate(-180deg) scale(0.5);
         transition: $transition;
     }
-    &:hover, &:focus{
-        &:after{
+    &:hover,
+    &:focus {
+        color: $white;
+        &:after {
             transform: rotate(0deg) scale(1);
         }
     }
-    > .icon{
+    > .icon {
         width: 1.2em;
         height: 1.2em;
         // &.icon-facebook{
