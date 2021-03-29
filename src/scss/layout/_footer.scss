@@ -1,11 +1,14 @@
 /* Footer */
 .footer {
+    a {
+        text-decoration: none;
+    }
     .top {
         text-align: center;
         .border-top {
             height: 20px;
             background: linear-gradient(to bottom, #f2ece9 0%, #f4f0ed 100%);
-            mask: url("../layoutImg/mask.svg");
+            mask: url('../layoutImg/mask.svg');
         }
         .content-top {
             padding: 30px 0 50px;

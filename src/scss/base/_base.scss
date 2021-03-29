@@ -243,10 +243,10 @@ hr {
 
 a {
     color: inherit;
-    text-decoration: none;
     transition: $transition;
     &:focus,
     &:hover {
+        color: $primary;
     }
     &:focus {
         outline: 0;
@@ -323,6 +323,13 @@ a {
 
 .separator {
     color: $primary;
+}
+
+.e404 {
+    text-align: center;
+    h1 {
+        font-size: 10rem;
+    }
 }
 
 @media (max-width: $desktop) {
